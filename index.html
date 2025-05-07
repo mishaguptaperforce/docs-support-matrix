@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Matrix Portal</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Choices.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+  
+  <!-- Add Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+  <!-- Choices.js JS -->
+ 
+  <!-- Bootstrap 5 CDN -->
+  
+
+</head>
+
+<body>
+
+  <!-- Top Navbar -->
+<nav class="top-navbar">
+  <div class="navbar-left">
+    <span class="navbar-logo">Interop Matrix</span>
+  </div>
+  <div class="navbar-right">
+    <a href="https://www.perforce.com/">Home</a>
+    <a href="https://help.delphix.com/">Documentation</a>
+  </div>
+</nav>
+
+
+
+  
+  <!-- Tabs Container -->
+  <div class="tabs-container">
+    <div class="tab" id="tab-interoperability" onclick="showPage('interoperability')">Interoperability</div>
+    <div class="tab" id="tab-thirdPartySolutions" onclick="showPage('thirdPartySolutions')">3rd Party Solutions Interoperability</div>
+  </div>
+
+  <!-- Horizontal line just before the tabs -->
+  <hr class="tab-line">
+
+  <!-- Page content for Interoperability -->
+  <div id="interoperability-page" class="page-content active">
+    <!-- Main Container for side-nav and result -->
+    <div class="main-container">
+      <!-- Sidenav -->
+      <div id="sidenav">
+        <h3>Compare</h3>
+        <h4><b>Select Products</b></h4><hr>
+        <div class ="product-container">
+          <label for="product1-category">Product 1:</label>
+          <select id="product1-category">
+            <option value="">--Select--</option>
+            <!-- Dynamically filled options for OS -->
+          </select>
+
+          <label for="product1-version">Select a Version:</label>
+          <select id="product1-version">
+            <option value="" disabled selected>--Select--</option>
+            <!-- Dynamically filled options for OS version -->
+          </select>
+        </div>
+
+        <h3>With</h3>
+
+        <div class ="product-container">
+          <label for="product2-category">Product 2:</label>
+          <select id="product2-category">
+            <option value="">--Select--</option>
+            <!-- Dynamically filled options for database -->
+          </select>
+
+          <label for="product2-version">Select a Version:</label>
+          <select id="product2-version">
+            <option value="">--Select--</option>
+            <!-- Dynamically filled options for database version -->
+          </select>
+        </div>
+
+        <!-- Buttons for Check Compatibility and Reset -->
+        <div class="button-container">
+        <button class="primary-button" onclick="checkCompatibilityTab1()">Check Compatibility</button>
+        <button class="secondary-button" onclick="resetFieldsTab1()">Reset</button>
+        </div>
+      </div>
+
+      <!-- Main Content (Right side) -->
+      <div id="main-content">
+
+        <h1>Compatibility Results</h1>
+        <div class="additional-actions">
+          <button id="addToFav" class="action-button">⭐ Bookmark</button>
+          <button id="export-csv-tab1" class="action-button" title="Export to CSV">Download Excel</button>
+          <button id="collapseExpandAll-tab1" class="action-button">Collapse All</button>
+        </div>
+
+        <!-- Export buttons with icons -->
+        
+<!--
+        <div class="export-buttons">
+          <button id="export-csv-tab1" title="Export to CSV"><i class="fas fa-file-excel"></i></button>
+        </div> -->
+      
+
+
+
+        
+        
+        <div id="result"></div>
+        <h3 id="comparison-heading" class="comparison-title"></h3>
+        <div class="table-wrapper">
+        <table id="compatibility-matrix" class="matrix-table">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content for 3rd Party Solutions (Blank) -->
+  
+
+  <div id="thirdPartySolutions-page" class="page-content">
+    <!-- Main Container for side-nav and result -->
+    <div class="thirdPartySolutions-main-container">
+      <!-- Sidenav -->
+      <div id="thirdPartySolutions-sidenav">
+        <h3>Compare</h3>
+        <h4>Select Products</h4><hr>
+        <div class ="product-container">
+          <!-- Category dropdown -->
+
+
+
+
+
+
+
+
+          <label for="thirdPartySolutions-product1-category">Select a Category:</label>
+          <select id="thirdPartySolutions-product1-category">
+            <option value="">--Select--</option>
+            <!-- Dynamically filled options for OS -->
+          </select>
+
+          <label for="thirdPartySolutions-product1-solution" disabled>Select a Solution:</label>
+          <select id="thirdPartySolutions-product1-solution">
+            <option value="" disabled selected>--Select--</option>
+            <!-- Dynamically filled options for OS version -->
+          </select>
+
+          <label for="thirdPartySolutions-product1-version" disabled>Select a Version:</label>
+          <select id="thirdPartySolutions-product1-version">
+            <option value="">--Select--</option>
+            <!-- Dynamically filled options for OS -->
+          </select>
+        </div>
+
+        <h3>With</h3>
+
+        <div class ="product-container">
+
+
+          
+        <!-- Product 2 Category Dropdown (Single-select) -->
+          <label for="thirdPartySolutions-product2-category">Select a Category:</label>
+          <select id="thirdPartySolutions-product2-category">
+            <option value="">--Select--</option>
+            <!-- Dynamically filled options for Product 2 -->
+          </select>
+
+          <!-- Product 2 Solution Dropdown (Multi-select) -->
+          <!-- Product 2 Solution Dropdown (Multi-select) -->
+          <label for="thirdPartySolutions-product2-solution">Select a Solution:</label>
+          <select id="thirdPartySolutions-product2-solution" multiple>
+            <option value="">--Select--</option>
+            <!-- Dynamically filled options for solutions -->
+          </select>
+
+
+          <!-- Product 2 Version Dropdown (Single-select) -->
+          <label for="thirdPartySolutions-product2-version">Select a Version:</label>
+          <select id="thirdPartySolutions-product2-version">
+            <option value="">--Select--</option>
+            <!-- Dynamically filled options for versions -->
+          </select>
+        </div>
+
+          
+
+          
+
+        <!-- Buttons for Check Compatibility and Reset -->
+        <div class="thirdPartySolutions-button-container">
+        <button class="thirdPartySolutions-primary-button" onclick="checkCompatibilityTab2()">Check Compatibility</button>
+        <button class="thirdPartySolutions-secondary-button" onclick="resetFieldsTab2()">Reset</button>
+        </div>
+      </div>
+
+
+
+      <!-- Main Content (Right side) -->
+      <div id="thirdPartySolutions-main-content">
+        
+        <h1>Compatibility Results</h1>
+        <div class="additional-actions">
+          <button id="addToFav" class="action-button">⭐ Bookmark</button>
+          <button id="export-csv-tab2" class="action-button" title="Export to CSV">Download Excel</button>
+          <button id="collapseExpandAll-tab2" class="action-button">Collapse All</button>
+        </div>
+        
+<!--
+        <div class="export-buttons">
+          <button id="export-csv-tab1" title="Export to CSV"><i class="fas fa-file-excel"></i></button>
+        </div> -->
+        <!-- Add these buttons where needed, e.g., below the results -->
+
+        <!-- Export buttons with icons -->
+
+
+      
+
+  
+
+
+
+
+        <!-- Add this above the results where the tables are rendered -->
+    
+        <div id="thirdPartySolutions-result"></div>
+        <h3 id="thirdPartySolutions-comparison-heading" class="comparison-title"></h3>
+        <table id="thirdPartySolutions-compatibility-matrix" class="matrix-table">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <!-- jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- jsPDF autoTable plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.17/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+
+
+</body>
+</html>

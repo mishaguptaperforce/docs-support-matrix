@@ -1,0 +1,57 @@
+{
+  "x_axis": {
+    "categories": ["Database", "Operating System", "Platform"],
+    "solutions": {
+      "Database": ["Oracle", "SQL Server", "PostgreSQL"],
+      "Operating System": ["RHEL", "Ubuntu", "Windows Server"],
+      "Platform": ["AWS", "Azure", "GCP"]
+    },
+    "versions": {
+      "Oracle": ["19c", "21c"],
+      "SQL Server": ["2012", "2014", "2016", "2017", "2019"],
+      "PostgreSQL": ["13", "14"],
+      "RHEL": ["8", "9"],
+      "Ubuntu": ["20.04", "22.04"],
+      "Windows Server": ["2012", "2012 R2", "2016", "2019", "2022"],
+      "AWS": ["EC2 v1", "EC2 v2"],
+      "Azure": ["VM v1", "VM v2"],
+      "GCP": ["Compute v1", "Compute v2"]
+    }
+  },
+  "y_axis": {
+    "categories": ["Database", "Operating System", "Platform"],
+    "solutions": {
+      "Database": ["Oracle", "SQL Server", "PostgreSQL"],
+      "Operating System": ["RHEL", "Ubuntu", "Windows Server"],
+      "Platform": ["AWS", "Azure", "GCP"]
+    },
+    "versions": {
+      "Oracle": ["19c", "21c"],
+      "SQL Server": ["2012", "2014", "2016", "2017", "2019"],
+      "PostgreSQL": ["13", "14"],
+      "RHEL": ["8", "9"],
+      "Ubuntu": ["20.04", "22.04"],
+      "Windows Server": ["2012", "2012 R2", "2016", "2019", "2022"],
+      "AWS": ["EC2 v1", "EC2 v2"],
+      "Azure": ["VM v1", "VM v2"],
+      "GCP": ["Compute v1", "Compute v2"]
+    }
+  },
+  "compatibility": {
+    "Oracle 19c": {
+      "RHEL 8": { "compatible": true, "note": "Certified" },
+      "RHEL 9": { "compatible": true, "note": "6.0.7+" },
+      "SQL Server 2012": { "compatible": true, "note": "6.0.7+" },
+      "Ubuntu 20.04": { "compatible": true, "note": "6.0.7+" },
+      "AWS EC2 v1":  { "compatible": true, "note": "6.0.7+" }
+    },
+    "Oracle 21c": {
+      "RHEL 8": { "compatible": false, "note": "6.0.11+" },
+      "RHEL 9": { "compatible": true, "note": "Tested" },
+      "SQL Server 2012": { "compatible": true, "note": "6.0.7+" },
+      "Ubuntu 20.04": { "compatible": true, "note": "6.0.7+" },
+      "AWS EC2 v1":  { "compatible": true, "note": "6.0.7+" }
+    }
+  }
+}
+
