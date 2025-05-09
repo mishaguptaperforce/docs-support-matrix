@@ -38,8 +38,8 @@
   
   <!-- Tabs Container -->
   <div class="tabs-container">
-    <div class="tab" id="tab-interoperability" onclick="showPage('interoperability')">Interoperability</div>
-    <div class="tab" id="tab-thirdPartySolutions" onclick="showPage('thirdPartySolutions')">3rd Party Solutions Interoperability</div>
+    <div class="tab" id="tab-interoperability" onclick="showPage('interoperability')">Delphix Products Compatibility</div>
+    <div class="tab" id="tab-thirdPartySolutions" onclick="showPage('thirdPartySolutions')">Third Party Solutions Compatibility </div>
   </div>
 
   <!-- Horizontal line just before the tabs -->
@@ -52,6 +52,7 @@
       <!-- Sidenav -->
       <div id="sidenav">
         <h3>Compare</h3>
+
         <h4><b>Select Products</b></h4><hr>
         <div class ="product-container">
           <label for="product1-category">Product 1:</label>
@@ -60,7 +61,7 @@
             <!-- Dynamically filled options for OS -->
           </select>
 
-          <label for="product1-version">Select a Version:</label>
+          <label for="product1-version">Version:</label>
           <select id="product1-version">
             <option value="" disabled selected>--Select--</option>
             <!-- Dynamically filled options for OS version -->
@@ -76,7 +77,7 @@
             <!-- Dynamically filled options for database -->
           </select>
 
-          <label for="product2-version">Select a Version:</label>
+          <label for="product2-version">Version:</label>
           <select id="product2-version">
             <option value="">--Select--</option>
             <!-- Dynamically filled options for database version -->
@@ -93,10 +94,11 @@
       <!-- Main Content (Right side) -->
       <div id="main-content">
 
+
         <h1>Compatibility Results</h1>
         <div class="additional-actions">
-          <button id="addToFav" class="action-button">⭐ Bookmark</button>
-          <button id="export-csv-tab1" class="action-button" title="Export to CSV">Download Excel</button>
+          <button id="addToFav" class="action-button"><i class="fas fa-star"></i> Save to Favorites</button>
+          <button id="export-csv-tab1" class="action-button" title="Export to CSV"> Export Results</button>
           <button id="collapseExpandAll-tab1" class="action-button">Collapse All</button>
         </div>
 
@@ -144,19 +146,25 @@
 
 
 
-          <label for="thirdPartySolutions-product1-category">Select a Category:</label>
+          <label for="thirdPartySolutions-product1-category">Category 1:
+            
+          </label>
           <select id="thirdPartySolutions-product1-category">
             <option value="">--Select--</option>
             <!-- Dynamically filled options for OS -->
           </select>
 
-          <label for="thirdPartySolutions-product1-solution" disabled>Select a Solution:</label>
+          <label for="thirdPartySolutions-product1-solution" disabled>Solution 1:
+           
+          </label>
           <select id="thirdPartySolutions-product1-solution">
             <option value="" disabled selected>--Select--</option>
             <!-- Dynamically filled options for OS version -->
           </select>
 
-          <label for="thirdPartySolutions-product1-version" disabled>Select a Version:</label>
+          <label for="thirdPartySolutions-product1-version" disabled>Version:
+              
+          </label>
           <select id="thirdPartySolutions-product1-version">
             <option value="">--Select--</option>
             <!-- Dynamically filled options for OS -->
@@ -170,7 +178,9 @@
 
           
         <!-- Product 2 Category Dropdown (Single-select) -->
-          <label for="thirdPartySolutions-product2-category">Select a Category:</label>
+          <label for="thirdPartySolutions-product2-category">Category 2:
+              
+          </label>
           <select id="thirdPartySolutions-product2-category">
             <option value="">--Select--</option>
             <!-- Dynamically filled options for Product 2 -->
@@ -178,7 +188,9 @@
 
           <!-- Product 2 Solution Dropdown (Multi-select) -->
           <!-- Product 2 Solution Dropdown (Multi-select) -->
-          <label for="thirdPartySolutions-product2-solution">Select a Solution:</label>
+          <label for="thirdPartySolutions-product2-solution" title="Choose one or more solutions for Product 2">Solution 2:
+              
+          </label>
           <select id="thirdPartySolutions-product2-solution" multiple>
             <option value="">--Select--</option>
             <!-- Dynamically filled options for solutions -->
@@ -186,7 +198,9 @@
 
 
           <!-- Product 2 Version Dropdown (Single-select) -->
-          <label for="thirdPartySolutions-product2-version">Select a Version:</label>
+          <label for="thirdPartySolutions-product2-version">Version:
+              
+          </label>
           <select id="thirdPartySolutions-product2-version">
             <option value="">--Select--</option>
             <!-- Dynamically filled options for versions -->
@@ -211,7 +225,7 @@
         
         <h1>Compatibility Results</h1>
         <div class="additional-actions">
-          <button id="addToFav" class="action-button">⭐ Bookmark</button>
+          <button id="addToFav" class="action-button"><i class="fas fa-star"></i> Save to Favorites</button>
           <button id="export-csv-tab2" class="action-button" title="Export to CSV">Download Excel</button>
           <button id="collapseExpandAll-tab2" class="action-button">Collapse All</button>
         </div>
@@ -252,6 +266,7 @@
 <!-- jsPDF autoTable plugin -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.17/jspdf.plugin.autotable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
 
 
 

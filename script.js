@@ -257,12 +257,12 @@ function populateDropdownsTab2(data) {
   }
 
   // Clear all dropdowns
-  categorySelect.innerHTML = '<option value="">--Select Category--</option>';
-  solutionSelect.innerHTML = '<option value="">--Select Solution--</option>';
-  versionSelect.innerHTML = '<option value="">--Select Version--</option>';
-  product2CategorySelect.innerHTML = '<option value="">--Select Category--</option>';
-  product2SolutionSelect.innerHTML = '<option value="">--Select Solutions--</option>';
-  product2VersionSelect.innerHTML = '<option value="">--Select Version--</option>';
+  categorySelect.innerHTML = '<option value="">--Select--</option>';
+  solutionSelect.innerHTML = '<option value="">--Select--</option>';
+  versionSelect.innerHTML = '<option value="">--Select--</option>';
+  product2CategorySelect.innerHTML = '<option value="">--Select--</option>';
+  product2SolutionSelect.innerHTML = '<option value="">--Select--</option>';
+  product2VersionSelect.innerHTML = '<option value="">--Select--</option>';
 
   // Populate category dropdowns
   data.x_axis.categories.forEach(category => {

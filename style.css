@@ -3,6 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+
 }
 
 /* Top Navbar Style */
@@ -19,6 +20,7 @@ body {
   position: sticky;
   top: 0; /* Keeps navbar on top */
   z-index: 1000;
+
 }
 
 .navbar-logo {
@@ -54,6 +56,8 @@ body {
   cursor: pointer;
   padding: 10px;
   font-weight: bold;
+  position: relative;
+  transition: background-color 0.3s ease, border 0.3s ease;
 }
 
 .tab:hover {
@@ -70,6 +74,67 @@ body {
   color: #1d428a;
   border-bottom: 3px solid #1d428a;
 }
+
+
+
+.tab:not(:last-child) {
+  border-right: 2px solid #ddd; /* Add a gray border between tabs */
+}
+
+.tab:hover {
+  color: #1d428a;
+  
+}
+/*
+
+.tooltip-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: max-content;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 5px;
+  padding: 6px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; 
+  left: 5%;
+  transform: translateX(-5%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 13px;
+  white-space: nowrap;
+  margin-left: -100px; 
+
+
+.tooltip-icon:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+@media (max-width: 768px) {
+  .tooltip-text {
+    left: auto;
+    right: 0; 
+    margin-left: 0;
+  }
+}
+
+
+*/
+
+
+
+
+
 
 
 
@@ -293,6 +358,7 @@ select {
   padding: 10px;
   border-radius: 5px;
   margin-top: 0;
+  overflow: visible; 
 }
 
 h4 {
@@ -347,4 +413,21 @@ h4 {
   color: #333;
   margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+  .top-navbar {
+    padding: 8px 15px;
+    font-size: 14px; /* Adjust font size */
+  }
+  .navbar-logo {
+    font-size: 20px;
+  }
+  .navbar-right a {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
+
+
+
 
