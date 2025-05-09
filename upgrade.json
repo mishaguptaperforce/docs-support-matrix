@@ -5,15 +5,43 @@
   },
   "upgradePaths": {
     "Continuous Data": {
-      "2025.2.0": { "2025.1.0": true, "29.0.0.0": true },
-      "2025.1.0": { "28.0.0.0": true },
-      "29.0.0.0": { "28.0.0.0": true },
-      "28.0.0.0": {}
+      "2025.2.0": {
+        "dateReleased": "2025-03-15",
+        "vdbDowntimeRequired": "No",
+        "canUpgradeTo": "N/A"
+      },
+      "2025.1.0": {
+        "dateReleased": "2025-01-10",
+        "vdbDowntimeRequired": "No",
+        "canUpgradeTo": "2025.2.0.*"
+      },
+      "29.0.0.0": {
+        "dateReleased": "2024-10-05",
+        "vdbDowntimeRequired": "Yes",
+        "canUpgradeTo": "2025.1.0.* - 2025.2.0.*"
+      },
+      "28.0.0.0": {
+        "dateReleased": "2024-05-20",
+        "vdbDowntimeRequired": "Yes",
+        "canUpgradeTo": "29.0.0.0"
+      }
     },
     "Continuous Compliance": {
-      "2025.2.0": { "2025.1.0": true },
-      "2025.1.0": { "28.0.0.0": true },
-      "28.0.0.0": {}
+      "2025.2.0": {
+        "dateReleased": "2025-03-15",
+        "vdbDowntimeRequired": "No",
+        "canUpgradeTo": "N/A"
+      },
+      "2025.1.0": {
+        "dateReleased": "2025-01-05",
+        "vdbDowntimeRequired": "No",
+        "canUpgradeTo": "2025.2.0.*"
+      },
+      "28.0.0.0": {
+        "dateReleased": "2024-04-18",
+        "vdbDowntimeRequired": "Yes",
+        "canUpgradeTo": "2025.1.0.* - 2025.2.0.*"
+      }
     }
   }
 }
