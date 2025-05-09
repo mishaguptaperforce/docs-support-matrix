@@ -40,6 +40,9 @@
   <div class="tabs-container">
     <div class="tab" id="tab-interoperability" onclick="showPage('interoperability')">Delphix Products Compatibility</div>
     <div class="tab" id="tab-thirdPartySolutions" onclick="showPage('thirdPartySolutions')">Third Party Solutions Compatibility </div>
+    <div class="tab" id="tab-hardware" onclick="showPage('hardware')">Hardware Compatibility </div>
+    <div class="tab" id="tab-upgrade" onclick="showPage('upgrade')">Upgrade Path </div>
+
   </div>
 
   <!-- Horizontal line just before the tabs -->
@@ -257,6 +260,88 @@
       </div>
     </div>
   </div>
+
+
+
+
+  <!-- Page content for Hardware -->
+  <div id="hardware-page" class="page-content active">
+    <!-- Main Container for side-nav and result -->
+    <div class="main-container">
+      <!-- Sidenav -->
+      <div id="sidenav">
+        
+        <h4><b>Select a Product</b></h4><hr>
+
+      <div class ="product-container">
+          <!-- Category dropdown -->
+          <label for="hardware-product1-category">Product:
+            
+          </label>
+          <select id="hardware-product1-category">
+            <option value="">--Select--</option>
+            <!-- Dynamically filled options for OS -->
+          </select>
+         
+        </div>
+        <div class="button-container-hardware">
+        <button class="hardware-page-button" onclick="checkCompatibilityTab3()">Check Compatibility</button>
+        
+        </div></div></div></div>
+      
+
+    <!-- Page content for Upgrade -->
+  <div id="upgrade-page" class="page-content active">
+  <div class="main-container">
+    <!-- Sidenav -->
+    <div id="sidenav">
+      <h4><b>Select a Product</b></h4>
+      <hr>
+
+      <div class="product-container">
+        <label for="upgrade-product1-category"><b>Product:</b></label>
+        <select id="upgrade-product1-category">
+          <option value="">--Select--</option>
+        </select>
+
+        <label for="upgrade-product1-version"><b>Version:</b></label>
+        <select id="upgrade-product1-version">
+          <option value="">--Select--</option>
+        </select>
+      </div>
+
+      <div class="button-container-upgrade">
+        <button class="upgrade-page-button" onclick="checkCompatibilityTab4()">Check Upgrade Path</button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="upgrade-main-content">
+      <h1>Upgrade Path Results</h1>
+      <div id="upgrade-result"></div>
+      <div id="upgrade-table-wrapper" class="upgrade-table-wrapper"></div>
+    </div>
+  </div>
+</div>
+
+        
+<!--
+        <div class="export-buttons">
+          <button id="export-csv-tab1" title="Export to CSV"><i class="fas fa-file-excel"></i></button>
+        </div> -->
+        <!-- Add these buttons where needed, e.g., below the results -->
+
+        <!-- Export buttons with icons -->
+
+
+      
+
+  
+
+
+
+
+        
 
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>

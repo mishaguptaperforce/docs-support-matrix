@@ -104,7 +104,7 @@ body {
   padding: 6px 10px;
   position: absolute;
   z-index: 1;
-  bottom: 125%; 
+  bottom: 125%; /* 
   left: 5%;
   transform: translateX(-5%);
   opacity: 0;
@@ -112,6 +112,7 @@ body {
   font-size: 13px;
   white-space: nowrap;
   margin-left: -100px; 
+}
 
 
 .tooltip-icon:hover .tooltip-text {
@@ -153,6 +154,7 @@ body {
   box-sizing: border-box;
   background-color: #Ffffff;
   border-right: 2px solid #ddd;
+  height: 100vh;
 }
 
 #sidenav h3,
@@ -162,7 +164,8 @@ body {
 
 /* Main Content */
 #main-content,
-#thirdPartySolutions-main-content {
+#thirdPartySolutions-main-content,
+#upgrade-main-content {
   width: 80%;
   padding: 20px;
   box-sizing: border-box;
@@ -177,6 +180,31 @@ body {
   margin-top: 20px;
   width: 100%;
 }
+
+.button-container-upgrade,
+.button-container-hardware {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.upgrade-page-button,
+.hardware-page-button {
+  padding: 10px 20px; /* Wider padding for better text spacing */
+  font-size: 16px;
+  background-color: #1d428a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: auto;           /* Let button size to its content */
+  flex: 0 0 auto;         /* Prevent growing/shrinking */
+}
+
+
+
 
 /* Buttons */
 .primary-button,
@@ -268,6 +296,17 @@ select {
   min-width: 100%;
   border-collapse: collapse;
 }
+
+/*
+
+.matrix-table th:first-child,
+.matrix-table td:first-child,
+#thirdPartySolutions-compatibility-matrix th:first-child,
+#thirdPartySolutions-compatibility-matrix td:first-child {
+  text-align: left;
+  padding-left: 12px; 
+}
+*/
 
 .matrix-table th,
 .matrix-table td,
@@ -427,6 +466,40 @@ h4 {
     margin-left: 10px;
   }
 }
+
+
+
+
+.upgrade-table-wrapper {
+  margin: 20px;
+  overflow-x: auto;
+}
+
+.upgrade-table {
+  border-collapse: collapse;
+  width: auto;
+  min-width: 400px;
+}
+
+.upgrade-table th,
+.upgrade-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.upgrade-table th {
+  background-color: #f2f2f2;
+}
+.upgrade-allowed {
+  background-color: #d4edda;
+  color: #155724;
+}
+.upgrade-blocked {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
 
 
 

@@ -30,6 +30,33 @@ async function preloadDataTab2() {
   }
 }
 
+async function preloadDataTab3() {
+  try {
+    const url = `hardware.json?t=${Date.now()}`;
+    const res = await fetch(url);
+    const hardwareData = await res.json();
+    dataCache.hardware = hardwareData;
+    console.log('Preloaded data for Tab 3:', dataCache.hardware);
+    populateDropdownsTab3(hardwareData);
+  } catch (error) {
+    console.error('Error preloading data for Tab 3:', error);
+  }
+}
+
+async function preloadDataTab4() {
+  try {
+    const url = `upgrade.json?t=${Date.now()}`;
+    const res = await fetch(url);
+    const upgradeData = await res.json();
+    dataCache.upgrade = upgradeData;
+    console.log('Preloaded data for Tab 4:', dataCache.upgrade);
+    populateDropdownsTab4(upgradeData);
+  } catch (error) {
+    console.error('Error preloading data for Tab 4:', error);
+  }
+}
+
+
 
 
 
@@ -39,7 +66,7 @@ function showPage(page) {
 }
 
 function getElement(id, page) {
-  return document.getElementById(page === 'interoperability' || page === 'thirdPartySolutions' ? id : `${page}-${id}`);
+  return document.getElementById(page === 'interoperability' || page === 'thirdPartySolutions' || page == 'hardware' || page == 'upgrade' ? id : `${page}-${id}`);
 }
 
 
@@ -146,7 +173,10 @@ function resetFieldsTab2() {
   getElement('compatibility-matrix', activePage).innerHTML = '';
 }
 
+
+
 // Helper to populate dropdowns with "--Select--" and options
+/*
 function populateDropdown(el, options) {
   if (el.choices) {
     el.choices.setChoices(
@@ -172,6 +202,7 @@ function populateDropdown(el, options) {
     });
   }
 }
+*/
 
 function populateDropdownsTab1(data) {
   const p1c = getElement('product1-category', 'interoperability');
@@ -408,6 +439,76 @@ if (selectedSolutions.includes('__all__')) {
 
 
 
+function populateDropdownsTab3(data) {
+  const categoryDropdown = getElement('hardware-product1-category', 'hardware');
+  console.log('Dropdown element:', categoryDropdown);
+
+  if (!categoryDropdown) {
+    console.error('Dropdown for Tab 3 not found!');
+    return;
+  }
+
+  categoryDropdown.innerHTML = '<option value="">--Select--</option>';
+  data.products.forEach(product => {
+    const option = document.createElement('option');
+    option.value = product;
+    option.textContent = product;
+    categoryDropdown.appendChild(option);
+  });
+
+  console.log('Dropdown populated for Tab 3');
+}
+
+
+function populateDropdownsTab4(data) {
+  const productDropdown = getElement('upgrade-product1-category', 'upgrade');
+  const versionDropdown = getElement('upgrade-product1-version', 'upgrade');
+
+  if (!productDropdown || !versionDropdown) {
+    console.error('Tab 4 dropdowns not found!');
+    return;
+  }
+
+  // Populate the category dropdown (product names)
+  productDropdown.innerHTML = '<option value="">--Select Category--</option>';
+  Object.keys(data.products).forEach(product => {
+    const option = document.createElement('option');
+    option.value = product;
+    option.textContent = product;
+    productDropdown.appendChild(option);
+  });
+
+  // When the category is selected, populate the version dropdown
+  productDropdown.addEventListener('change', () => {
+    const selectedProduct = productDropdown.value;
+    const versions = data.products[selectedProduct] || [];
+
+    // Clear and repopulate the version dropdown based on the selected category
+    versionDropdown.innerHTML = '<option value="">--Select Version--</option>';
+    versions.forEach(version => {
+      const option = document.createElement('option');
+      option.value = version;
+      option.textContent = version;
+      versionDropdown.appendChild(option);
+    });
+
+    // If no versions are available, you can optionally disable the version dropdown or show a message.
+    if (versions.length === 0) {
+      versionDropdown.disabled = true;
+      const option = document.createElement('option');
+      option.value = '';
+      option.textContent = 'No versions available';
+      versionDropdown.appendChild(option);
+    } else {
+      versionDropdown.disabled = false;
+    }
+  });
+
+  console.log('Dropdowns populated for Tab 4');
+}
+
+
+
 
 
 function checkCompatibilityTab1() {
@@ -442,7 +543,7 @@ function checkCompatibilityTab1() {
     const tbody = section.querySelector('tbody');
 
     // Update the `updateMatrix` function to pass the correct data structure
-    updateMatrix(data, p1, v1, p2, v2, thead, tbody, `Compatibility Results for ${p1} vs ${p2}`);
+    updateMatrix(data, p1, v1, p2, v2, thead, tbody, ` ${p1} vs ${p2}`);
   });
 }
 
@@ -517,7 +618,7 @@ if (selectedSolutions2.includes('__all__')) {
       versions2,  // Now passing the correct versions for each solution2
       thead,
       tbody,
-      `Compatibility for ${solution1} vs ${solution2}`
+      ` ${solution1} vs ${solution2}`
     );
   });
 }
@@ -549,12 +650,12 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
   const header2 = document.createElement('tr');
   header2.innerHTML = `
     <th>
-      <div style="text-align:center; line-height:1.5;">
-        ✅ = Compatible<br>
-        ❌ = Incompatible<br>
-        ⛔ = Not Applicable
-      </div>
-    </th>
+    <div style="text-align:center; line-height: 1.5;">
+      ✅ = Compatible<br>
+      ❌ = Incompatible<br>
+      <span style="color:#888;">&ndash;</span> = Not Applicable<br>
+    </div>
+</th>
     ${dbVers.map(v => `<th>${db} ${v}</th>`).join('')}
   `;
   thead.appendChild(header2);
@@ -576,7 +677,8 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
       }
 
       if (!compat) {
-        return `<td><span style="color:#555">⛔</span><br><small></small></td>`;
+        return `<td><span style="color: #888; font-size: 1.2em;">&ndash;</span><br><small></small>
+</td>`;
       }
 
       const icon = compat.compatible ? '✅' : '❌';
@@ -621,7 +723,7 @@ function updateMatrixTab2(data, os, osVer, db, dbVer, thead, tbody, heading) {
     <div style="text-align:center; line-height: 1.5;">
       ✅ = Compatible<br>
       ❌ = Incompatible<br>
-      ⛔ = No Data
+      <span style="color:#888;">&ndash;</span> = Not Applicable
     </div>
   </th>` + dbVers.map(v => `<th>${db} ${v}</th>`).join('');
   thead.appendChild(header2);
@@ -649,7 +751,7 @@ if (!compat) {
 // final
 console.log('  ↳ result:', compat);
 
-      if (!compat) return `<td><span style="color:#555">⛔</span><br><small></small></td>`;
+      if (!compat) return `<td><span style="color: #888; font-size: 1.2em;">&ndash;</span></td>`;
 
       const icon = compat.compatible ? '✅' : '❌';
       const color = compat.compatible ? 'green' : 'red';
@@ -675,9 +777,14 @@ console.log('  ↳ result:', compat);
 
 
 
+
+
+
 document.addEventListener("DOMContentLoaded", async function () {
   await preloadDataTab1();
   await preloadDataTab2();
+  await preloadDataTab3();
+  await preloadDataTab4();
   showPage('interoperability');
 
   document.querySelectorAll('.collapsible-heading').forEach(h => {
