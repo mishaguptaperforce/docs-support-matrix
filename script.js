@@ -485,22 +485,30 @@ function populateDropdownsTab4(data) {
 
     // Clear and repopulate the version dropdown based on the selected category
     versionDropdown.innerHTML = '<option value="">--Select Version--</option>';
-    versions.forEach(version => {
-      const option = document.createElement('option');
-      option.value = version;
-      option.textContent = version;
-      versionDropdown.appendChild(option);
-    });
+    
+    // Add "All Versions" option first
+    const allOption = document.createElement('option');
+    allOption.value = 'ALL';
+    allOption.textContent = 'All';
+    versionDropdown.appendChild(allOption);
 
-    // If no versions are available, you can optionally disable the version dropdown or show a message.
-    if (versions.length === 0) {
+    if (versions.length > 0) {
+      // Populate the version dropdown based on the available versions
+      versions.forEach(version => {
+        const option = document.createElement('option');
+        option.value = version;
+        option.textContent = version;
+        versionDropdown.appendChild(option);
+      });
+
+      versionDropdown.disabled = false;
+    } else {
+      // If no versions exist, disable the version dropdown
       versionDropdown.disabled = true;
       const option = document.createElement('option');
       option.value = '';
       option.textContent = 'No versions available';
       versionDropdown.appendChild(option);
-    } else {
-      versionDropdown.disabled = false;
     }
   });
 
@@ -622,6 +630,123 @@ if (selectedSolutions2.includes('__all__')) {
     );
   });
 }
+
+
+function checkCompatibilityTab4() {
+  const productDropdown = document.getElementById('upgrade-product1-category');
+  const versionDropdown = document.getElementById('upgrade-product1-version');
+  const tableWrapper = document.getElementById('upgrade-table-wrapper');
+
+  const selectedProduct = productDropdown.value;
+  const selectedVersion = versionDropdown.value;
+
+  if (!selectedProduct || !selectedVersion) {
+    alert("Please select both a product and a version.");
+    return;
+  }
+
+  const productVersions = dataCache.upgrade.upgradePaths[selectedProduct];
+
+  if (!productVersions) {
+    alert("Invalid product selected.");
+    return;
+  }
+
+  // Create table container similar to Tab 1 structure
+  const section = document.createElement('div');
+  section.className = 'table-wrapper';
+
+  // Create table
+  const table = document.createElement('table');
+  table.classList.add('upgrade-table');
+
+  // Create first header row with product name
+  const thead = table.createTHead();
+
+  // Create first header row: "Upgrade Path Table for <product-name>"
+  const firstHeaderRow = thead.insertRow();
+  const firstHeaderCell = firstHeaderRow.insertCell();
+  firstHeaderCell.colSpan = 4; // Assuming you have 4 columns in your table
+
+  // Create the toggle button and move it to the left of the text
+  const toggleButton = document.createElement('button');
+  toggleButton.classList.add('toggle-btn');
+  toggleButton.textContent = '🔽'; // Default to collapsed state
+  toggleButton.addEventListener('click', () => {
+    const tbody = table.querySelector('tbody'); // Get the tbody element
+    const secondHeaderRow = table.querySelector('thead').rows[1]; // Get the second header row
+
+    if (tbody.style.display === 'none') {
+      tbody.style.display = 'table-row-group'; // Show the table body
+      secondHeaderRow.style.display = ''; // Show the second header row
+      toggleButton.textContent = '🔽'; // Expand icon
+    } else {
+      tbody.style.display = 'none'; // Hide the table body
+      secondHeaderRow.style.display = 'none'; // Hide the second header row
+      toggleButton.textContent = '▶️'; // Collapse icon
+    }
+  });
+
+  // Insert the toggle button before the product name text
+  firstHeaderCell.appendChild(toggleButton);
+  
+  // Set the product name text
+  const productNameText = document.createElement('span');
+  productNameText.textContent = `Upgrade Path Table for ${selectedProduct}`;
+  productNameText.style.fontSize = '18px';
+  productNameText.style.fontWeight = 'bold';
+  productNameText.style.color = 'white';
+  firstHeaderCell.appendChild(productNameText);
+  
+  // Style the header cell
+  firstHeaderCell.style.textAlign = 'left'; // Left-align text and button
+  firstHeaderCell.style.backgroundColor = '#1d428a';
+  firstHeaderCell.style.paddingLeft = '10px'; // Optional: Add padding for better alignment
+
+  // Create second header row for table columns
+  const headerRow = thead.insertRow();
+  const headers = ['Version', 'Date Released', 'Can Upgrade To', 'VDB Downtime Required'];
+  headers.forEach(headerText => {
+    const th = document.createElement('th');
+    th.textContent = headerText;
+    headerRow.appendChild(th);
+  });
+
+  // Create table body
+  const tbody = table.createTBody();
+
+  if (selectedVersion === 'ALL') {
+    // If "All Versions" is selected, create rows for each version of the selected product
+    Object.keys(productVersions).forEach(version => {
+      const versionData = productVersions[version];
+      const row = tbody.insertRow();
+      row.insertCell().textContent = version;
+      row.insertCell().textContent = versionData.dateReleased || 'N/A';
+      row.insertCell().textContent = versionData.canUpgradeTo || 'N/A';
+      row.insertCell().textContent = versionData.vdbDowntimeRequired || 'N/A';
+    });
+  } else {
+    // If a specific version is selected, show that version's data
+    const versionData = productVersions[selectedVersion];
+    const row = tbody.insertRow();
+    row.insertCell().textContent = selectedVersion;
+    row.insertCell().textContent = versionData.dateReleased || 'N/A';
+    row.insertCell().textContent = versionData.canUpgradeTo || 'N/A';
+    row.insertCell().textContent = versionData.vdbDowntimeRequired || 'N/A';
+  }
+
+  // Clear existing table and append the new table inside the container
+  tableWrapper.innerHTML = ''; // Clear previous table
+  section.appendChild(table);
+  tableWrapper.appendChild(section); // Append the table section to the wrapper
+
+  // Make the table fully visible when it's first created
+  tbody.style.display = 'table-row-group'; // Make table body visible
+  const secondHeaderRow = table.querySelector('thead').rows[1]; // Get the second header row
+  secondHeaderRow.style.display = ''; // Make second header row visible
+}
+
+
 
 
 
