@@ -449,7 +449,9 @@ function populateDropdownsTab3(data) {
   }
 
   categoryDropdown.innerHTML = '<option value="">--Select--</option>';
-  data.products.forEach(product => {
+
+  // Use Object.keys to get the list of product categories
+  Object.keys(data).forEach(product => {
     const option = document.createElement('option');
     option.value = product;
     option.textContent = product;
@@ -631,6 +633,108 @@ if (selectedSolutions2.includes('__all__')) {
   });
 }
 
+function checkCompatibilityTab3() {
+  const categoryDropdown = document.getElementById('hardware-product1-category');
+  const tableWrapper = document.getElementById('hardware-table-wrapper');
+  const selectedCategory = categoryDropdown.value;
+
+  if (!selectedCategory) {
+    alert("Please select a valid product to view compatibility.");
+    return;
+  }
+
+  const categoryData = dataCache.hardware[selectedCategory];
+
+  if (!categoryData) {
+    alert("No data available for this category.");
+    return;
+  }
+
+  // Create section and table container
+  const section = document.createElement('div');
+  section.className = 'compatibility-section';
+
+  // Create table
+  const table = document.createElement('table');
+  table.classList.add('hardware-matrix-table');
+
+  // Create first header row
+  const thead = table.createTHead();
+
+  // Create first header row: Toggle button and "Hardware compatibility results"
+  const firstHeaderRow = thead.insertRow();
+  const firstHeaderCell = firstHeaderRow.insertCell();
+  firstHeaderCell.colSpan = 3; // Adjust according to your table's column count
+
+  // Create the toggle button and move it to the left of the text
+  const toggleButton = document.createElement('button');
+  toggleButton.classList.add('toggle-btn');
+  toggleButton.textContent = '▶️'; // Default to collapsed state
+  toggleButton.addEventListener('click', () => {
+    const tbody = table.querySelector('tbody'); // Get the tbody element
+    const secondHeaderRow = table.querySelector('thead').rows[1]; // Get the second header row
+
+    if (tbody.style.display === 'none') {
+      tbody.style.display = 'table-row-group'; // Show the table body
+      secondHeaderRow.style.display = ''; // Show the second header row
+      toggleButton.textContent = '🔽'; // Expand icon
+    } else {
+      tbody.style.display = 'none'; // Hide the table body
+      secondHeaderRow.style.display = 'none'; // Hide the second header row
+      toggleButton.textContent = '▶️'; // Collapse icon
+    }
+  });
+
+  // Insert the toggle button before the product name text
+  firstHeaderCell.appendChild(toggleButton);
+
+  // Set the product name text
+  const categoryNameText = document.createElement('span');
+  categoryNameText.textContent = ` ${selectedCategory}`;
+  categoryNameText.style.fontSize = '18px';
+  categoryNameText.style.fontWeight = 'bold';
+  categoryNameText.style.color = 'white';
+  firstHeaderCell.appendChild(categoryNameText);
+
+  // Style the first header cell
+  firstHeaderCell.style.textAlign = 'left'; // Left-align text and button
+  firstHeaderCell.style.backgroundColor = '#1d428a';
+  firstHeaderCell.style.paddingLeft = '10px'; // Optional: Add padding for better alignment
+
+  // Create second header row for table columns
+  const headerRow = thead.insertRow();
+  const headers = ['Instance/Shape Size', 'Support Level', 'Delphix version'];
+  headers.forEach(headerText => {
+    const th = document.createElement('th');
+    th.textContent = headerText;
+    headerRow.appendChild(th);
+  });
+
+  // Create table body
+  const tbody = table.createTBody();
+  categoryData.forEach(entry => {
+    const row = tbody.insertRow();
+    row.insertCell().textContent = entry.instance || entry.shape || 'N/A';
+    row.insertCell().textContent = entry.supportLevel || 'N/A';
+    row.insertCell().textContent = entry.delphixVersion || 'N/A';
+  });
+
+  // Clear existing table and append the new table inside the container
+  tableWrapper.innerHTML = ''; // Clear previous table
+  section.appendChild(table);
+  tableWrapper.appendChild(section); // Append the table section to the wrapper
+
+  // Make the table fully visible when it's first created
+  tbody.style.display = 'table-row-group'; // Make table body visible
+  const secondHeaderRow = table.querySelector('thead').rows[1]; // Get the second header row
+  secondHeaderRow.style.display = ''; // Make second header row visible
+}
+
+
+
+
+
+
 
 function checkCompatibilityTab4() {
   const productDropdown = document.getElementById('upgrade-product1-category');
@@ -654,11 +758,11 @@ function checkCompatibilityTab4() {
 
   // Create table container similar to Tab 1 structure
   const section = document.createElement('div');
-  section.className = 'table-wrapper';
+  section.className = 'compatibility-section';
 
   // Create table
   const table = document.createElement('table');
-  table.classList.add('upgrade-table');
+  table.classList.add('upgrade-matrix-table');
 
   // Create first header row with product name
   const thead = table.createTHead();
@@ -692,7 +796,7 @@ function checkCompatibilityTab4() {
   
   // Set the product name text
   const productNameText = document.createElement('span');
-  productNameText.textContent = `Upgrade Path Table for ${selectedProduct}`;
+  productNameText.textContent = ` Upgrade Path Table for ${selectedProduct}`;
   productNameText.style.fontSize = '18px';
   productNameText.style.fontWeight = 'bold';
   productNameText.style.color = 'white';

@@ -1,3 +1,33 @@
 {
-  "products": ["Server", "Router", "Switch", "Storage", "Firewall"]
+  "AWS EC2": [
+    {
+      "instance": "m5.large",
+      "supportLevel": "Supported",
+      "delphixVersion": "6.0.12"
+    },
+    {
+      "instance": "c5.xlarge",
+      "supportLevel": "Limited Support",
+      "delphixVersion": "6.0.11"
+    }
+  ],
+  "Azure VM": [
+    {
+      "instance": "Standard_D2s_v3",
+      "supportLevel": "Supported",
+      "delphixVersion": "6.0.10"
+    },
+    {
+      "instance": "Standard_E4s_v3",
+      "supportLevel": "Not Supported",
+      "delphixVersion": "N/A"
+    }
+  ],
+  "Oracle Cloud": [
+    {
+      "instance": "VM.Standard2.2",
+      "supportLevel": "Supported",
+      "delphixVersion": "6.0.9"
+    }
+  ]
 }

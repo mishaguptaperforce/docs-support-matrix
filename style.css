@@ -165,7 +165,8 @@ body {
 /* Main Content */
 #main-content,
 #thirdPartySolutions-main-content,
-#upgrade-main-content {
+#upgrade-main-content,
+#hardware-main-content {
   width: 80%;
   padding: 20px;
   box-sizing: border-box;
@@ -471,53 +472,146 @@ h4 {
 
 
 
-.upgrade-table {
-  table-layout: fixed;
-  min-width: 100%;
-  border-collapse: collapse;
-  
+/* Wrapper for Upgrade Table (for Tab 4) */
+.main-content {
+  width: calc(100% - 250px); /* Assuming the sidebar is 250px wide */
+  margin-left: 250px; /* Shifts the content to the right to make space for the sidebar */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.upgrade-table th,
-.upgrade-table td {
-  width: 200px;
-  min-width: 200px;
+/* Hardware Table Wrapper */
+.upgrade-table-wrapper {
+  width: 100%; /* Full width of the main content area */
+  max-height: 70vh; /* Max height of 70% of the viewport height */
+  overflow-x: auto; /* Enable horizontal scrolling if necessary */
+  overflow-y: auto; /* Enable vertical scrolling if necessary */
+  padding-right: 10px; /* Optional: add padding for better aesthetics */
+   /* Add some space above the table */
+}
+
+/* Ensure the table takes full width */
+.upgrade-matrix-table {
+  width: 100%; /* Make sure the table takes the full width of its container */
+  table-layout: fixed; /* Fixed layout for better column alignment */
+  border-collapse: collapse;
+}
+
+.upgrade-matrix-table th,
+.upgrade-matrix-table td {
+  width: 33%; /* Set each column to take equal width */
+  min-width: 150px; /* Minimum width for better readability */
   border: 1px solid #ccc;
   padding: 8px;
   text-align: center;
   word-wrap: break-word;
-
 }
 
-/* Table Header Styling */
-.upgrade-table th {
-  
-  position: sticky;
-  top: 0;
-  background: #1d428a;
-  color: white;
-  
-  z-index: 2;
-  
+/* First Header Row (toggle and product name) */
+.upgrade-matrix-table thead tr:first-child th {
+  background-color: #f0f0f0; /* Light grey background for first row */
+  color: black;
+  text-align: left;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
-.upgrade-table thead th {
+/* Sticky Table Header */
+.upgrade-matrix-table thead th {
   position: sticky;
   top: 0;
   background: #f0f0f0;
-  color: black;
   z-index: 2;
 }
 
-.table-wrapper,
-.upgrade-table-wrapper {
-  max-height: 70vh;
-  overflow-x: auto;
-  overflow-y: auto;
-  }
+/* Styling for the toggle button */
+.upgrade-table-wrapper .toggle-btn {
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
 
-  
+.compatibility-section {
+  margin-top: 10px;
+}
+
+
+
+
+ /* Main content area */
+.main-content {
+  width: calc(100% - 250px); /* Assuming the sidebar is 250px wide */
+  margin-left: 250px; /* Shifts the content to the right to make space for the sidebar */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Hardware Table Wrapper */
+.hardware-table-wrapper {
+  width: 100%; /* Full width of the main content area */
+  max-height: 70vh; /* Max height of 70% of the viewport height */
+  overflow-x: auto; /* Enable horizontal scrolling if necessary */
+  overflow-y: auto; /* Enable vertical scrolling if necessary */
+  padding-right: 10px; /* Optional: add padding for better aesthetics */
+   /* Add some space above the table */
+}
+
+/* Ensure the table takes full width */
+.hardware-matrix-table {
+  width: 100%; /* Make sure the table takes the full width of its container */
+  table-layout: fixed; /* Fixed layout for better column alignment */
+  border-collapse: collapse;
+}
+
+.hardware-matrix-table th,
+.hardware-matrix-table td {
+  width: 33%; /* Set each column to take equal width */
+  min-width: 150px; /* Minimum width for better readability */
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* First Header Row (toggle and product name) */
+.hardware-matrix-table thead tr:first-child th {
+  background-color: #f0f0f0; /* Light grey background for first row */
+  color: black;
+  text-align: left;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Sticky Table Header */
+.hardware-matrix-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f0f0f0;
+  z-index: 2;
+}
+
+/* Styling for the toggle button */
+.hardware-table-wrapper .toggle-btn {
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.compatibility-section {
+  margin-top: 10px;
+}
+
+
+
+
 
 
 
