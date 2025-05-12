@@ -266,48 +266,56 @@
 
   <!-- Page content for Hardware -->
   <div id="hardware-page" class="page-content active">
-    <!-- Main Container for side-nav and result -->
-    <div class="main-container">
-      <!-- Sidenav -->
-      <div id="sidenav">
-        
-        <h4><b>Select a Product</b></h4><hr>
+  <!-- Main Container for side-nav and result -->
+  <div class="main-container">
+    <!-- Sidenav -->
+    <div id="sidenav">
+      <h4><b>Select a Product</b></h4>
+      <hr>
 
-      <div class ="product-container">
-          <!-- Category dropdown -->
-          <label for="hardware-product1-category">Product:
-            
-          </label>
-          <select id="hardware-product1-category">
-            <option value="">--Select--</option>
-            <!-- Dynamically filled options for OS -->
-          </select>
-         
-        </div>
-        <div class="button-container-hardware">
-        <button class="hardware-page-button" onclick="checkCompatibilityTab3()">Check Compatibility</button>
-        
-        </div></div>
-
-        <div id="hardware-main-content">
-      <h1>Compatibility Results</h1>
-      <div class="additional-actions">
-          <button id="addToFav" class="action-button"><i class="fas fa-star"></i> Save to Favorites</button>
-          <button id="export-csv-tab1" class="action-button" title="Export to CSV">Export Results</button>
-          <button id="collapseExpandAll-tab1" class="action-button">Collapse All</button>
-        </div><br>
-      <div id="hardware-result"></div>
+      <div class="product-container">
+        <!-- Category Dropdown -->
+        <label for="hardware-category">Category:</label>
+        <select id="hardware-category">
+          <option value="">--Select Category--</option>
+          <!-- Dynamically filled: Cloud, Hypervisor, etc. -->
+        </select>
+      
 
       
-      <div id="hardware-table-wrapper" class="hardware-table-wrapper"></div>
+        <!-- Product Dropdown -->
+        <label for="hardware-product1-category">Product:</label>
+        <select id="hardware-product1-category" multiple>
+          <option value="">--Select Product--</option>
+          <!-- Dynamically filled based on selected category -->
+        </select>
+      </div>
 
+      <div class="button-container-hardware">
+        <button class="hardware-page-button" onclick="checkCompatibilityTab3()">Check Compatibility</button>
+      </div>
     </div>
 
+    <div id="hardware-main-content">
+      <h1>Compatibility Results</h1>
+      <div class="additional-actions">
+        <button id="addToFav" class="action-button">
+          <i class="fas fa-star"></i> Save to Favorites
+        </button>
+        <button id="export-csv-tab1" class="action-button" title="Export to CSV">
+          Export Results
+        </button>
+        <button id="collapseExpandAll-tab1" class="action-button">
+          Collapse All
+        </button>
+      </div>
+      <br />
+      <div id="hardware-result"></div>
+      <div id="hardware-table-wrapper" class="hardware-table-wrapper"></div>
+    </div>
+  </div>
+</div>
 
-
-
-
-      </div></div>
       
 
     <!-- Page content for Upgrade -->
