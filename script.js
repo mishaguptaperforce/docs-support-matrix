@@ -1,6 +1,8 @@
 const dataCache = {
   interoperability: null,
-  thirdPartySolutions: null
+  thirdPartySolutions: null,
+  hardware: null,
+  upgrade: null
 };
 
 async function preloadDataTab1() {
@@ -440,26 +442,101 @@ if (selectedSolutions.includes('__all__')) {
 
 
 function populateDropdownsTab3(data) {
-  const categoryDropdown = getElement('hardware-product1-category', 'hardware');
-  console.log('Dropdown element:', categoryDropdown);
+  const categoryDropdown = document.getElementById('hardware-category');
+  const productDropdown = document.getElementById('hardware-product1-category');
 
-  if (!categoryDropdown) {
-    console.error('Dropdown for Tab 3 not found!');
+  if (!categoryDropdown || !productDropdown) {
+    console.error('Dropdowns for Tab 3 not found!');
     return;
   }
 
-  categoryDropdown.innerHTML = '<option value="">--Select--</option>';
+  // ✅ Destroy the existing Choices instance if it already exists
+  if (choicesInstances['hardware-product1-category']) {
+    choicesInstances['hardware-product1-category'].destroy();
+    delete choicesInstances['hardware-product1-category'];
+  }
 
-  // Use Object.keys to get the list of product categories
-  Object.keys(data).forEach(product => {
+  // ✅ Initialize Choices.js for the product dropdown with multi-select enabled
+  choicesInstances['hardware-product1-category'] = new Choices(productDropdown, {
+    removeItemButton: true,  // Allow the user to remove selections
+    searchEnabled: true,     // Enable search functionality
+    itemSelectText: '',      // Remove text when selecting an item
+    shouldSort: false,       // Keep the order as is
+    closeDropdownOnSelect: true // Close the dropdown after a selection is made
+  });
+
+  // Clear and populate category dropdown
+  categoryDropdown.innerHTML = '<option value="">--Select Category--</option>';
+  Object.keys(data.categories).forEach(category => {
     const option = document.createElement('option');
-    option.value = product;
-    option.textContent = product;
+    option.value = category;
+    option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
     categoryDropdown.appendChild(option);
   });
 
-  console.log('Dropdown populated for Tab 3');
+  // Populate product dropdown based on selected category
+  categoryDropdown.addEventListener('change', () => {
+    const selectedCategory = categoryDropdown.value;
+
+    // If "All" is selected, populate the product dropdown with all products across all categories
+    if (selectedCategory === 'ALL') {
+      const allProducts = Object.values(data.categories).flat();
+      const productOptions = allProducts.map(product => ({
+        value: product,
+        label: product,
+        selected: false,
+        disabled: false
+      }));
+
+      // Clear existing choices and update with "All" options
+      choicesInstances['hardware-product1-category'].clearChoices();
+      choicesInstances['hardware-product1-category'].setChoices([{ value: '__all__', label: 'All' }, ...productOptions], 'value', 'label', true);
+
+    } else {
+      // Handle the case when a valid category is selected
+      const products = data.categories[selectedCategory] || [];
+
+      // Clear existing options and update Choices.js
+      choicesInstances['hardware-product1-category'].clearChoices();
+
+      // Add "All" option for the current category
+      const allOption = {
+        value: '__all__',
+        label: 'All',
+        selected: false,
+        disabled: false
+      };
+      choicesInstances['hardware-product1-category'].setChoices([allOption], 'value', 'label', false);
+
+      // Add product options for the selected category
+      const productOptions = products.map(product => ({
+        value: product,
+        label: product,
+        selected: false,
+        disabled: false
+      }));
+      choicesInstances['hardware-product1-category'].setChoices(productOptions, 'value', 'label', false);
+    }
+  });
+
+  // Handle "All" option selection (when "All" is selected, select all options)
+  productDropdown.addEventListener('change', () => {
+    const selectedValues = choicesInstances['hardware-product1-category'].getValue(true); // Get selected values
+
+    // If "All" is selected, select all products for the selected category
+    const category = categoryDropdown.value;
+    if (selectedValues.includes('__all__')) {
+      const products = data.categories[category] || [];
+      choicesInstances['hardware-product1-category'].setChoiceByValue(products);
+    }
+    choicesInstances['hardware-product1-category'].hideDropdown();
+  });
+
+  console.log('Dropdowns populated for Tab 3');
 }
+
+
+
 
 
 function populateDropdownsTab4(data) {
@@ -633,102 +710,118 @@ if (selectedSolutions2.includes('__all__')) {
   });
 }
 
+// :white_check_mark: Place this at the top of your script.js (if not already)
+const choicesInstances = {};
+
+
+
 function checkCompatibilityTab3() {
-  const categoryDropdown = document.getElementById('hardware-product1-category');
-  const tableWrapper = document.getElementById('hardware-table-wrapper');
-  const selectedCategory = categoryDropdown.value;
+  const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
+  const data = dataCache[activePage];
+  if (!data) return console.error("No data loaded for", activePage);
 
-  if (!selectedCategory) {
-    alert("Please select a valid product to view compatibility.");
-    return;
+  const get = id => getElement(id, activePage);
+  const category = get('hardware-category').value;
+  const product1CategoryEl = get('hardware-product1-category');
+  
+  // Get selected products from the multi-choice dropdown using Choices.js
+  let selectedProducts = product1CategoryEl.choices ? product1CategoryEl.choices.getValue(true) : Array.from(product1CategoryEl.selectedOptions).map(option => option.value);
+  
+  // Handle case where '__all__' is selected
+  if (selectedProducts.includes('__all__')) {
+    selectedProducts = data.categories[category] || [];
   }
 
-  const categoryData = dataCache.hardware[selectedCategory];
+  const tableWrapper = get('hardware-table-wrapper', activePage); // Assuming you have a wrapper to append the tables
+  tableWrapper.innerHTML = ''; // Clear previous content
 
-  if (!categoryData) {
-    alert("No data available for this category.");
-    return;
-  }
+  // Loop through selected products
+  selectedProducts.forEach(product => {
+    if (!data.data[product]) return; // Skip if no data for the selected product
 
-  // Create section and table container
-  const section = document.createElement('div');
-  section.className = 'compatibility-section';
+    const categoryData = data.data[product];
+    
+    const section = document.createElement('div');
+    section.className = 'compatibility-section';
 
-  // Create table
-  const table = document.createElement('table');
-  table.classList.add('hardware-matrix-table');
+    const table = document.createElement('table');
+    table.classList.add('hardware-matrix-table');
 
-  // Create first header row
-  const thead = table.createTHead();
+    // Create first header row
+    const thead = table.createTHead();
 
-  // Create first header row: Toggle button and "Hardware compatibility results"
-  const firstHeaderRow = thead.insertRow();
-  const firstHeaderCell = firstHeaderRow.insertCell();
-  firstHeaderCell.colSpan = 3; // Adjust according to your table's column count
+    // Create first header row: Toggle button and "Hardware compatibility results"
+    const firstHeaderRow = thead.insertRow();
+    const firstHeaderCell = firstHeaderRow.insertCell();
+    firstHeaderCell.colSpan = 3;
 
-  // Create the toggle button and move it to the left of the text
-  const toggleButton = document.createElement('button');
-  toggleButton.classList.add('toggle-btn');
-  toggleButton.textContent = '▶️'; // Default to collapsed state
-  toggleButton.addEventListener('click', () => {
-    const tbody = table.querySelector('tbody'); // Get the tbody element
+    // Create the toggle button and move it to the left of the text
+    const toggleButton = document.createElement('button');
+    toggleButton.classList.add('toggle-btn');
+    toggleButton.textContent = '▶️';
+    toggleButton.addEventListener('click', () => {
+      const tbody = table.querySelector('tbody'); // Get the tbody element
+      const secondHeaderRow = table.querySelector('thead').rows[1]; // Get the second header row
+
+      if (tbody.style.display === 'none') {
+        tbody.style.display = 'table-row-group'; // Show the table body
+        secondHeaderRow.style.display = ''; // Show the second header row
+        toggleButton.textContent = '🔽'; // Expand icon
+      } else {
+        tbody.style.display = 'none'; // Hide the table body
+        secondHeaderRow.style.display = 'none'; // Hide the second header row
+        toggleButton.textContent = '▶️'; // Collapse icon
+      }
+    });
+
+    // Insert the toggle button before the product name text
+    firstHeaderCell.appendChild(toggleButton);
+
+    // Set the product name text
+    const categoryNameText = document.createElement('span');
+    categoryNameText.textContent = ` ${product}`;
+
+    categoryNameText.style.fontSize = '18px';
+    categoryNameText.style.fontWeight = 'bold';
+    categoryNameText.style.color = 'white';
+    firstHeaderCell.appendChild(categoryNameText);
+
+    // Style the header cell
+    firstHeaderCell.style.textAlign = 'left'; // Left-align text and button
+    firstHeaderCell.style.backgroundColor = '#1d428a';
+    firstHeaderCell.style.paddingLeft = '10px'; // Optional: Add padding for better alignment
+
+    // Create second header row for table columns
+    const headerRow = thead.insertRow();
+    const headers = ['Instance/Shape Size', 'Support Level', 'Delphix version'];
+    headers.forEach(headerText => {
+      const th = document.createElement('th');
+      th.textContent = headerText;
+      headerRow.appendChild(th);
+    });
+
+    // Create table body
+    const tbody = table.createTBody();
+    categoryData.forEach(entry => {
+      const row = tbody.insertRow();
+      row.insertCell().textContent = entry.instance || entry.shape || 'N/A';
+      row.insertCell().textContent = entry.supportLevel || 'N/A';
+      row.insertCell().textContent = entry.delphixVersion || 'N/A';
+    });
+
+    // Append the new table inside the container
+    section.appendChild(table);
+    tableWrapper.appendChild(section); // Append the table section to the wrapper
+
+    // Make the table fully visible when it's first created
+    tbody.style.display = 'table-row-group'; // Make table body visible
     const secondHeaderRow = table.querySelector('thead').rows[1]; // Get the second header row
-
-    if (tbody.style.display === 'none') {
-      tbody.style.display = 'table-row-group'; // Show the table body
-      secondHeaderRow.style.display = ''; // Show the second header row
-      toggleButton.textContent = '🔽'; // Expand icon
-    } else {
-      tbody.style.display = 'none'; // Hide the table body
-      secondHeaderRow.style.display = 'none'; // Hide the second header row
-      toggleButton.textContent = '▶️'; // Collapse icon
-    }
+    secondHeaderRow.style.display = ''; // Make second header row visible
   });
-
-  // Insert the toggle button before the product name text
-  firstHeaderCell.appendChild(toggleButton);
-
-  // Set the product name text
-  const categoryNameText = document.createElement('span');
-  categoryNameText.textContent = ` ${selectedCategory}`;
-  categoryNameText.style.fontSize = '18px';
-  categoryNameText.style.fontWeight = 'bold';
-  categoryNameText.style.color = 'white';
-  firstHeaderCell.appendChild(categoryNameText);
-
-  // Style the first header cell
-  firstHeaderCell.style.textAlign = 'left'; // Left-align text and button
-  firstHeaderCell.style.backgroundColor = '#1d428a';
-  firstHeaderCell.style.paddingLeft = '10px'; // Optional: Add padding for better alignment
-
-  // Create second header row for table columns
-  const headerRow = thead.insertRow();
-  const headers = ['Instance/Shape Size', 'Support Level', 'Delphix version'];
-  headers.forEach(headerText => {
-    const th = document.createElement('th');
-    th.textContent = headerText;
-    headerRow.appendChild(th);
-  });
-
-  // Create table body
-  const tbody = table.createTBody();
-  categoryData.forEach(entry => {
-    const row = tbody.insertRow();
-    row.insertCell().textContent = entry.instance || entry.shape || 'N/A';
-    row.insertCell().textContent = entry.supportLevel || 'N/A';
-    row.insertCell().textContent = entry.delphixVersion || 'N/A';
-  });
-
-  // Clear existing table and append the new table inside the container
-  tableWrapper.innerHTML = ''; // Clear previous table
-  section.appendChild(table);
-  tableWrapper.appendChild(section); // Append the table section to the wrapper
-
-  // Make the table fully visible when it's first created
-  tbody.style.display = 'table-row-group'; // Make table body visible
-  const secondHeaderRow = table.querySelector('thead').rows[1]; // Get the second header row
-  secondHeaderRow.style.display = ''; // Make second header row visible
 }
+
+
+
 
 
 
@@ -870,7 +963,7 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
   const header1 = document.createElement('tr');
   const th = document.createElement('th');
   th.colSpan = dbVers.length + 1;
-  th.innerHTML = `<button class="toggle-btn">🔽</button> ${heading}`;
+  th.innerHTML = `<button class="toggle-btn">🔽</button>&nbsp; ${heading}`;
   th.style.cssText = 'text-align:left;background:#1d428a;color:white;position:relative;';
   header1.appendChild(th);
   thead.appendChild(header1);
@@ -915,7 +1008,7 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
       return `<td><span style="color:${color}">${icon}</span><br><small>${compat.note||''}</small></td>`;
     }).join('');
 
-    row.innerHTML = `<td>${os} ${osv}</td>${cells}`;
+    row.innerHTML = ` <td> ${os} ${osv}</td>${cells}`;
     tbody.appendChild(row);
     rows.push(row);
   });
@@ -930,9 +1023,6 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
 }
 
 
-
-
-
 function updateMatrixTab2(data, os, osVer, db, dbVer, thead, tbody, heading) {
   // Ensure dbVers is always an array
   const dbVers = Array.isArray(dbVer) ? dbVer : [dbVer];  // If dbVer is not an array, wrap it in an array
@@ -942,7 +1032,7 @@ function updateMatrixTab2(data, os, osVer, db, dbVer, thead, tbody, heading) {
   const header1 = document.createElement('tr');
   const th = document.createElement('th');
   th.colSpan = dbVers.length + 1;
-  th.innerHTML = `<button class="toggle-btn" >🔽</button> ${heading}`;
+  th.innerHTML = `<button class="toggle-btn" >🔽</button>&nbsp; ${heading}`;
   th.style.cssText = 'text-align:left;background:#1d428a;color:white;position:relative;';
   header1.appendChild(th);
   thead.appendChild(header1);
@@ -960,7 +1050,7 @@ function updateMatrixTab2(data, os, osVer, db, dbVer, thead, tbody, heading) {
   const rows = [];
   osVers.forEach(osv => {
     const row = document.createElement('tr');
-    row.innerHTML = `<td>${os} ${osv}</td>` + dbVers.map(dbv => {
+    row.innerHTML = ` <td>${os} ${osv}</td>` + dbVers.map(dbv => {
       console.log('Checking compatibility for:', `${os} ${osv}`, 'vs', `${db} ${dbv}`);
 console.log('Data entry:', data.compatibility[`${os} ${osv}`]);
 console.log('Full compatibility check:', data.compatibility[`${os} ${osv}`]?.[`${db} ${dbv}`]);
@@ -997,6 +1087,8 @@ console.log('  ↳ result:', compat);
     th.querySelector('.toggle-btn').textContent = hide ? '▶️' : '🔽';
   };
 }
+
+
 
 
 
