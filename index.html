@@ -277,7 +277,11 @@
         <!-- Category Dropdown -->
         <label for="hardware-category">Category:</label>
         <select id="hardware-category">
+<<<<<<< HEAD
           <option value="">--Select Category--</option>
+=======
+          <option value="">--Select--</option>
+>>>>>>> a68ca2d (multiple table logic for harwdare tab)
           <!-- Dynamically filled: Cloud, Hypervisor, etc. -->
         </select>
       
@@ -286,13 +290,21 @@
         <!-- Product Dropdown -->
         <label for="hardware-product1-category">Product:</label>
         <select id="hardware-product1-category" multiple>
+<<<<<<< HEAD
           <option value="">--Select Product--</option>
+=======
+          <option value="">--Select--</option>
+>>>>>>> a68ca2d (multiple table logic for harwdare tab)
           <!-- Dynamically filled based on selected category -->
         </select>
       </div>
 
       <div class="button-container-hardware">
         <button class="hardware-page-button" onclick="checkCompatibilityTab3()">Check Compatibility</button>
+<<<<<<< HEAD
+=======
+        <button class="hardware-secondary-button" onclick="resetFieldsTab3()">Reset</button>
+>>>>>>> a68ca2d (multiple table logic for harwdare tab)
       </div>
     </div>
 
@@ -302,10 +314,17 @@
         <button id="addToFav" class="action-button">
           <i class="fas fa-star"></i> Save to Favorites
         </button>
+<<<<<<< HEAD
         <button id="export-csv-tab1" class="action-button" title="Export to CSV">
           Export Results
         </button>
         <button id="collapseExpandAll-tab1" class="action-button">
+=======
+        <button id="export-csv-tab3" class="action-button" title="Export to CSV">
+          Export Results
+        </button>
+        <button id="collapseExpandAll-tab3" class="action-button">
+>>>>>>> a68ca2d (multiple table logic for harwdare tab)
           Collapse All
         </button>
       </div>
@@ -340,6 +359,7 @@
 
       <div class="button-container-upgrade">
         <button class="upgrade-page-button" onclick="checkCompatibilityTab4()">Check Upgrade Path</button>
+        <button class="upgrade-secondary-button" onclick="resetFieldsTab4()">Reset</button>
       </div>
     </div>
 
@@ -348,8 +368,8 @@
       <h1>Upgrade Path Results</h1>
       <div class="additional-actions">
           <button id="addToFav" class="action-button"><i class="fas fa-star"></i> Save to Favorites</button>
-          <button id="export-csv-tab1" class="action-button" title="Export to CSV">Export Results</button>
-          <button id="collapseExpandAll-tab1" class="action-button">Collapse All</button>
+          <button id="export-csv-tab4" class="action-button" title="Export to CSV">Export Results</button>
+          <button id="collapseExpandAll-tab4" class="action-button">Collapse All</button>
         </div><br>
       <div id="upgrade-result"></div>
 

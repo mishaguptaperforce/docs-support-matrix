@@ -134,46 +134,67 @@ function resetFieldsTab1() {
 function resetFieldsTab2() {
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
 
-  const idsToReset = [
+  // Clear all dropdowns
+  [
     'product1-category', 'product1-solution', 'product1-version',
     'product2-category', 'product2-solution', 'product2-version'
-  ];
-
-  // Clear all dropdowns
-  idsToReset.forEach(id => {
+  ].forEach(id => {
     const el = getElement(`thirdPartySolutions-${id}`, activePage);
     if (el) {
       if (el.choices) {
-        el.choices.clearStore(); // For Choices.js
+        el.choices.clearStore();
       } else {
         el.innerHTML = '';
       }
     }
   });
 
-  // Load and populate only product1-category from x_axis, and product2-category from y_axis
+  // Fetch and repopulate categories from 3rd-party-tab.json
   fetch('3rd-party-tab.json')
     .then(res => res.json())
     .then(data => {
-      // 1. Populate product1-category (x_axis.categories)
-      const p1CatEl = getElement('thirdPartySolutions-product1-category', activePage);
-      if (p1CatEl) {
-        const categories = data.x_axis.categories;
-        populateDropdown(p1CatEl, categories);
-      }
+      // Repopulate categories for product 1 and product 2
+      const p1Categories = data.x_axis.categories || [];
+      const p2Categories = data.y_axis.categories || [];
 
-      // 2. Populate product2-category (y_axis.categories)
-      const p2CatEl = getElement('thirdPartySolutions-product2-category', activePage);
-      if (p2CatEl) {
-        const categories = data.y_axis.categories;
-        populateDropdown(p2CatEl, categories);
-      }
+      // Repopulate dropdowns for product 1 category and product 2 category
+      ['product1-category', 'product2-category'].forEach(id => {
+        const el = getElement(`thirdPartySolutions-${id}`, activePage);
+        if (el) {
+          if (el.choices) {
+            el.choices.setChoices(
+              [{ value: '', label: '--Select--', selected: true, disabled: true }, ...p1Categories.map(cat => ({ value: cat, label: cat }))],
+              'value',
+              'label',
+              true
+            );
+          } else {
+            el.innerHTML = '';
+            const defaultOpt = document.createElement('option');
+            defaultOpt.value = '';
+            defaultOpt.textContent = '--Select--';
+            defaultOpt.disabled = true;
+            defaultOpt.selected = true;
+            el.appendChild(defaultOpt);
+            p1Categories.forEach(cat => {
+              const option = document.createElement('option');
+              option.value = cat;
+              option.textContent = cat;
+              el.appendChild(option);
+            });
+          }
+        }
+      });
     });
 
-  // Clear result and matrix
+  const p2v = getElement('thirdPartySolutions-product2-version', activePage);
+  if (p2v) p2v.disabled = false;
+
+  // Clear result and matrix sections
   getElement('result', activePage).innerHTML = '';
   getElement('compatibility-matrix', activePage).innerHTML = '';
 }
+
 
 
 
@@ -205,6 +226,176 @@ function populateDropdown(el, options) {
   }
 }
 */
+
+function resetFieldsTab3() {
+  const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
+
+  // Clear all dropdowns
+  ['hardware-category', 'hardware-product1-category'].forEach(id => {
+    const el = getElement(id, activePage);
+    if (el) {
+      if (el.choices) {
+        // Clear selected choices and reset dropdown
+        el.choices.clearStore();  // Clears the choices from memory
+        el.choices.clearChoices();  // Clears visual selection from dropdown
+        el.choices.setChoiceByValue('');  // Set placeholder (e.g., "--Select--")
+        el.choices.setValue([]); // Deselect all values in multi-select dropdown
+
+        // Reset the dropdown appearance fully (clear any residual items or visual cues)
+        const dropdownContainer = el.closest('.choices'); // Target the whole dropdown container
+        const inputField = dropdownContainer.querySelector('.choices__input'); // Input field element
+        const selectedItems = dropdownContainer.querySelector('.choices__list--multiple'); // List of selected items
+
+        // Remove any visual selected items
+        if (selectedItems) {
+          selectedItems.innerHTML = ''; // Clear the selected items list
+        }
+        if (inputField) {
+          inputField.value = ''; // Clear the input field's value
+        }
+      } else {
+        // If not using Choices.js, just clear the innerHTML and reset to placeholder
+        el.innerHTML = '';
+        const defaultOpt = document.createElement('option');
+        defaultOpt.value = '';
+        defaultOpt.textContent = '';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        el.appendChild(defaultOpt);
+      }
+    }
+  });
+
+  // Reinitialize the Choices.js instance after clearing it
+  const categoryDropdown = document.getElementById('hardware-category');
+  const productDropdown = document.getElementById('hardware-product1-category');
+
+  if (categoryDropdown && productDropdown) {
+    // Clear and reinitialize Choices.js
+    if (choicesInstances['hardware-product1-category']) {
+      choicesInstances['hardware-product1-category'].destroy();
+      delete choicesInstances['hardware-product1-category'];
+    }
+
+    // Initialize Choices.js for the product dropdown
+    choicesInstances['hardware-product1-category'] = new Choices(productDropdown, {
+      removeItemButton: true,  // Allow the user to remove selections
+      searchEnabled: true,     // Enable search functionality
+      itemSelectText: '',      // Remove text when selecting an item
+      shouldSort: false,       // Keep the order as is
+      closeDropdownOnSelect: true // Close dropdown after selection
+    });
+
+    // Repopulate the category dropdown and product dropdown
+    fetch('hardware.json')
+      .then(res => res.json())
+      .then(data => {
+        // Clear and populate category dropdown
+        categoryDropdown.innerHTML = '<option value="">--Select--</option>';
+        Object.keys(data.categories).forEach(category => {
+          const option = document.createElement('option');
+          option.value = category;
+          option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+          categoryDropdown.appendChild(option);
+        });
+
+        // Populate product dropdown based on selected category
+        categoryDropdown.addEventListener('change', () => {
+          const selectedCategory = categoryDropdown.value;
+
+          // If "All" is selected, populate the product dropdown with all products across all categories
+          if (selectedCategory === 'ALL') {
+            const allProducts = Object.values(data.categories).flat();
+            const productOptions = allProducts.map(product => ({
+              value: product,
+              label: product,
+              selected: false,
+              disabled: false
+            }));
+
+            // Clear existing choices and update with "All" options
+            choicesInstances['hardware-product1-category'].clearChoices();
+            choicesInstances['hardware-product1-category'].setChoices([{ value: '__all__', label: 'All' }, ...productOptions], 'value', 'label', true);
+          } else {
+            // Handle case when a valid category is selected
+            const products = data.categories[selectedCategory] || [];
+
+            // Clear existing options and update Choices.js
+            choicesInstances['hardware-product1-category'].clearChoices();
+
+            // Add "All" option for the current category
+            const allOption = {
+              value: '__all__',
+              label: 'All',
+              selected: false,
+              disabled: false
+            };
+            choicesInstances['hardware-product1-category'].setChoices([allOption], 'value', 'label', false);
+
+            // Add product options for the selected category
+            const productOptions = products.map(product => ({
+              value: product,
+              label: product,
+              selected: false,
+              disabled: false
+            }));
+            choicesInstances['hardware-product1-category'].setChoices(productOptions, 'value', 'label', false);
+          }
+        });
+
+        // Handle "All" option selection (select all products for selected category)
+        productDropdown.addEventListener('change', () => {
+          const selectedValues = choicesInstances['hardware-product1-category'].getValue(true); // Get selected values
+
+          // If "All" is selected, select all products for the selected category
+          const category = categoryDropdown.value;
+          if (selectedValues.includes('__all__')) {
+            const products = data.categories[category] || [];
+            choicesInstances['hardware-product1-category'].setChoiceByValue(products);
+          }
+          choicesInstances['hardware-product1-category'].hideDropdown();
+        });
+
+        console.log('Dropdowns repopulated for Tab 3');
+      })
+      .catch(error => {
+        console.error('Error fetching hardware data:', error);
+      });
+  }
+
+  // Clear result and table sections
+  getElement('hardware-result', activePage).innerHTML = '';
+  getElement('hardware-table-wrapper', activePage).innerHTML = '';
+}
+
+function resetFieldsTab4() {
+  // Reset the dropdowns to the default option '--Select--'
+  ['upgrade-product1-category', 'upgrade-product1-version'].forEach(id => {
+    const dropdown = document.getElementById(id);
+    if (dropdown) {
+      // Reset dropdown value to placeholder
+      dropdown.value = '';  // Set to the default selected option (value="")
+      
+      // Optionally, clear any selected options or styles if needed
+      dropdown.selectedIndex = 0;  // Reset to the first option (placeholder)
+    }
+  });
+
+  // Clear results and tables
+  document.getElementById('upgrade-result').innerHTML = '';
+  document.getElementById('upgrade-table-wrapper').innerHTML = '';
+
+  // Optionally, hide or collapse any additional content
+  document.getElementById('upgrade-main-content').style.display = 'none';
+
+  console.log('Fields and results cleared for Upgrade Tab');
+}
+
+
+
+
+
+
 
 function populateDropdownsTab1(data) {
   const p1c = getElement('product1-category', 'interoperability');
@@ -247,7 +438,7 @@ function populateDropdownsTab1(data) {
       p2c.value = currentP2;
     } else {
       p2c.value = '';
-      p2v.innerHTML = '<option value="">All</option>';
+      p2v.innerHTML = '<option value="All">All</option>';
     }
   };
 
@@ -266,7 +457,7 @@ function populateDropdownsTab1(data) {
       p1c.value = currentP1;
     } else {
       p1c.value = '';
-      p1v.innerHTML = '<option value="">All</option>';
+      p1v.innerHTML = '<option value="All">All</option>';
     }
   };
 }
@@ -308,8 +499,8 @@ data.y_axis.categories.forEach(category => {
 
   // Product 1 - Category change
   categorySelect.onchange = () => {
-    solutionSelect.innerHTML = '<option value="">--Select Solution--</option>';
-    versionSelect.innerHTML = '<option value="">--Select Version--</option>';
+    solutionSelect.innerHTML = '<option value="">--Select--</option>';
+    versionSelect.innerHTML = '<option value="">--Select--</option>';
     versionSelect.disabled = true;
 
     const solutions = data.x_axis.solutions[categorySelect.value] || [];
@@ -335,7 +526,7 @@ data.y_axis.categories.forEach(category => {
 
   // Product 1 - Solution change
   solutionSelect.onchange = () => {
-    versionSelect.innerHTML = '<option value="">--Select Version--</option>';
+    versionSelect.innerHTML = '<option value="">--Select--</option>';
     versionSelect.innerHTML = '<option value="">All</option>';
     const versions = data.x_axis.versions[solutionSelect.value] || [];
     versions.forEach(version => {
@@ -350,7 +541,7 @@ data.y_axis.categories.forEach(category => {
     maxItemCount: -1,
     searchEnabled: true,
     shouldSort: false,
-    closeDropdownOnSelect: 'auto'
+    closeDropdownOnSelect: true
   });
 
   // Product 2 - Category change
@@ -358,7 +549,7 @@ data.y_axis.categories.forEach(category => {
     product2SolutionChoices.clearStore();
     product2SolutionChoices.clearChoices();
     product2SolutionChoices.enable();
-    product2VersionSelect.innerHTML = '<option value="">--Select Version--</option>';
+    product2VersionSelect.innerHTML = '<option value="">--Select--</option>';
     product2VersionSelect.disabled = true;
 
     const selectedCategories = Array.from(product2CategorySelect.selectedOptions).map(option => option.value);
@@ -382,7 +573,7 @@ data.y_axis.categories.forEach(category => {
 
   // Product 2 - Solution change
   product2SolutionSelect.addEventListener('change', () => {
-    product2VersionSelect.innerHTML = '<option value="">--Select Version--</option>';
+    product2VersionSelect.innerHTML = '<option value="">--Select--</option>';
     
     // Get the selected solutions
     let selectedSolutions = Array.from(product2SolutionSelect.selectedOptions).map(opt => opt.value);
@@ -432,7 +623,7 @@ if (selectedSolutions.includes('__all__')) {
           product2VersionSelect.add(new Option(version, version));  // Add all available versions as options
         });
       } else {
-        product2VersionSelect.innerHTML = '<option value="">--Select Version--</option>';
+        product2VersionSelect.innerHTML = '<option value="">--Select--</option>';
         product2VersionSelect.disabled = true;  // Disable version dropdown if no versions found
       }
     }
@@ -466,7 +657,7 @@ function populateDropdownsTab3(data) {
   });
 
   // Clear and populate category dropdown
-  categoryDropdown.innerHTML = '<option value="">--Select Category--</option>';
+  categoryDropdown.innerHTML = '<option value="">--Select--</option>';
   Object.keys(data.categories).forEach(category => {
     const option = document.createElement('option');
     option.value = category;
@@ -549,7 +740,7 @@ function populateDropdownsTab4(data) {
   }
 
   // Populate the category dropdown (product names)
-  productDropdown.innerHTML = '<option value="">--Select Category--</option>';
+  productDropdown.innerHTML = '<option value="">--Select--</option>';
   Object.keys(data.products).forEach(product => {
     const option = document.createElement('option');
     option.value = product;
@@ -563,7 +754,7 @@ function populateDropdownsTab4(data) {
     const versions = data.products[selectedProduct] || [];
 
     // Clear and repopulate the version dropdown based on the selected category
-    versionDropdown.innerHTML = '<option value="">--Select Version--</option>';
+    versionDropdown.innerHTML = '<option value="">--Select--</option>';
     
     // Add "All Versions" option first
     const allOption = document.createElement('option');
@@ -604,13 +795,19 @@ function checkCompatibilityTab1() {
   if (!data) return console.error("No data loaded for", activePage);
 
   const get = id => getElement(id, activePage);
-  const p1 = get('product1-category').value;  // Product 1 Category (e.g., "Continuous Data")
+  const p1 = get('product1-category').value;  // Product 1 Category
   const v1 = get('product1-version').value;   // Product 1 Version
-  const p2El = get('product2-category');      // Product 2 Category (e.g., "Continuous Compliance")
+  const p2El = get('product2-category');      // Product 2 Category (multi-select)
   const v2 = get('product2-version').value;   // Product 2 Version
   const result = get('result');
 
   const selectedDBs = p2El.choices ? p2El.choices.getValue(true) : [p2El.value];  // Handle multi-select
+
+
+
+
+ 
+
   result.innerHTML = '';
   get('compatibility-matrix', activePage).innerHTML = '';
 
@@ -629,10 +826,10 @@ function checkCompatibilityTab1() {
     const thead = section.querySelector('thead');
     const tbody = section.querySelector('tbody');
 
-    // Update the `updateMatrix` function to pass the correct data structure
     updateMatrix(data, p1, v1, p2, v2, thead, tbody, ` ${p1} vs ${p2}`);
   });
 }
+
 
 
 
@@ -1174,6 +1371,54 @@ document.getElementById('collapseExpandAll-tab2').addEventListener('click', func
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  const collapseBtn = document.getElementById('collapseExpandAll-tab3');
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', function () {
+      const tables = document.querySelectorAll('table.hardware-matrix-table');
+      const isCollapsing = this.textContent === 'Collapse All';
+
+      tables.forEach(table => {
+        const tbody = table.querySelector('tbody');
+        const secondHeaderRow = table.querySelector('thead')?.rows[1];
+
+        if (tbody && secondHeaderRow) {
+          tbody.style.display = isCollapsing ? 'none' : 'table-row-group';
+          secondHeaderRow.style.display = isCollapsing ? 'none' : '';
+        }
+      });
+
+      this.textContent = isCollapsing ? 'Expand All' : 'Collapse All';
+    });
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const collapseBtn = document.getElementById('collapseExpandAll-tab4');
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', function () {
+      const tables = document.querySelectorAll('table.upgrade-matrix-table');
+      const isCollapsing = this.textContent === 'Collapse All';
+
+      tables.forEach(table => {
+        const tbody = table.querySelector('tbody');
+        const secondHeaderRow = table.querySelector('thead')?.rows[1];
+
+        if (tbody && secondHeaderRow) {
+          tbody.style.display = isCollapsing ? 'none' : 'table-row-group';
+          secondHeaderRow.style.display = isCollapsing ? 'none' : '';
+        }
+      });
+
+      this.textContent = isCollapsing ? 'Expand All' : 'Collapse All';
+    });
+  }
+});
+
+
+
+
+
 function exportToExcelTab1() {
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
   const result = document.querySelector('#result');
@@ -1221,10 +1466,96 @@ function exportToExcelTab2() {
   XLSX.writeFile(workbook, "compatibility_results_3rd_party.xlsx");
 }
 
+function exportToExcelTab3() {
+  const wrapper = document.querySelector('#hardware-table-wrapper');
+
+  if (!wrapper) {
+    console.error('No hardware-table-wrapper section found.');
+    return;
+  }
+
+  const tables = wrapper.querySelectorAll('table.hardware-matrix-table');
+
+  if (tables.length === 0) {
+    console.warn('No hardware tables available to export.');
+    alert("No hardware tables available to export.");
+    return;
+  }
+
+  const workbook = XLSX.utils.book_new();
+
+  tables.forEach((table, index) => {
+    // Clone the table to avoid modifying the DOM
+    const clonedTable = table.cloneNode(true);
+
+    // Remove the first <tr> in <thead> (toggle row)
+    const thead = clonedTable.querySelector('thead');
+    if (thead && thead.rows.length > 1) {
+      thead.deleteRow(0); // Remove the product name / toggle row
+    }
+
+    try {
+      const worksheet = XLSX.utils.table_to_sheet(clonedTable);
+      const sheetName = `Hardware_Comparison_${index + 1}`;
+      XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
+    } catch (e) {
+      console.error(`Error converting table ${index + 1}:`, e);
+    }
+  });
+
+  XLSX.writeFile(workbook, "hardware_compatibility_results.xlsx");
+}
+
+function exportToExcelTab4() {
+  const wrapper = document.getElementById('upgrade-table-wrapper');
+
+  if (!wrapper) {
+    console.error('No upgrade-table-wrapper section found.');
+    return;
+  }
+
+  const tables = wrapper.querySelectorAll('table.upgrade-matrix-table');
+
+  if (tables.length === 0) {
+    console.warn('No upgrade tables available to export.');
+    alert("No upgrade tables available to export.");
+    return;
+  }
+
+  const workbook = XLSX.utils.book_new();
+
+  tables.forEach((table, index) => {
+    // Clone the table to keep DOM clean
+    const clonedTable = table.cloneNode(true);
+
+    // Remove the first <tr> from <thead> (the row with toggle + product name)
+    const thead = clonedTable.querySelector('thead');
+    if (thead && thead.rows.length > 1) {
+      thead.deleteRow(0);
+    }
+
+    try {
+      const worksheet = XLSX.utils.table_to_sheet(clonedTable);
+      const sheetName = `Upgrade_Path_${index + 1}`;
+      XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
+    } catch (e) {
+      console.error(`Error exporting upgrade table ${index + 1}:`, e);
+    }
+  });
+
+  XLSX.writeFile(workbook, "upgrade_matrix_results.xlsx");
+}
+
+
+
+
+
 
 
 
 // Bind the export to CSV button
 document.getElementById('export-csv-tab1').onclick = exportToExcelTab1;
 document.getElementById('export-csv-tab2').onclick = exportToExcelTab2;
+document.getElementById('export-csv-tab3').onclick = exportToExcelTab3;
+document.getElementById('export-csv-tab4').onclick = exportToExcelTab4;
 
