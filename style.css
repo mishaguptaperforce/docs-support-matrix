@@ -186,22 +186,22 @@ body {
 .button-container-hardware {
   display: flex;
   justify-content: center;
+  gap: 10px;
   margin-top: 20px;
   width: 100%;
 }
 
 .upgrade-page-button,
 .hardware-page-button {
-  padding: 10px 20px; /* Wider padding for better text spacing */
+  padding: 10px 10px;
   font-size: 16px;
   background-color: #1d428a;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: auto;           /* Let button size to its content */
-  flex: 0 0 auto;         /* Prevent growing/shrinking */
+  flex: 2;
+  transition: background-color 0.3s ease;        /* Prevent growing/shrinking */
 }
 
 
@@ -234,10 +234,26 @@ body {
   transition: background-color 0.3s ease;
 }
 
+.upgrade-secondary-button,
+.hardware-secondary-button
+ {
+  padding: 10px 10px;
+  font-size: 16px;
+  background-color: #1d428a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.3s ease;
+}
+
 .primary-button:hover,
 .secondary-button:hover,
 .thirdPartySolutions-primary-button:hover,
-.thirdPartySolutions-secondary-button:hover {
+.thirdPartySolutions-secondary-button:hover,
+.upgrade-secondary-button:hover,
+.hardware-secondary-button:hover {
   background-color: #1d428a;
 }
 
