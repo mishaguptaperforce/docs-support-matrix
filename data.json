@@ -1,151 +1,428 @@
 {
   "y_axis": {
     "type": "Products",
-    "values": ["Continuous Data", "Continuous Compliance", "Hyperscale Compliance", "IBM Db2 Connector", "Mongo DB Select Connector"],
+    "values": ["Continuous Data", "IBM Db2 Connector", "Oracle EBS Connector", "PostgreSQL Connector", "MongoDB Select Connector"],
     "versions": {
-      "Continuous Data": ["6.0.0.0", "6.0.1.0", "6.0.2.0", "6.0.3.0", "6.0.4.0", "6.0.5.0", "6.0.6.0", "6.0.7.0" ],
-      "Continuous Compliance": ["6.0.0.0", "6.0.1.0", "6.0.2.0", "6.0.3.0", "6.0.4.0", "6.0.5.0", "6.0.6.0", "6.0.7.0" ],
-      "Hyperscale Compliance": ["1.0.0", "3.0.0", "4.0.0", "4.1.0", "5.0.0"],
-      "IBM Db2 Connector": ["3.1.1", "4.0.0", "4.0.1", "4.1.0", "4.1.1", "4.1.2"],
-      "Mongo DB Select Connector": ["1.0.0", "1.0.1", "1.0.2", "1.1.0", "1.2.0"]
-      
+      "Continuous Data": ["2025.2.0",  "2025.1.0",  "29.0.0.0",  "28.0.0.0",  "27.0.0.0",  "26.0.0.0",  "25.0.0.0",  "24.0.0.0",  "23.0.0.0",  "22.0.0.0",  "21.0.0.0",  
+        "20.0.0.0",  "19.0.0.0",  "18.0.0.0",  "17.0.0.0",  "16.0.0.0",  "15.0.0.0",  "14.0.0.0",  "13.0.0.0",  "12.0.0.0",  "11.0.0.0" ],
+      "IBM Db2 Connector": ["4.9.0", "4.8.0", "4.7.4", "4.7.2", "4.7.1", "4.7.0", "4.6.1", "4.6.0", "4.5.1", "4.5.0", "4.4.2", "4.4.1", "4.4.0", "4.3.2", "4.3.1", "4.3.0", "4.3.0"],
+      "Oracle EBS Connector": ["2025.1.0", "5.0.1", "5.0.0", "4.6.0", "4.5.0", "4.4.0", "4.3.0", "4.2.2", "4.2.1", "4.2.0", "4.1.0", "4.0.2"],
+      "PostgreSQL Connector": ["4.3.1", "4.3.0", "4.2.3", "4.2.2", "4.2.1", "4.2.0", "4.1.1", "4.1.0", "4.0.0", "3.2.0", "3.1.0", "3.0.0", "2.1.1", "2.1.0", "2.0.0"],
+      "MongoDB Select Connector": ["1.4.0", "1.3.2", "1.3.1", "1.3.0", "1.2.1", "1.2.0", "1.1.0", "1.0.2", "1.0.1", "1.0.0"]     
     }
   },
   "x_axis": {
     "type": "Products",
-    "products": ["Continuous Data", "Continuous Compliance", "Hyperscale Compliance", "IBM Db2 Connector", "Mongo DB Select Connector"],
+    "products": ["Continuous Data", "IBM Db2 Connector", "Oracle EBS Connector", "PostgreSQL Connector", "MongoDB Select Connector"],
     "versions": {
-      "Continuous Data": ["6.0.0.0", "6.0.1.0", "6.0.2.0", "6.0.3.0", "6.0.4.0", "6.0.5.0", "6.0.6.0", "6.0.7.0" ],
-      "Continuous Compliance": ["6.0.0.0", "6.0.1.0", "6.0.2.0", "6.0.3.0", "6.0.4.0", "6.0.5.0", "6.0.6.0", "6.0.7.0" ],
-      "Hyperscale Compliance": ["1.0.0", "3.0.0", "4.0.0", "4.1.0", "5.0.0"],
-      "IBM Db2 Connector": ["3.1.1", "4.0.0", "4.0.1", "4.1.0", "4.1.1", "4.1.2"],
-      "Mongo DB Select Connector": ["1.0.0", "1.0.1", "1.0.2", "1.1.0", "1.2.0"]
-      
-         
+      "Continuous Data": ["2025.2.0",  "2025.1.0",  "29.0.0.0",  "28.0.0.0",  "27.0.0.0",  "26.0.0.0",  "25.0.0.0",  "24.0.0.0",  "23.0.0.0",  "22.0.0.0",  "21.0.0.0",  
+        "20.0.0.0",  "19.0.0.0",  "18.0.0.0",  "17.0.0.0",  "16.0.0.0",  "15.0.0.0",  "14.0.0.0",  "13.0.0.0",  "12.0.0.0",  "11.0.0.0" ],
+      "IBM Db2 Connector": ["4.9.0", "4.8.0", "4.7.4", "4.7.2", "4.7.1", "4.7.0", "4.6.1", "4.6.0", "4.5.1", "4.5.0", "4.4.2", "4.4.1", "4.4.0", "4.3.2", "4.3.1", "4.3.0", "4.3.0"],
+      "Oracle EBS Connector": ["2025.1.0", "5.0.1", "5.0.0", "4.6.0", "4.5.0", "4.4.0", "4.3.0", "4.2.2", "4.2.1", "4.2.0", "4.1.0", "4.0.2"],
+      "PostgreSQL Connector": ["4.3.1", "4.3.0", "4.2.3", "4.2.2", "4.2.1", "4.2.0", "4.1.1", "4.1.0", "4.0.0", "3.2.0", "3.1.0", "3.0.0", "2.1.1", "2.1.0", "2.0.0"],
+      "MongoDB Select Connector": ["1.4.0", "1.3.2", "1.3.1", "1.3.0", "1.2.1", "1.2.0", "1.1.0", "1.0.2", "1.0.1", "1.0.0"]        
     }
   },
   "compatibility":{
-  "Continuous Data 6.0.0.0":{
-    "Continuous Compliance":{
-    "6.0.0.0":{"compatible":true, "note": "Certified"}, "6.0.1.0":{"compatible":false}, "6.0.2.0":{"compatible":true, "note": "Certified"}, "6.0.3.0":{"compatible":false}, "6.0.4.0":{"compatible":true}, 
-    "6.0.5.0":{"compatible":true, "note": "Certified"}, "6.0.6.0":{"compatible":false, "note": "Certified"}, "6.0.7.0":{"compatible":true, "note": "Certified"}
-  },
-    "Hyperscale Compliance":{ "1.0.0":{"compatible":true}, "3.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false}, 
-    "4.1.0":{"compatible":false}, "5.0.0":{"compatible":false,"note":"6.0.7+"}
-  },
-    "IBM Db2 Connector":{"3.1.1":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.1":{"compatible":false,"note":"6.0.7+"},
-    "4.1.0":{"compatible":false,"note":"6.0.7+"}, "4.1.1":{"compatible":false,"note":"6.0.7+"}, "4.1.2":{"compatible":false,"note":"6.0.7+"} 
-    
-  },
-    "Mongo DB Select Connector":{ "1.0.0":{"compatible":true,"note":"6.0.7+"}, "1.0.1":{"compatible":true,"note":"6.0.7+"}, "1.0.2":{"compatible":false,"note":"6.0.7+"},
-    "1.1.0":{"compatible":false,"note":"6.0.7+"}, "1.2.0":{"compatible":false,"note":"6.0.7+"}
-  }
+  "Continuous Data 2025.2.0": {
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
 },
-"Continuous Data 6.0.1.0":{
-    "Continuous Compliance":{
-    "6.0.0.0":{"compatible":false, "note": "Certified"}, "6.0.1.0":{"compatible":true}, "6.0.2.0":{"compatible":true}, "6.0.3.0":{"compatible":true}, "6.0.4.0":{"compatible":true}, 
-    "6.0.5.0":{"compatible":true}, "6.0.6.0":{"compatible":true, "note": "Certified"}, "6.0.7.0":{"compatible":true}
-  },
-    "Hyperscale Compliance":{ "1.0.0":{"compatible":false}, "3.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false,"note":"6.0.7+"}, 
-    "4.1.0":{"compatible":false}, "5.0.0":{"compatible":false}
-  },
-    "IBM Db2 Connector":{"3.1.1":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.1":{"compatible":false,"note":"6.0.7+"},
-    "4.1.0":{"compatible":false,"note":"6.0.7+"}, "4.1.1":{"compatible":false,"note":"6.0.7+"}, "4.1.2":{"compatible":false,"note":"6.0.7+"}
-    
-  },
-    "Mongo DB Select Connector":{ "1.0.0":{"compatible":false,"note":"6.0.7+"}, "1.0.1":{"compatible":false,"note":"6.0.7+"}, "1.0.2":{"compatible":false,"note":"6.0.7+"},
-    "1.1.0":{"compatible":false,"note":"6.0.7+"}, "1.2.0":{"compatible":false,"note":"6.0.7+"}
-  }
+"Continuous Data 2025.1.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
 },
-"Continuous Data 6.0.2.0":{
-    "Continuous Compliance":{
-    "6.0.0.0":{"compatible":false}, "6.0.1.0":{"compatible":true}, "6.0.2.0":{"compatible":false}, "6.0.3.0":{"compatible":true}, "6.0.4.0":{"compatible":true}, 
-    "6.0.5.0":{"compatible":true}, "6.0.6.0":{"compatible":false}, "6.0.7.0":{"compatible":true}
-  },
-    "Hyperscale Compliance":{ "1.0.0":{"compatible":true}, "3.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false}, 
-    "4.1.0":{"compatible":false}, "5.0.0":{"compatible":false,"note":"6.0.7+"}
-  },
-    "IBM Db2 Connector":{"3.1.1":{"compatible":true,"note":"6.0.7+"}, "4.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.1":{"compatible":false,"note":"6.0.7+"},
-    "4.1.0":{"compatible":false,"note":"6.0.7+"}, "4.1.1":{"compatible":true,"note":"6.0.7+"}, "4.1.2":{"compatible":true,"note":"6.0.7+"}
-    
-  },
-    "Mongo DB Select Connector":{ "1.0.0":{"compatible":false,"note":"6.0.7+"}, "1.0.1":{"compatible":false,"note":"6.0.7+"}, "1.0.2":{"compatible":false,"note":"6.0.7+"},
-    "1.1.0":{"compatible":false,"note":"6.0.7+"}, "1.2.0":{"compatible":false,"note":"6.0.7+"}
-  }
+"Continuous Data 29.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
 },
-"Continuous Data 6.0.3.0":{
-    "Continuous Compliance":{
-    "6.0.0.0":{"compatible":false}, "6.0.1.0":{"compatible":true}, "6.0.2.0":{"compatible":false}, "6.0.3.0":{"compatible":true}, "6.0.4.0":{"compatible":true}, 
-    "6.0.5.0":{"compatible":true}, "6.0.6.0":{"compatible":true}, "6.0.7.0":{"compatible":true}
-  },
-    "Hyperscale Compliance":{ "1.0.0":{"compatible":false,"note":"6.0.7+"}, "3.0.0":{"compatible":true,"note":"6.0.7+"}, "4.0.0":{"compatible":true,"note":"6.0.7+"}, 
-    "4.1.0":{"compatible":true,"note":"6.0.7+"}, "5.0.0":{"compatible":true,"note":"6.0.7+"}
-  },
-    "IBM Db2 Connector":{"3.1.1":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.1":{"compatible":false,"note":"6.0.7+"},
-    "4.1.0":{"compatible":false,"note":"6.0.7+"}, "4.1.1":{"compatible":false,"note":"6.0.7+"}, "4.1.2":{"compatible":false,"note":"6.0.7+"}
-    
-  },
-    "Mongo DB Select Connector":{ "1.0.0":{"compatible":true,"note":"6.0.7+"}, "1.0.1":{"compatible":true,"note":"6.0.7+"}, "1.0.2":{"compatible":false,"note":"6.0.7+"},
-    "1.1.0":{"compatible":false,"note":"6.0.7+"}, "1.2.0":{"compatible":false,"note":"6.0.7+"}
-  }
+"Continuous Data 28.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
 },
-"Continuous Data 6.0.4.0":{
-    "Continuous Compliance":{
-    "6.0.0.0":{"compatible":true}, "6.0.1.0":{"compatible":true}, "6.0.2.0":{"compatible":true}, "6.0.3.0":{"compatible":true}, "6.0.4.0":{"compatible":true}, 
-    "6.0.5.0":{"compatible":true}, "6.0.6.0":{"compatible":true}, "6.0.7.0":{"compatible":true}
-  },
-    "Hyperscale Compliance":{ "1.0.0":{"compatible":true}, "3.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false}, 
-    "4.1.0":{"compatible":false}, "5.0.0":{"compatible":false,"note":"6.0.7+"}
-  },
-    "IBM Db2 Connector":{"3.1.1":{"compatible":true,"note":"6.0.7+"}, "4.0.0":{"compatible":true,"note":"6.0.7+"}, "4.0.1":{"compatible":false,"note":"6.0.7+"},
-    "4.1.0":{"compatible":false,"note":"6.0.7+"}, "4.1.1":{"compatible":false,"note":"6.0.7+"}, "4.1.2":{"compatible":false,"note":"6.0.7+"}
-    
-  },
-    "Mongo DB Select Connector":{ "1.0.0":{"compatible":true,"note":"6.0.7+"}, "1.0.1":{"compatible":true,"note":"6.0.7+"}, "1.0.2":{"compatible":false,"note":"6.0.7+"},
-    "1.1.0":{"compatible":false,"note":"6.0.7+"}, "1.2.0":{"compatible":false,"note":"6.0.7+"}
-  }
+"Continuous Data 27.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
 },
-"Continuous Data 6.0.5.0":{
-    "Continuous Compliance":{
-    "6.0.0.0":{"compatible":true}, "6.0.1.0":{"compatible":true}, "6.0.2.0":{"compatible":false}, "6.0.3.0":{"compatible":true}, "6.0.4.0":{"compatible":true}, 
-    "6.0.5.0":{"compatible":true}, "6.0.6.0":{"compatible":true}, "6.0.7.0":{"compatible":true}
-  },
-    "Hyperscale Compliance":{ "1.0.0":{"compatible":true}, "3.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false}, 
-    "4.1.0":{"compatible":false}, "5.0.0":{"compatible":false,"note":"6.0.7+"}
-  },
-    "IBM Db2 Connector":{"3.1.1":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":true,"note":"6.0.7+"}, "4.0.1":{"compatible":false,"note":"6.0.7+"},
-    "4.1.0":{"compatible":false,"note":"6.0.7+"}, "4.1.1":{"compatible":true,"note":"6.0.7+"}, "4.1.2":{"compatible":false,"note":"6.0.7+"} 
+"Continuous Data 26.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
     
-  }
 },
-"Continuous Data 6.0.6.0":{
-    "Continuous Compliance":{
-    "6.0.0.0":{"compatible":true}, "6.0.1.0":{"compatible":true}, "6.0.2.0":{"compatible":false}, "6.0.3.0":{"compatible":true}, "6.0.4.0":{"compatible":true}, 
-    "6.0.5.0":{"compatible":true}, "6.0.6.0":{"compatible":true}, "6.0.7.0":{"compatible":false}
-  },
-    "Hyperscale Compliance":{ "1.0.0":{"compatible":true}, "3.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false}, 
-    "4.1.0":{"compatible":false}, "5.0.0":{"compatible":false,"note":"6.0.7+"}
-  },
-    "IBM Db2 Connector":{"3.1.1":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.1":{"compatible":false,"note":"6.0.7+"},
-    "4.1.0":{"compatible":false,"note":"6.0.7+"}, "4.1.1":{"compatible":true,"note":"6.0.7+"}, "4.1.2":{"compatible":false,"note":"6.0.7+"}
-    
-  },
-    "Mongo DB Select Connector":{ "1.0.0":{"compatible":true,"note":"6.0.7+"}, "1.0.1":{"compatible":true,"note":"6.0.7+"}, "1.0.2":{"compatible":false,"note":"6.0.7+"},
-    "1.1.0":{"compatible":false,"note":"6.0.7+"}, "1.2.0":{"compatible":true,"note":"6.0.7+"}
-  }
+"Continuous Data 25.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
 },
-"Continuous Data 6.0.7.0":{
-    "Continuous Compliance":{
-    "6.0.0.0":{"compatible":false}, "6.0.1.0":{"compatible":true}, "6.0.2.0":{"compatible":false}, "6.0.3.0":{"compatible":true}, "6.0.4.0":{"compatible":true}, 
-    "6.0.5.0":{"compatible":true}, "6.0.6.0":{"compatible":false}, "6.0.7.0":{"compatible":true}
+"Continuous Data 24.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
   },
-    "Hyperscale Compliance":{ "1.0.0":{"compatible":false,"note":"6.0.7+"}, "3.0.0":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":false,"note":"6.0.7+"}, 
-    "4.1.0":{"compatible":false,"note":"6.0.7+"}, "5.0.0":{"compatible":false,"note":"6.0.7+"}
+"Continuous Data 23.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
   },
-    "IBM Db2 Connector":{"3.1.1":{"compatible":false,"note":"6.0.7+"}, "4.0.0":{"compatible":true,"note":"6.0.7+"}, "4.0.1":{"compatible":true,"note":"6.0.7+"},
-    "4.1.0":{"compatible":true,"note":"6.0.7+"}, "4.1.1":{"compatible":false,"note":"6.0.7+"}, "4.1.2":{"compatible":false,"note":"6.0.7+"}
-    
-  }
+"Continuous Data 22.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 21.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 20.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 19.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 18.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 17.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 16.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 15.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 14.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
+      "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 13.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": false}, "4.8.0": {"compatible": false}, "4.7.4": {"compatible": false}, "4.7.2": {"compatible": false}, "4.7.1": {"compatible": false}, 
+      "4.7.0": {"compatible": false}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": false }, "5.0.1": { "compatible": false }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 12.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": false}, "4.8.0": {"compatible": false}, "4.7.4": {"compatible": false}, "4.7.2": {"compatible": false}, "4.7.1": {"compatible": false}, 
+      "4.7.0": {"compatible": false}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": false }, "5.0.1": { "compatible": false }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
+  },
+"Continuous Data 11.0.0.0":{
+    "IBM Db2 Connector": {"4.9.0": {"compatible": false}, "4.8.0": {"compatible": false}, "4.7.4": {"compatible": false}, "4.7.2": {"compatible": false}, "4.7.1": {"compatible": false}, 
+      "4.7.0": {"compatible": false}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
+      "4.4.1": {"compatible": true}, "4.4.0": {"compatible": true}, "4.3.2": {"compatible": true}, "4.3.1": {"compatible": true}, "4.3.0": {"compatible": true}
+    },
+    "Oracle EBS Connector": {"2025.1.0": { "compatible": true }, "5.0.1": { "compatible": true }, "5.0.0": { "compatible": true }, "4.6.0": { "compatible": true }, 
+    "4.5.0": { "compatible": true }, "4.4.0": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.2": { "compatible": true }, "4.2.1": { "compatible": true }, 
+    "4.2.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.2": { "compatible": false }
+    },
+    "PostgreSQL Connector": {"4.3.1": { "compatible": true }, "4.3.0": { "compatible": true }, "4.2.3": { "compatible": true }, "4.2.2": { "compatible": true }, 
+    "4.2.1": { "compatible": true }, "4.2.0": { "compatible": true }, "4.1.1": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true },
+    "3.2.0": { "compatible": true }, "3.1.0": { "compatible": true }, "3.0.0": { "compatible": true }, "2.1.1": { "compatible": true }, "2.1.0": { "compatible": true },
+    "2.0.0": { "compatible": true }
+    },
+    "MongoDB Select Connector": {"1.4.0": { "compatible": true }, "1.3.2": { "compatible": true }, "1.3.1": { "compatible": true }, "1.3.0": { "compatible": true },
+    "1.2.1": { "compatible": true }, "1.2.0": { "compatible": true }, "1.1.0": { "compatible": false }, "1.0.2": { "compatible": false }, "1.0.1": { "compatible": false },
+    "1.0.0": { "compatible": false }
+    }
 
 
 
