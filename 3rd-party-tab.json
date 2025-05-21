@@ -3,16 +3,19 @@
     "categories": ["Database", "Operating System", "Platform"],
     "solutions": {
       "Database": ["Oracle", "SQL Server", "PostgreSQL"],
-      "Operating System": ["RHEL", "Ubuntu", "Windows Server"],
+      "Operating System": ["RHEL", "SLES", "Solaris", "HP-UX", "AIX"],
       "Platform": ["AWS", "Azure", "GCP"]
     },
     "versions": {
-      "Oracle": ["19c", "21c"],
+      "Oracle": ["11gR2", "12cR1", "12cR2", "18c", "19c", "21c", "23ai"],
       "SQL Server": ["2012", "2014", "2016", "2017", "2019"],
       "PostgreSQL": ["13", "14"],
-      "RHEL": ["8", "9"],
-      "Ubuntu": ["20.04", "22.04"],
-      "Windows Server": ["2012", "2012 R2", "2016", "2019", "2022"],
+      "RHEL": ["6.0", "6.1", "6.2", "6.3", "6.4", "6.5", "6.6", "6.7", "6.8", "6.9", "6.10", "7.0", "7.1", "7.2", "7.3", "7.4", "7.5", "7.6", "7.7", "7.8", "7.9", "8.0", "8.1", 
+        "8.2", "8.3", "8.4", "8.5", "8.6", "8.7", "8.8", "8.9", "8.10", "9.0", "9.1", "9.2", "9.3"],
+      "SLES": ["11", "11 SP1", "11 SP2", "11 SP3", "11 SP4", "12", "12 SP1", "12 SP2", "12 SP3", "12 SP4", "12 SP5", "15", "15 SP1", "15 SP2", "15 SP3", "15 SP5"],
+      "Solaris":["10 U91", "10 U101", "10 U11", "11", "11 U1", "11 U2", "11 U3", "11 U4"],
+      "HP-UX": ["11.31" ],
+      "AIX": ["7.1", "7.2"],
       "AWS": ["EC2 v1", "EC2 v2"],
       "Azure": ["VM v1", "VM v2"],
       "GCP": ["Compute v1", "Compute v2"]
@@ -22,36 +25,137 @@
     "categories": ["Database", "Operating System", "Platform"],
     "solutions": {
       "Database": ["Oracle", "SQL Server", "PostgreSQL"],
-      "Operating System": ["RHEL", "Ubuntu", "Windows Server"],
+      "Operating System": ["RHEL", "SLES", "Solaris", "HP-UX", "AIX"],
       "Platform": ["AWS", "Azure", "GCP"]
     },
     "versions": {
-      "Oracle": ["19c", "21c"],
+      "Oracle": ["11gR2", "12cR1", "12cR2", "18c", "19c", "21c", "23ai"],
       "SQL Server": ["2012", "2014", "2016", "2017", "2019"],
       "PostgreSQL": ["13", "14"],
-      "RHEL": ["8", "9"],
-      "Ubuntu": ["20.04", "22.04"],
-      "Windows Server": ["2012", "2012 R2", "2016", "2019", "2022"],
+      "RHEL": ["6.0", "6.1", "6.2", "6.3", "6.4", "6.5", "6.6", "6.7", "6.8", "6.9", "6.10", "7.0", "7.1", "7.2", "7.3", "7.4", "7.5", "7.6", "7.7", "7.8", "7.9", "8.0", "8.1", 
+        "8.2", "8.3", "8.4", "8.5", "8.6", "8.7", "8.8", "8.9", "8.10", "9.0", "9.1", "9.2", "9.3"],
+      "SLES": ["11", "11 SP1", "11 SP2", "11 SP3", "11 SP4", "12", "12 SP1", "12 SP2", "12 SP3", "12 SP4", "12 SP5", "15", "15 SP1", "15 SP2", "15 SP3", "15 SP5"],
+      "Solaris":["10 U91", "10 U101", "10 U11", "11", "11 U1", "11 U2", "11 U3", "11 U4"],
+      "HP-UX": ["11.31"],
+      "AIX": ["7.1", "7.2"],
       "AWS": ["EC2 v1", "EC2 v2"],
       "Azure": ["VM v1", "VM v2"],
       "GCP": ["Compute v1", "Compute v2"]
     }
   },
   "compatibility": {
-    "Oracle 19c": {
-      "RHEL 8": { "compatible": true, "note": "Certified" },
-      "RHEL 9": { "compatible": true, "note": "6.0.7+" },
+    "Oracle 11gR2": {
+      "RHEL 9.3": { "compatible": false }, "RHEL 9.2": { "compatible": false }, "RHEL 9.1": { "compatible": false },
+      "RHEL 9.0": { "compatible": false }, "RHEL 8.10": { "compatible": true, "note": "24.0.0+" },
+      "RHEL 8.9": { "compatible": true, "note": "19.0.0+" }, "RHEL 8.8": { "compatible": true, "note": "12.0.0+" },
+      "RHEL 8.7": { "compatible": true, "note": "7.0.0+" }, "RHEL 8.6": { "compatible": true, "note": "6.0.15+" },
+      "RHEL 8.5": { "compatible": true, "note": "6.0.14+" }, "RHEL 8.4": { "compatible": true, "note": "6.0.10+" },
+      "RHEL 8.3": { "compatible": true, "note": "6.0.7+" }, "RHEL 8.2": { "compatible": true, "note": "6.0.3+" },
+      "RHEL 8.1": { "compatible": false }, "RHEL 8.0": { "compatible": false }, "RHEL 7.9": { "compatible": true, "note": "6.0.4+" },
+      "RHEL 7.8": { "compatible": true, "note": "6.0.2+" }, "RHEL 7.7": { "compatible": true },
+      "RHEL 7.6": { "compatible": true }, "RHEL 7.5": { "compatible": true }, "RHEL 7.4": { "compatible": true },
+      "RHEL 7.3": { "compatible": true }, "RHEL 7.2": { "compatible": true }, "RHEL 7.1": { "compatible": true },
+      "RHEL 7.0": { "compatible": true }, "RHEL 6.10": { "compatible": true }, "RHEL 6.9": { "compatible": true },
+      "RHEL 6.8": { "compatible": true }, "RHEL 6.7": { "compatible": true }, "RHEL 6.6": { "compatible": true },
+      "RHEL 6.5": { "compatible": true }, "RHEL 6.4": { "compatible": true }, "RHEL 6.3": { "compatible": true },
+      "RHEL 6.2": { "compatible": true }, "RHEL 6.1": { "compatible": true }, "RHEL 6.0": { "compatible": true },
       "SQL Server 2012": { "compatible": true, "note": "6.0.7+" },
-      "Ubuntu 20.04": { "compatible": true, "note": "6.0.7+" },
-      "AWS EC2 v1":  { "compatible": true, "note": "6.0.7+" }
+      "SLES 15 SP5": { "compatible": false }, "SLES 15 SP3": { "compatible": false }, "SLES 15 SP2": { "compatible": false }, "SLES 15 SP1": { "compatible": false }, "SLES 15": { "compatible": false },
+      "SLES 12 SP4": { "compatible": true }, "SLES 12 SP3": { "compatible": true }, "SLES 12 SP2": { "compatible": true }, "SLES 12 SP1": { "compatible": true }, "SLES 12": { "compatible": true },
+      "SLES 11 SP4": { "compatible": true }, "SLES 11 SP3": { "compatible": true }, "SLES 11 SP2": { "compatible": true }, "SLES 11 SP1": { "compatible": true }, "SLES 11": { "compatible": true },
+      "Solaris 11 U4": { "compatible": false }, "Solaris 11 U3": { "compatible": false }, "Solaris 11 U2": { "compatible": true }, "Solaris 11 U1": { "compatible": true },
+      "Solaris 11": { "compatible": true }, "Solaris 10 U11": { "compatible": true }, "Solaris 10 U101": { "compatible": true }, "Solaris 10 U91": { "compatible": true },
+      "HP-UX 11.31": { "compatible": true },
+      "AWS EC2 v1":  { "compatible": true, "note": "6.0.7+" },
+      "AIX 7.2": { "compatible": true }, "AIX 7.1": { "compatible": true }
+    },
+    "Oracle 12cR1": {
+      "RHEL 9.3": { "compatible": false }, "RHEL 9.2": { "compatible": false }, "RHEL 9.1": { "compatible": false },
+      "RHEL 9.0": { "compatible": false }, "RHEL 8.10": { "compatible": true, "note": "24.0.0+" },
+      "RHEL 8.9": { "compatible": true, "note": "19.0.0+" }, "RHEL 8.8": { "compatible": true, "note": "12.0.0+" },
+      "RHEL 8.7": { "compatible": true, "note": "7.0.0+" }, "RHEL 8.6": { "compatible": true, "note": "6.0.15+" },
+      "RHEL 8.5": { "compatible": true, "note": "6.0.14+" }, "RHEL 8.4": { "compatible": true, "note": "6.0.10+" },
+      "RHEL 8.3": { "compatible": true, "note": "6.0.7+" }, "RHEL 8.2": { "compatible": true, "note": "6.0.3+" },
+      "RHEL 8.1": { "compatible": false }, "RHEL 8.0": { "compatible": false }, "RHEL 7.9": { "compatible": true, "note": "6.0.4+" },
+      "RHEL 7.8": { "compatible": true, "note": "6.0.2+" }, "RHEL 7.7": { "compatible": true },
+      "RHEL 7.6": { "compatible": true }, "RHEL 7.5": { "compatible": true }, "RHEL 7.4": { "compatible": true },
+      "RHEL 7.3": { "compatible": true }, "RHEL 7.2": { "compatible": true }, "RHEL 7.1": { "compatible": true },
+      "RHEL 7.0": { "compatible": true }, "RHEL 6.10": { "compatible": true }, "RHEL 6.9": { "compatible": true },
+      "RHEL 6.8": { "compatible": true }, "RHEL 6.7": { "compatible": true }, "RHEL 6.6": { "compatible": true },
+      "RHEL 6.5": { "compatible": true }, "RHEL 6.4": { "compatible": true }, "RHEL 6.3": { "compatible": true },
+      "RHEL 6.2": { "compatible": true }, "RHEL 6.1": { "compatible": true }, "RHEL 6.0": { "compatible": true },
+      "SLES 15 SP5": { "compatible": false }, "SLES 15 SP3": { "compatible": false }, "SLES 15 SP2": { "compatible": false }, "SLES 15 SP1": { "compatible": false }, "SLES 15": { "compatible": false },
+      "SLES 12 SP5": { "compatible": true, "note": "6.0.4+" }, "SLES 12 SP4": { "compatible": true }, "SLES 12 SP3": { "compatible": true }, "SLES 12 SP2": { "compatible": true }, "SLES 12 SP1": { "compatible": true }, "SLES 12": { "compatible": true },
+      "SLES 11 SP4": { "compatible": true }, "SLES 11 SP3": { "compatible": true }, "SLES 11 SP2": { "compatible": true },
+      "SLES 11 SP1": { "compatible": null }, "SLES 11": { "compatible": null },
+      "Solaris 11 U4": { "compatible": false }, "Solaris 11 U3": { "compatible": true }, "Solaris 11 U2": { "compatible": true }, "Solaris 11 U1": { "compatible": true },
+      "Solaris 11": { "compatible": true }, "Solaris 10 U11": { "compatible": true }, "Solaris 10 U101": { "compatible": true },
+      "HP-UX 11.31": { "compatible": true },
+      "AIX 7.2": { "compatible": true }, "AIX 7.1": { "compatible": true }
+    },
+    "Oracle 12cR2": {
+      "RHEL 9.3": { "compatible": false }, "RHEL 9.2": { "compatible": false }, "RHEL 9.1": { "compatible": false }, "RHEL 9.0": { "compatible": false },
+      "RHEL 8.10": { "compatible": true, "note": "24.0.0+" }, "RHEL 8.9": { "compatible": true, "note": "19.0.0+" }, "RHEL 8.8": { "compatible": true, "note": "12.0.0+" }, "RHEL 8.7": { "compatible": true, "note": "7.0.0+" }, "RHEL 8.6": { "compatible": true, "note": "6.0.15+" },
+      "RHEL 8.5": { "compatible": true, "note": "6.0.14+" }, "RHEL 8.4": { "compatible": true, "note": "6.0.10+" }, "RHEL 8.3": { "compatible": true, "note": "6.0.7+" }, "RHEL 8.2": { "compatible": true, "note": "6.0.3+" },
+      "RHEL 8.1": { "compatible": false }, "RHEL 8.0": { "compatible": false },
+      "RHEL 7.9": { "compatible": true, "note": "6.0.4+" }, "RHEL 7.8": { "compatible": true, "note": "6.0.2+" }, "RHEL 7.7": { "compatible": true }, "RHEL 7.6": { "compatible": true }, "RHEL 7.5": { "compatible": true },
+      "RHEL 7.4": { "compatible": true }, "RHEL 7.3": { "compatible": true }, "RHEL 7.2": { "compatible": true }, "RHEL 7.1": { "compatible": true }, "RHEL 7.0": { "compatible": true },
+      "RHEL 6.10": { "compatible": true }, "RHEL 6.9": { "compatible": true }, "RHEL 6.8": { "compatible": true }, "RHEL 6.7": { "compatible": true }, "RHEL 6.6": { "compatible": true },
+      "RHEL 6.5": { "compatible": true }, "RHEL 6.4": { "compatible": true },
+      "SLES 15 SP5": { "compatible": false }, "SLES 15 SP3": { "compatible": false }, "SLES 15 SP2": { "compatible": false }, "SLES 15 SP1": { "compatible": false }, "SLES 15": { "compatible": true },
+      "SLES 12 SP5": { "compatible": true, "note": "6.0.4+" }, "SLES 12 SP4": { "compatible": true }, "SLES 12 SP3": { "compatible": true }, "SLES 12 SP2": { "compatible": true }, "SLES 12 SP1": { "compatible": true },
+      "SLES 12": { "compatible": null }, "SLES 11 SP4": { "compatible": null }, "SLES 11 SP3": { "compatible": null }, "SLES 11 SP2": { "compatible": null }, "SLES 11 SP1": { "compatible": null }, "SLES 11": { "compatible": null },
+      "Solaris 11 U4": { "compatible": true }, "Solaris 11 U3": { "compatible": true }, "Solaris 11 U2": { "compatible": true },
+      "HP-UX 11.31": { "compatible": true },
+      "AIX 7.2": { "compatible": true }, "AIX 7.1": { "compatible": true }
+    },
+    "Oracle 18c": {
+      "RHEL 9.3": { "compatible": false }, "RHEL 9.2": { "compatible": false }, "RHEL 9.1": { "compatible": false }, "RHEL 9.0": { "compatible": false },
+      "RHEL 7.9": { "compatible": true, "note": "6.0.5+" }, "RHEL 7.8": { "compatible": true, "note": "6.0.2+" }, "RHEL 7.7": { "compatible": true }, "RHEL 7.6": { "compatible": true },
+      "RHEL 7.5": { "compatible": true }, "RHEL 7.4": { "compatible": true }, "RHEL 7.3": { "compatible": true }, "RHEL 7.2": { "compatible": true },
+      "RHEL 7.1": { "compatible": true }, "RHEL 7.0": { "compatible": true }, "RHEL 6.10": { "compatible": true }, "RHEL 6.9": { "compatible": true },
+      "RHEL 6.8": { "compatible": true }, "RHEL 6.7": { "compatible": true }, "RHEL 6.6": { "compatible": true }, "RHEL 6.5": { "compatible": true },
+      "RHEL 6.4": { "compatible": true },
+      "SLES 15 SP5": { "compatible": false }, "SLES 15 SP3": { "compatible": false }, "SLES 15 SP2": { "compatible": false }, "SLES 15 SP1": { "compatible": false }, "SLES 15": { "compatible": true },
+      "SLES 12 SP5": { "compatible": false }, "SLES 12 SP4": { "compatible": true }, "SLES 12 SP3": { "compatible": true }, "SLES 12 SP2": { "compatible": true }, "SLES 12 SP1": { "compatible": true },
+      "Solaris 10 U11": { "compatible": true}, "Solaris 11 U4": { "compatible": true }, "Solaris 11 U3": { "compatible": true }, "Solaris 11 U2": { "compatible": true },
+      "HP-UX 11.31": { "compatible": true },
+      "AIX 7.2": { "compatible": true }, "AIX 7.1": { "compatible": true }
+      
+    },
+    "Oracle 19c": {
+      "RHEL 9.3": { "compatible": true, "note": "20.0.0+" }, "RHEL 9.2": { "compatible": true, "note": "20.0.0+" },
+      "RHEL 9.1": { "compatible": true, "note": "20.0.0+" }, "RHEL 9.0": { "compatible": true, "note": "20.0.0+" },
+      "RHEL 8.10": { "compatible": true, "note": "24.0.0+" }, "RHEL 8.9": { "compatible": true, "note": "19.0.0+" },
+      "RHEL 8.8": { "compatible": true, "note": "12.0.0+" }, "RHEL 8.7": { "compatible": true, "note": "7.0.0+" },
+      "RHEL 8.6": { "compatible": true, "note": "6.0.15+" }, "RHEL 8.5": { "compatible": true, "note": "6.0.14+" },
+      "RHEL 8.4": { "compatible": true, "note": "6.0.10+" }, "RHEL 8.3": { "compatible": true, "note": "6.0.7+" },
+      "RHEL 8.2": { "compatible": true, "note": "6.0.3+" }, "RHEL 8.1": { "compatible": true, "note": "6.0.3+" },
+      "RHEL 8.0": { "compatible": true, "note": "6.0.3+" }, "RHEL 7.9": { "compatible": true, "note": "6.0.4+" },
+      "RHEL 7.8": { "compatible": true, "note": "6.0.2+" }, "RHEL 7.7": { "compatible": true },
+      "RHEL 7.6": { "compatible": true }, "RHEL 7.5": { "compatible": true },
+      "RHEL 7.4": { "compatible": true },
+      "SLES 15 SP5": { "compatible": true, "note": "15.0.0+" }, "SLES 15 SP3": { "compatible": true, "note": "6.0.11+" }, "SLES 15 SP2": { "compatible": true, "note": "6.0.11+" },
+      "SLES 15 SP1": { "compatible": true }, "SLES 15": { "compatible": true }, "SLES 12 SP5": { "compatible": true, "note": "6.0.4+" }, "SLES 12 SP4": { "compatible": true },
+      "SLES 12 SP3": { "compatible": true },
+      "Solaris 11 U4": { "compatible": true }, "Solaris 11 U3": { "compatible": true },
+      "HP-UX 11.31": { "compatible": true },
+      "AIX 7.2": { "compatible": true }, "AIX 7.1": { "compatible": true }
     },
     "Oracle 21c": {
-      "RHEL 8": { "compatible": false, "note": "6.0.11+" },
-      "RHEL 9": { "compatible": true, "note": "Tested" },
-      "SQL Server 2012": { "compatible": true, "note": "6.0.7+" },
-      "Ubuntu 20.04": { "compatible": true, "note": "6.0.7+" },
-      "AWS EC2 v1":  { "compatible": true, "note": "6.0.7+" }
-    }
+      "RHEL 9.3": { "compatible": false }, "RHEL 9.2": { "compatible": false }, "RHEL 9.1": { "compatible": false }, "RHEL 9.0": { "compatible": false },
+      "RHEL 8.10": { "compatible": true, "note": "24.0.0+" }, "RHEL 8.9": { "compatible": true, "note": "19.0.0+" }, "RHEL 8.8": { "compatible": true, "note": "12.0.0+" },
+      "RHEL 8.7": { "compatible": true, "note": "7.0.0+" }, "RHEL 8.6": { "compatible": true, "note": "6.0.15+" }, "RHEL 8.5": { "compatible": true, "note": "6.0.14+" },
+      "RHEL 8.4": { "compatible": true, "note": "6.0.11+" }, "RHEL 8.3": { "compatible": true, "note": "6.0.11+" },
+      "SLES 15 SP5": { "compatible": true, "note": "15.0.0+" }, "SLES 15 SP3": { "compatible": true, "note": "6.0.11+" }, "SLES 15 SP2": { "compatible": true, "note": "6.0.11+" },
+      "SLES 15 SP1": { "compatible": true, "note": "6.0.11+" }
+    },
+    "Oracle 23ai": {
+    "RHEL 9.3": { "compatible": true, "note": "2025.2.0.0+" }, "RHEL 9.2": { "compatible": true, "note": "2025.2.0.0+" }, "RHEL 9.1": { "compatible": false }, 
+    "RHEL 9.0": { "compatible": false }, "RHEL 8.10": { "compatible": true, "note": "2025.2.0.0+" }, "RHEL 8.9": { "compatible": true, "note": "2025.2.0.0+" }, 
+    "RHEL 8.8": { "compatible": true, "note": "2025.2.0.0+" }, "RHEL 8.7": { "compatible": true, "note": "2025.2.0.0+" }, "RHEL 8.6": { "compatible": true, "note": "2025.2.0.0+" },
+    "SLES 15 SP5": { "compatible": true, "note": "2025.2.0.0+" }
+  }
   }
 }
 

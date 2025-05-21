@@ -341,7 +341,7 @@ select {
 .matrix-table td:first-child {
   position: sticky;
   left: 0;
-  background: #fff;
+  background: #f0f0f0;
   z-index: 1;
 }
 
@@ -349,7 +349,7 @@ select {
 #thirdPartySolutions-compatibility-matrix td:first-child {
   position: sticky;
   left: 0;
-  background: #fff;
+  background: #f0f0f0;
   z-index: 1;
 }
 
