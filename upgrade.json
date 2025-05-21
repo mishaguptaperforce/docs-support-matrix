@@ -1,47 +1,362 @@
 {
   "products": {
-    "Continuous Data": ["2025.2.0", "2025.1.0", "29.0.0.0", "28.0.0.0"],
-    "Continuous Compliance": ["2025.2.0", "2025.1.0", "28.0.0.0"]
+    "Continuous Data": ["2025.2.0.*", "2025.1.0.*", "29.0.0.*", "28.0.0.*", "27.0.0.*", "26.0.0.*", "25.0.0.*", "24.0.0.*", "23.0.0.*", "22.0.0.*", "21.0.0.*", "20.0.0.*", 
+      "19.0.0.*", "18.0.0.*", "17.0.0.*", "16.0.0.*", "15.0.0.*", "14.0.0.*", "13.0.0.*", "12.0.0.*", "11.0.0.*", "10.0.0.*", "9.0.0.*", "8.0.0.*", "7.0.0.*", "6.0.17.*", 
+      "6.0.16.*", "6.0.15.*", "6.0.14.*", "6.0.13.*", "6.0.12.*", "6.0.11.*", "6.0.10.*", "6.0.9.*", "6.0.8.*", "6.0.7.*", "6.0.6.*", "6.0.5.*", "6.0.4.*", "6.0.3.*", "6.0.2.*", 
+      "6.0.1.*", "6.0.0.*", "5.3.9.0", "5.3.8.1", "5.3.8.0", "5.3.7.1", "5.3.7.0", "5.3.6.0", "5.3.5.0"],
+    "CockroachDB Connector": ["1.3.0", "1.2.0", "1.1.2", "1.1.1", "1.1.0", "1.0.0"],
+    "IBM Db2 Connector": ["4.0.x", "3.1.1", "3.1.0", "3.0.x"],
+    "MongoDB Connector": ["1.3.x", "1.2.x", "1.1.x", "1.0.x"],
+    "Oracle EBS Connector": ["4.1.0", "4.0.2", "3.0.x", "2.0.x", "1.8.x"],
+    "PostgreSQL Connector": ["2.0.x", "1.5.x", "1.4.x", "1.3.0", "1.2.0", "1.1.0", "1.0.x"],
+    "SAP HANA Connector": ["6.0.0", "4.3.1", "4.2.0", "4.1.2", "4.1.1"]
   },
   "upgradePaths": {
     "Continuous Data": {
-      "2025.2.0": {
-        "dateReleased": "2025-03-15",
-        "vdbDowntimeRequired": "No",
-        "canUpgradeTo": "N/A"
-      },
-      "2025.1.0": {
-        "dateReleased": "2025-01-10",
-        "vdbDowntimeRequired": "No",
-        "canUpgradeTo": "2025.2.0.*"
-      },
-      "29.0.0.0": {
-        "dateReleased": "2024-10-05",
-        "vdbDowntimeRequired": "Yes",
-        "canUpgradeTo": "2025.1.0.* - 2025.2.0.*"
-      },
-      "28.0.0.0": {
-        "dateReleased": "2024-05-20",
-        "vdbDowntimeRequired": "Yes",
-        "canUpgradeTo": "29.0.0.0"
+    "2025.2.0.*": {
+      "dateReleased": "2025-03-18",
+      "vdbDowntimeRequired": "N/A",
+      "canUpgradeTo": "2025.2.0.*"
+    },
+    "2025.1.0.*": {
+      "dateReleased": "2025-01-22",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "2025.1.0.* - 2025.2.0.*"
+    },
+    "29.0.0.*": {
+      "dateReleased": "2024-11-20",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "29.0.0.* - 2025.2.0.*"
+    },
+    "28.0.0.*": {
+      "dateReleased": "2024-10-23",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "28.0.0.* - 2025.2.0.*"
+    },
+    "27.0.0.*": {
+      "dateReleased": "2024-09-18",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "27.0.0.* - 2025.2.0.*"
+    },
+    "26.0.0.*": {
+      "dateReleased": "2024-08-21",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "26.0.0.* - 2025.2.0.*"
+    },
+    "25.0.0.*": {
+      "dateReleased": "2024-07-24",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "25.0.0.* - 2025.2.0.*"
+    },
+    "24.0.0.*": {
+      "dateReleased": "2024-06-20",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "24.0.0.* - 2025.2.0.*"
+    },
+    "23.0.0.*": {
+      "dateReleased": "2024-05-22",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "23.0.0.* - 2025.2.0.*"
+    },
+    "22.0.0.*": {
+      "dateReleased": "2024-04-17",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "22.0.0.* - 2025.2.0.*"
+    },
+    "21.0.0.*": {
+      "dateReleased": "2024-03-20",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "21.0.0.* - 2025.2.0.*"
+    },
+    "20.0.0.*": {
+      "dateReleased": "2024-02-21",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "20.0.0.* - 2025.1.0.*"
+    },
+    "19.0.0.*": {
+      "dateReleased": "2024-01-24",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "19.0.0.* - 2025.1.0.*"
+    },
+    "18.0.0.*": {
+      "dateReleased": "2023-12-20",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "18.0.0.* - 29.0.0.*"
+    },
+    "17.0.0.*": {
+      "dateReleased": "2023-11-15",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "17.0.0.* - 29.0.0.*"
+    },
+    "16.0.0.*": {
+      "dateReleased": "2023-10-18",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "16.0.0.* - 28.0.0.*"
+    },
+    "15.0.0.*": {
+      "dateReleased": "2023-09-20",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "15.0.0.* - 27.0.0.*"
+    },
+    "14.0.0.*": {
+      "dateReleased": "2023-08-23",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "14.0.0.* - 26.0.0.*"
+    },
+    "13.0.0.*": {
+      "dateReleased": "2023-07-19",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "13.0.0.* - 25.0.0.*"
+    },
+    "12.0.0.*": {
+      "dateReleased": "2023-06-21",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "12.0.0.* - 24.0.0.*"
+    },
+    "11.0.0.*": {
+      "dateReleased": "2023-05-24",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "11.0.0.* - 23.0.0.*"
+    },
+    "10.0.0.*": {
+      "dateReleased": "2023-04-13",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "10.0.0.* - 22.0.0.*"
+    },
+    "9.0.0.*": {
+      "dateReleased": "2023-03-13",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "9.0.0.* - 21.0.0.*"
+    },
+    "8.0.0.*": {
+      "dateReleased": "2023-02-13",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "8.0.0.* - 20.0.0.*"
+    },
+    "7.0.0.*": {
+      "dateReleased": "2023-01-12",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "7.0.0.* - 19.0.0.*"
+    },
+    "6.0.7.*": {
+      "dateReleased": "2021-03-15",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "6.0.7.* - 6.0.13.*"
+    },
+    "6.0.6.*": {
+      "dateReleased": "2021-01-21",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "6.0.6.* - 6.0.12.*"
+    },
+    "6.0.5.*": {
+      "dateReleased": "2020-11-05",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "6.0.5.* - 6.0.11.*"
+    },
+    "6.0.4.*": {
+      "dateReleased": "2020-09-10",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "6.0.4.* - 6.0.7.*"
+    },
+    "6.0.3.*": {
+      "dateReleased": "2020-07-31",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "6.0.3.* - 6.0.7.*"
+    },
+    "6.0.2.*": {
+      "dateReleased": "2020-05-07",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "6.0.2.* - 6.0.7.*"
+    },
+    "6.0.1.*": {
+      "dateReleased": "2020-03-19",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "6.0.1.* - 6.0.7.*"
+    },
+    "6.0.0.*": {
+      "dateReleased": "2020-01-22",
+      "vdbDowntimeRequired": "Optional",
+      "canUpgradeTo": "6.0.0.* - 6.0.7.*"
+    },
+    "5.3.9.0": {
+      "dateReleased": "2020-04-14",
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "6.0.2.0 - 6.0.6.1"
+    },
+    "5.3.8.1": {
+      "dateReleased": "2020-02-26",
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "6.0.1.0 - 6.0.6.1"
+    },
+    "5.3.8.0": {
+      "dateReleased": "2020-02-10",
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "6.0.1.0 - 6.0.6.1"
+    },
+    "5.3.7.1": {
+      "dateReleased": "2020-01-13",
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "6.0.1.0 - 6.0.6.1"
+    },
+    "5.3.7.0": {
+      "dateReleased": "2019-12-09",
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "6.0.1.0 - 6.0.6.1"
+    },
+    "5.3.6.0": {
+      "dateReleased": "2019-10-10",
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "6.0.0.0 - 6.0.6.1"
+    },
+    "5.3.5.0": {
+      "dateReleased": "2019-08-08",
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "Contact Support"
+    }
+  },
+    "CockroachDB Connector": {
+    "1.3.0": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "2025.1.0"
+    },
+    "1.2.0": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "2025.1.0"
+    },
+    "1.1.2": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "2025.1.0"
+    },
+    "1.1.1": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "2025.1.0"
+    },
+    "1.1.0": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "2025.1.0"
+    },
+    "1.0.0": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "2025.1.0"
+    }
+  },
+    "IBM Db2 Connector": {
+    "4.0.x": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "latest"
+    },
+    "3.1.1": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "4.0.0"
+    },
+    "3.1.0": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "3.1.1"
+    },
+    "3.0.x": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "3.1.0"
+    }
+    },
+    "MongoDB Connector": {
+    "1.3.x": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "1.4.0"
+    },
+    "1.2.x": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "1.4.0"
+    },
+    "1.1.x": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "1.4.0"
+    },
+    "1.0.x": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "1.4.0"
       }
     },
-    "Continuous Compliance": {
-      "2025.2.0": {
-        "dateReleased": "2025-03-15",
-        "vdbDowntimeRequired": "No",
-        "canUpgradeTo": "N/A"
-      },
-      "2025.1.0": {
-        "dateReleased": "2025-01-05",
-        "vdbDowntimeRequired": "No",
-        "canUpgradeTo": "2025.2.0.*"
-      },
-      "28.0.0.0": {
-        "dateReleased": "2024-04-18",
-        "vdbDowntimeRequired": "Yes",
-        "canUpgradeTo": "2025.1.0.* - 2025.2.0.*"
+    "Oracle EBS Connector": {
+    "4.1.0": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "latest"
+    },
+    "4.0.2": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "4.1.0"
+    },
+    "3.0.x": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "4.0.2"
+    },
+    "2.0.x": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "3.0.x"
+    },
+    "1.8.x": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "2.0.0"
       }
+    },
+    "PostgreSQL Connector": {
+    "2.0.x": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "latest"
+    },
+    "1.5.x": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "2.0.0"
+    },
+    "1.4.x": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "1.5.1"
+    },
+    "1.3.0": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "1.4.4"
+    },
+    "1.2.0": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "1.3.0"
+    },
+    "1.1.0": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "1.2.0"
+    },
+    "1.0.x": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "1.1.0"
+      }
+    },
+    "SAP HANA Connector": {
+    "6.0.0": {
+      "vdbDowntimeRequired": "No",
+      "canUpgradeTo": "6.3.4"
+    },
+    "4.3.2": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "N/A"
+    },
+    "4.3.1": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "4.3.2"
+    },
+    "4.3.0": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "4.3.1"
+    },
+    "4.2.0": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "4.3.0"
+    },
+    "4.1.2": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "4.2.0"
+    },
+    "4.1.1": {
+      "vdbDowntimeRequired": "Yes",
+      "canUpgradeTo": "4.1.2"
+    }
     }
   }
 }

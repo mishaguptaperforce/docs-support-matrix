@@ -15,95 +15,590 @@
   },
   "data": {
     "Amazon Web Services (AWS)": [
-      {
-        "instance": "m5.large",
-        "supportLevel": "Supported",
-        "delphixVersion": "6.0.12"
-      },
-      {
-        "instance": "c5.xlarge",
-        "supportLevel": "Limited Support",
-        "delphixVersion": "6.0.11"
-      }
-    ],
+  {
+    "instance": "r4.large",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "5.2.5.0+"
+  },
+  {
+    "instance": "r4.xlarge",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "5.2.5.0+"
+  },
+  {
+    "instance": "r4.2xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.2.5.0+"
+  },
+  {
+    "instance": "r4.4xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.2.5.0+"
+  },
+  {
+    "instance": "r4.8xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.2.5.0+"
+  },
+  {
+    "instance": "r4.32xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.2.5.0+"
+  },
+  {
+    "instance": "r4.64xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.2.5.0+"
+  },
+  {
+    "instance": "r5n.large",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "r5n.xlarge",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "r5n.2xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "r5n.4xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "r5n.8xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "r5n.12xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "r5n.16xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "r5n.24xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "r5b.large",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "r5b.xlarge",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "r5b.2xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "r5b.4xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "r5b.8xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "r5b.12xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "r5b.16xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "r5b.24xlarge",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Anything else",
+    "supportLevel": "Unsupported",
+    "delphixVersion": "N/A"
+  }
+],
     "Microsoft Azure": [
-      {
-        "instance": "Standard_D2s_v3",
-        "supportLevel": "Supported",
-        "delphixVersion": "6.0.10"
-      },
-      {
-        "instance": "Standard_E4s_v3",
-        "supportLevel": "Not Supported",
-        "delphixVersion": "N/A"
-      }
-    ],
-    "Oracle Cloud Infrastructure (OCI)": [
-      {
-        "instance": "VM.Standard2.2",
-        "supportLevel": "Supported",
-        "delphixVersion": "6.0.9"
-      }
-    ],
+  {
+    "instance": "Standard_DS1_v2",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_DS2_v2",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_DS3_v2",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_DS4_v2",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_DS5_v2",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_D2s_v3",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_D4s_v3",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_D8s_v3",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_D16s_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_D32s_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_D48s_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_D64s_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "5.3.0.0+"
+  },
+  {
+    "instance": "Standard_E2s_v3",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "Standard_E4s_v3",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "Standard_E8s_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "Standard_E16s_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "Standard_E20s_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "Standard_E32s_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "Standard_E48s_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "Standard_E64s_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "Standard_E64is_v3",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.2.0+"
+  },
+  {
+    "instance": "Standard_E2_v4",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E4_v4",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E8_v4",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E16_v4",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E20_v4",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E32_v4",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E48_v4",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E64_v4",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E2s_v5",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E4s_v5",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E8s_v5",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E16s_v5",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E20s_v5",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E32s_v5",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E48s_v5",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E64s_v5",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E96s_v5",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Standard_E104is_v5",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Anything else",
+    "supportLevel": "Unsupported",
+    "delphixVersion": "N/A"
+  }
+],
     "Google Cloud Platform (GCP)": [
-      {
-        "instance": "m5.large",
-        "supportLevel": "Supported",
-        "delphixVersion": "6.0.12"
-      },
-      {
-        "instance": "c5.xlarge",
-        "supportLevel": "Limited Support",
-        "delphixVersion": "6.0.11"
-      }
-    ],
+  {
+    "instance": "n2-standard-2",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.1.0+"
+  },
+  {
+    "instance": "n2-standard-4",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-standard-8",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-standard-16",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-standard-32",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-standard-48",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-standard-64",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-standard-80",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-standard-96",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-standard-128",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-highmem-2",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-highmem-4",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-highmem-8",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-highmem-16",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-highmem-32",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-highmem-48",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-highmem-64",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-highmem-80",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-highmem-96",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "n2-highmem-128",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "Anything else",
+    "supportLevel": "Unsupported",
+    "delphixVersion": "N/A"
+  }
+],
+    "Oracle Cloud Infrastructure (OCI)": [
+  {
+    "instance": "VM.Standard2.1",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.4.0+"
+  },
+  {
+    "instance": "VM.Standard2.2",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.4.0+"
+  },
+  {
+    "instance": "VM.Standard2.4",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.4.0+"
+  },
+  {
+    "instance": "VM.Standard2.8",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.4.0+"
+  },
+  {
+    "instance": "VM.Standard2.16",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.4.0+"
+  },
+  {
+    "instance": "VM.Standard2.24",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.4.0+"
+  },
+  {
+    "instance": "VM.Standard.E4.Flex",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.8.0+"
+  },
+  {
+    "instance": "VM.Standard.3.Flex",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.16.0+"
+  },
+  {
+    "instance": "Anything else",
+    "supportLevel": "Unsupported",
+    "delphixVersion": "N/A"
+  }
+],
     "IBM Cloud": [
-      {
-        "instance": "m5.large",
-        "supportLevel": "Supported",
-        "delphixVersion": "6.0.12"
-      },
-      {
-        "instance": "c5.xlarge",
-        "supportLevel": "Limited Support",
-        "delphixVersion": "6.0.11"
-      }
-    ],
+  {
+    "instance": "mx2-2x16",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.5.0+"
+  },
+  {
+    "instance": "mx2-4x32",
+    "supportLevel": "Family type is supported but below the recommended size",
+    "delphixVersion": "6.0.5.0+"
+  },
+  {
+    "instance": "mx2-8x64",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.5.0+"
+  },
+  {
+    "instance": "mx2-16x128",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.5.0+"
+  },
+  {
+    "instance": "mx2-32x256",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.5.0+"
+  },
+  {
+    "instance": "mx2-48x384",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.5.0+"
+  },
+  {
+    "instance": "mx2-64x512",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.5.0+"
+  },
+  {
+    "instance": "mx2-96x768",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.5.0+"
+  },
+  {
+    "instance": "mx2-128x1024",
+    "supportLevel": "Supported",
+    "delphixVersion": "6.0.5.0+"
+  },
+  {
+    "instance": "Anything else",
+    "supportLevel": "Unsupported",
+    "delphixVersion": "N/A"
+  }
+],
     "VMware ESX": [
-      {
-        "instance": "m5.large",
-        "supportLevel": "Supported",
-        "delphixVersion": "6.0.12"
-      },
-      {
-        "instance": "c5.xlarge",
-        "supportLevel": "Limited Support",
-        "delphixVersion": "6.0.11"
-      }
-    ],
+  {
+    "instance": "ESXi 6.0",
+    "supportLevel": "If a minor release version is listed as supported, then all patch releases applicable to that minor release are certified.",
+    "delphixVersion": "5.0.0.0+"
+  },
+  {
+    "instance": "ESXi 6.5 U1",
+    "supportLevel": "",
+    "delphixVersion": "5.3.6.0+"
+  },
+  {
+    "instance": "ESXi 6.5 U3",
+    "supportLevel": "",
+    "delphixVersion": "6.0.1.0+"
+  },
+  {
+    "instance": "ESXi 6.7 U3",
+    "supportLevel": "",
+    "delphixVersion": "6.0.1.0+"
+  },
+  {
+    "instance": "ESXi 7.0",
+    "supportLevel": "",
+    "delphixVersion": "6.0.5.0+"
+  },
+  {
+    "instance": "ESXi 7.0 U1",
+    "supportLevel": "",
+    "delphixVersion": "6.0.6.0+"
+  },
+  {
+    "instance": "ESXi 7.0 U2",
+    "supportLevel": "",
+    "delphixVersion": "6.0.9.0+"
+  },
+  {
+    "instance": "ESXi 7.0 U3c",
+    "supportLevel": "ESXi 7.0 U3, U3a and U3b are not recommended due to known VMware issues. https://kb.vmware.com/s/article/86398",
+    "delphixVersion": "6.0.13.0+"
+  }
+],
     "Microsoft Hyper-V": [
-      {
-        "instance": "m5.large",
-        "supportLevel": "Supported",
-        "delphixVersion": "6.0.12"
-      },
-      {
-        "instance": "c5.xlarge",
-        "supportLevel": "Limited Support",
-        "delphixVersion": "6.0.11"
-      }
-    ],
+  {
+    "instance": "10.0 and later",
+    "supportLevel": "Virtual Machine: Gen 1 only is supported",
+    "delphixVersion": "6.0.3.0+"
+  }
+],
     "KVM": [
-      {
-        "instance": "m5.large",
-        "supportLevel": "Supported",
-        "delphixVersion": "6.0.12"
-      },
-      {
-        "instance": "c5.xlarge",
-        "supportLevel": "Limited Support",
-        "delphixVersion": "6.0.11"
-      }
-    ]
+  {
+    "instance": "",
+    "supportLevel": "General support of all KVM versions/variations as long as they support the Ubuntu 18.04/20.04 kernel (22.04 in future) guest OS",
+    "delphixVersion": "6.0.4.0+"
+  }
+]
   }
 }

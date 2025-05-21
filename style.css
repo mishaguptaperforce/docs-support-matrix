@@ -337,6 +337,22 @@ select {
   word-wrap: break-word;
 }
 
+
+.matrix-table td:first-child {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 1;
+}
+
+
+#thirdPartySolutions-compatibility-matrix td:first-child {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 1;
+}
+
 /* Table Header Styling */
 .matrix-table thead th {
   position: sticky;
