@@ -25,7 +25,7 @@
   <!-- Top Navbar -->
 <nav class="top-navbar">
   <div class="navbar-left">
-    <span class="navbar-logo">Interop Matrix</span>
+    <a class="navbar-logo" href="#"><img src="images/logo-delphix-white.png" alt="Interop Matrix Logo" height="40"></a><span class="brand-text">Compatibility Matrix</span>
   </div>
   <div class="navbar-right">
     <a href="https://www.perforce.com/">Home</a>
@@ -38,9 +38,9 @@
   
   <!-- Tabs Container -->
   <div class="tabs-container">
-    <div class="tab" id="tab-interoperability" onclick="showPage('interoperability')">Delphix Products Compatibility</div>
-    <div class="tab" id="tab-thirdPartySolutions" onclick="showPage('thirdPartySolutions')">Third Party Solutions Compatibility </div>
-    <div class="tab" id="tab-hardware" onclick="showPage('hardware')">Hardware Compatibility </div>
+    <div class="tab" id="tab-interoperability" onclick="showPage('interoperability')">Delphix Products</div>
+    <div class="tab" id="tab-thirdPartySolutions" onclick="showPage('thirdPartySolutions')">Third Party Solutions</div>
+    <div class="tab" id="tab-hardware" onclick="showPage('hardware')">Hardware </div>
     <div class="tab" id="tab-upgrade" onclick="showPage('upgrade')">Upgrade Path </div>
 
   </div>
@@ -54,33 +54,31 @@
     <div class="main-container">
       <!-- Sidenav -->
       <div id="sidenav">
-        <h3>Compare</h3>
-
-        <h4><b>Select Products</b></h4><hr>
+        
         <div class ="product-container">
-          <label for="product1-category">Product 1:</label>
+          <label for="product1-category">Select a product:</label>
           <select id="product1-category">
             <option value="">--Select--</option>
             <!-- Dynamically filled options for OS -->
           </select>
 
-          <label for="product1-version">Version:</label>
+          <label for="product1-version">Select a version:</label>
           <select id="product1-version">
             <option value="" disabled selected>--Select--</option>
             <!-- Dynamically filled options for OS version -->
           </select>
         </div>
 
-        <h3>With</h3>
+        <h3>Vs</h3>
 
         <div class ="product-container">
-          <label for="product2-category">Product 2:</label>
+          <label for="product2-category">Select a product:</label>
           <select id="product2-category">
             <option value="">--Select--</option>
             <!-- Dynamically filled options for database -->
           </select>
 
-          <label for="product2-version">Version:</label>
+          <label for="product2-version">Select a version:</label>
           <select id="product2-version">
             <option value="">--Select--</option>
             <!-- Dynamically filled options for database version -->
@@ -94,15 +92,38 @@
         </div>
       </div>
 
+      <div id="tab1-intro" class="tab-intro">
+        <p>
+          This tab lets you check interoperability between Delphix products by selecting products and versions to see which combinations are compatible.
+        </p>
+      </div>
+
+
       <!-- Main Content (Right side) -->
-      <div id="main-content">
+      <div id="main-content" style="display: none;">
+        
 
 
         <h1>Compatibility Results</h1>
         <div class="additional-actions">
           <button id="addToFav" class="action-button"><i class="fas fa-star"></i> Save to Favorites</button>
-          <button id="export-csv-tab1" class="action-button" title="Export to CSV"> Export Results</button>
-          <button id="collapseExpandAll-tab1" class="action-button">Collapse All</button>
+          <button id="export-csv-tab1" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i> Export Results</button>
+          <button id="collapseExpandAll-tab1" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i> Collapse All</button>
+        </div>
+
+        <div class="results-legend">
+          <div class="legend-item">
+            <i class="fa-solid fa-circle-check icon-compatible"></i>
+            <span>Compatible</span>
+          </div>
+          <div class="legend-item">
+            <i class="fa-solid fa-circle-xmark icon-incompatible"></i>
+            <span>Incompatible</span>
+          </div>
+          <div class="legend-item">
+            <i class="fa-solid fa-minus icon-na"></i>
+            <span>Not Applicable</span>
+          </div>
         </div>
 
         <!-- Export buttons with icons -->
@@ -221,16 +242,38 @@
         </div>
       </div>
 
+      <div id="tab2-intro" class="tab-intro">
+        <p>
+          This tab lets you check compatibility between third-party solutions by selecting their categories, products, and versions. You can compare multiple solutions to see which combinations are supported.
+        </p>
+      </div>
+
 
 
       <!-- Main Content (Right side) -->
-      <div id="thirdPartySolutions-main-content">
+      <div id="thirdPartySolutions-main-content" style="display: none;">
         
         <h1>Compatibility Results</h1>
         <div class="additional-actions">
           <button id="addToFav" class="action-button"><i class="fas fa-star"></i> Save to Favorites</button>
-          <button id="export-csv-tab2" class="action-button" title="Export to CSV">Export Results</button>
-          <button id="collapseExpandAll-tab2" class="action-button">Collapse All</button>
+          <button id="export-csv-tab2" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i> Export Results</button>
+          <button id="collapseExpandAll-tab2" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i> Collapse All</button>
+        </div>
+
+
+        <div class="results-legend">
+          <div class="legend-item">
+            <i class="fa-solid fa-circle-check icon-compatible"></i>
+            <span>Compatible</span>
+          </div>
+          <div class="legend-item">
+            <i class="fa-solid fa-circle-xmark icon-incompatible"></i>
+            <span>Incompatible</span>
+          </div>
+          <div class="legend-item">
+            <i class="fa-solid fa-minus icon-na"></i>
+            <span>Not Applicable</span>
+          </div>
         </div>
         
 <!--
@@ -297,18 +340,20 @@
       </div>
     </div>
 
-    <div id="hardware-main-content">
+    <div id="tab3-intro" class="tab-intro">
+        <p>
+          This tab lets you check hardware compatibility by selecting hardware categories and models. You can view supported configurations and versions to ensure your environment meets requirements.
+        </p>
+      </div>
+
+    <div id="hardware-main-content" style="display: none;">
       <h1>Compatibility Results</h1>
       <div class="additional-actions">
         <button id="addToFav" class="action-button">
           <i class="fas fa-star"></i> Save to Favorites
         </button>
-        <button id="export-csv-tab3" class="action-button" title="Export to CSV">
-          Export Results
-        </button>
-        <button id="collapseExpandAll-tab3" class="action-button">
-          Collapse All
-        </button>
+        <button id="export-csv-tab3" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i> Export Results</button>
+        <button id="collapseExpandAll-tab3" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i> Collapse All</button>
       </div>
       <br />
       <div id="hardware-result"></div>
@@ -345,13 +390,19 @@
       </div>
     </div>
 
+    <div id="tab4-intro" class="tab-intro">
+        <p>
+          This tab lets you explore upgrade paths by selecting a product and target versions. You can view supported upgrade combinations and any special notes or requirements.
+        </p>
+      </div>
+
     <!-- Main Content -->
-    <div id="upgrade-main-content">
+    <div id="upgrade-main-content" style="display: none;">
       <h1>Upgrade Path Results</h1>
       <div class="additional-actions">
           <button id="addToFav" class="action-button"><i class="fas fa-star"></i> Save to Favorites</button>
-          <button id="export-csv-tab4" class="action-button" title="Export to CSV">Export Results</button>
-          <button id="collapseExpandAll-tab4" class="action-button">Collapse All</button>
+          <button id="export-csv-tab4" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i> Export Results</button>
+          <button id="collapseExpandAll-tab4" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i> Collapse All</button>
         </div><br>
       <div id="upgrade-result"></div>
 

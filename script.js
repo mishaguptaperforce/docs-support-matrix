@@ -73,6 +73,7 @@ function getElement(id, page) {
 
 
 function resetFieldsTab1() {
+  document.getElementById('tab1-intro').style.display = 'block';
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
 
   // Clear all dropdowns
@@ -85,6 +86,7 @@ function resetFieldsTab1() {
         el.innerHTML = '';
       }
     }
+    document.getElementById('main-content').style.display = 'none';
   });
 
   // Fetch and repopulate categories from JSON
@@ -127,11 +129,16 @@ function resetFieldsTab1() {
 
   getElement('result', activePage).innerHTML = '';
   getElement('compatibility-matrix', activePage).innerHTML = '';
+
 }
 
 
 
 function resetFieldsTab2() {
+  document.getElementById('tab2-intro').style.display = 'block';
+  // Hide the main results container before clearing dropdowns
+  document.getElementById('thirdPartySolutions-main-content').style.display = 'none';
+
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
 
   // Clear all dropdowns
@@ -147,6 +154,7 @@ function resetFieldsTab2() {
         el.innerHTML = '';
       }
     }
+    
   });
 
   // Fetch and repopulate categories from 3rd-party-tab.json
@@ -228,6 +236,8 @@ function populateDropdown(el, options) {
 */
 
 function resetFieldsTab3() {
+  document.getElementById('tab3-intro').style.display = 'block';
+  document.getElementById('hardware-main-content').style.display = 'none';
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
 
   // Clear all dropdowns
@@ -366,9 +376,12 @@ function resetFieldsTab3() {
   // Clear result and table sections
   getElement('hardware-result', activePage).innerHTML = '';
   getElement('hardware-table-wrapper', activePage).innerHTML = '';
+  
 }
 
 function resetFieldsTab4() {
+  document.getElementById('tab4-intro').style.display = 'block';
+  document.getElementById('upgrade-main-content').style.display = 'none';
   // Reset the dropdowns to the default option '--Select--'
   ['upgrade-product1-category', 'upgrade-product1-version'].forEach(id => {
     const dropdown = document.getElementById(id);
@@ -790,6 +803,8 @@ function populateDropdownsTab4(data) {
 
 
 function checkCompatibilityTab1() {
+  const intro = document.getElementById('tab1-intro');
+if (intro) intro.style.display = 'none';
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
   const data = dataCache[activePage];
   if (!data) return console.error("No data loaded for", activePage);
@@ -828,6 +843,7 @@ function checkCompatibilityTab1() {
 
     updateMatrix(data, p1, v1, p2, v2, thead, tbody, ` ${p1} vs ${p2}`);
   });
+  document.getElementById('main-content').style.display = 'block';
 }
 
 
@@ -835,6 +851,8 @@ function checkCompatibilityTab1() {
 
 
 function checkCompatibilityTab2() {
+  document.getElementById('tab2-intro').style.display = 'none';
+
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
   const data = dataCache[activePage];
   if (!data) return console.error("No data loaded for", activePage);
@@ -905,6 +923,7 @@ if (selectedSolutions2.includes('__all__')) {
       ` ${solution1} vs ${solution2}`
     );
   });
+  document.getElementById('thirdPartySolutions-main-content').style.display = 'block';
 }
 
 // :white_check_mark: Place this at the top of your script.js (if not already)
@@ -913,6 +932,8 @@ const choicesInstances = {};
 
 
 function checkCompatibilityTab3() {
+  const intro = document.getElementById('tab3-intro');
+if (intro) intro.style.display = 'none';
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
   const data = dataCache[activePage];
   if (!data) return console.error("No data loaded for", activePage);
@@ -985,6 +1006,10 @@ function checkCompatibilityTab3() {
 
     // Style the header cell
     firstHeaderCell.style.textAlign = 'left'; // Left-align text and button
+    firstHeaderCell.style.position = 'sticky';
+    firstHeaderCell.style.zIndex = '20';
+    firstHeaderCell.style.top = '0';           // stick to the top
+    firstHeaderCell.style.left = '0'; 
     firstHeaderCell.style.backgroundColor = '#1d428a';
     firstHeaderCell.style.paddingLeft = '10px'; // Optional: Add padding for better alignment
 
@@ -1015,6 +1040,7 @@ function checkCompatibilityTab3() {
     const secondHeaderRow = table.querySelector('thead').rows[1]; // Get the second header row
     secondHeaderRow.style.display = ''; // Make second header row visible
   });
+  document.getElementById('hardware-main-content').style.display = 'block';
 }
 
 
@@ -1026,7 +1052,10 @@ function checkCompatibilityTab3() {
 
 
 
+
 function checkCompatibilityTab4() {
+  const intro = document.getElementById('tab4-intro');
+if (intro) intro.style.display = 'none';
   const productDropdown = document.getElementById('upgrade-product1-category');
   const versionDropdown = document.getElementById('upgrade-product1-version');
   const tableWrapper = document.getElementById('upgrade-table-wrapper');
@@ -1062,6 +1091,7 @@ function checkCompatibilityTab4() {
   const firstHeaderCell = firstHeaderRow.insertCell();
   firstHeaderCell.colSpan = 4; // Assuming you have 4 columns in your table
 
+
   // Create the toggle button and move it to the left of the text
   const toggleButton = document.createElement('button');
   toggleButton.classList.add('toggle-btn');
@@ -1086,7 +1116,7 @@ function checkCompatibilityTab4() {
   
   // Set the product name text
   const productNameText = document.createElement('span');
-  productNameText.textContent = ` Upgrade Path Table for ${selectedProduct}`;
+  productNameText.textContent = ` Upgrade Path for ${selectedProduct}`;
   productNameText.style.fontSize = '18px';
   productNameText.style.fontWeight = 'bold';
   productNameText.style.color = 'white';
@@ -1138,6 +1168,7 @@ function checkCompatibilityTab4() {
   tbody.style.display = 'table-row-group'; // Make table body visible
   const secondHeaderRow = table.querySelector('thead').rows[1]; // Get the second header row
   secondHeaderRow.style.display = ''; // Make second header row visible
+  document.getElementById('upgrade-main-content').style.display = 'block';
 }
 
 
@@ -1148,7 +1179,6 @@ function checkCompatibilityTab4() {
 
 
 function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
-  // Build the list of versions for each axis
   const osVers = osVer 
     ? [osVer] 
     : data.y_axis.versions[os] || [];
@@ -1156,68 +1186,111 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
     ? [dbVer] 
     : data.x_axis.versions[db] || [];
 
-  // Header row with toggle button
+  thead.innerHTML = '';
+
+  // 1) Header1: toggle heading + OS name
   const header1 = document.createElement('tr');
   const th = document.createElement('th');
   th.colSpan = dbVers.length + 1;
-  th.innerHTML = `<button class="toggle-btn">🔽</button>&nbsp; ${heading}`;
-  th.style.cssText = 'text-align:left;background:#1d428a;color:white;position:relative;';
+  th.innerHTML = `
+    <button class="toggle-btn">🔽</button>&nbsp; ${heading} &nbsp;&nbsp;
+    <span style="font-weight: normal; font-style: italic; font-size: 0.9em;"></span>
+  `;
+  th.style.cssText = 'text-align:left;background:#1d428a;color:white;';
+  th.style.position = 'sticky';
+  th.style.top = '0';             // stick to very top
+  th.style.zIndex = '30';         // higher z-index
   header1.appendChild(th);
   thead.appendChild(header1);
 
-  // Second header explaining icons + column headers
+  // 2) Label row: legend in first cell, DB name spanning rest
+  const labelRow = document.createElement('tr');
+
+  // Legend in first cell
+  const legendCell = document.createElement('th');
+  legendCell.style.textAlign = 'center';
+  legendCell.style.top = '40px'; 
+  legendCell.style.position = 'sticky';
+  legendCell.style.backgroundColor = '#f0f0f0'; 
+  legendCell.style.left = '0';
+  legendCell.style.zIndex = '25';
+  legendCell.style.lineHeight = '1.5';
+  legendCell.innerHTML = ``;
+  labelRow.appendChild(legendCell);
+
+  // DB name spanning all other columns
+  const dbCell = document.createElement('th');
+  dbCell.colSpan = dbVers.length;
+  dbCell.textContent = db;
+  dbCell.style.fontWeight = 'bold';
+  dbCell.style.textAlign = 'left';
+  dbCell.style.backgroundColor = '#f0f0f0';
+  dbCell.style.position = 'sticky';
+dbCell.style.top = '40px';
+dbCell.style.zIndex = '20'; // Less than legend cell
+  labelRow.appendChild(dbCell);
+
+  thead.appendChild(labelRow);
+
+  // 3) DB versions row (header2)
   const header2 = document.createElement('tr');
   header2.innerHTML = `
-    <th>
-    <div style="text-align:center; line-height: 1.5;">
-      ✅ = Compatible<br>
-      ❌ = Incompatible<br>
-      <span style="color:#888;">&ndash;</span> = Not Applicable<br>
-    </div>
-</th>
-    ${dbVers.map(v => `<th>${db} ${v}</th>`).join('')}
+    <th>${os}</th>
+    ${dbVers.map(v => `<th>${v}</th>`).join('')}
   `;
+  // Make each th in header2 sticky with top offset
+header2.querySelectorAll('th').forEach((th, index) => {
+  th.style.position = 'sticky';
+  th.style.top = '80px';          // Adjust '70px' to the combined height of header1 + labelRow
+  th.style.backgroundColor = '#f0f0f0'; // Or whatever bg you want
+  th.style.zIndex = index === 0 ? 20 : 15;         // Higher than tbody cells, less than header1 if needed
+
+  // For the first <th> (os), also fix horizontally (if needed)
+  if(index === 0) {
+    th.style.left = '0';
+           // Higher z-index because it sticks both top and left
+  }
+});
   thead.appendChild(header2);
 
-  // Build each data row
+  // Build each data row as before
   const rows = [];
   osVers.forEach(osv => {
     const row = document.createElement('tr');
     const cells = dbVers.map(dbv => {
-      const key1 = `${os} ${osv}`.trim();  // e.g. "Continuous Data 6.0.0.0"
-      const key2 = `${db} ${dbv}`.trim();  // e.g. "Continuous Compliance 6.0.1.0"
+      const key1 = `${os} ${osv}`.trim();
+      const key2 = `${db} ${dbv}`.trim();
 
-      // 1) Try OS→DB
       let compat = data.compatibility[key1]?.[db]?.[dbv];
-
-      // 2) If no data, fallback DB→OS
       if (!compat) {
         compat = data.compatibility[key2]?.[os]?.[osv];
       }
-
       if (!compat) {
-        return `<td><span style="color: #888; font-size: 1.2em;">&ndash;</span><br><small></small>
-</td>`;
+        return `<td><i class="fa-solid fa-minus"></i><br><small></small></td>`;
       }
 
-      const icon = compat.compatible ? '✅' : '❌';
+      const icon = compat.compatible ? 
+        '<i class="fa-solid fa-circle-check" style="color: green; font-size: 20px;"></i>' : 
+        '<i class="fa-solid fa-circle-xmark" style="color: #ED1C24; font-size: 20px;"></i>';
       const color = compat.compatible ? 'green' : 'red';
       return `<td><span style="color:${color}">${icon}</span><br><small>${compat.note||''}</small></td>`;
     }).join('');
 
-    row.innerHTML = ` <td> ${os} ${osv}</td>${cells}`;
+    row.innerHTML = `<td>${osv}</td>${cells}`;
     tbody.appendChild(row);
     rows.push(row);
   });
 
-  // Wire up collapse/expand
+  // Toggle button
   th.querySelector('.toggle-btn').onclick = () => {
     const hidden = rows[0].style.display !== 'none';
     rows.forEach(r => r.style.display = hidden ? 'none' : '');
     header2.style.display = hidden ? 'none' : '';
+    labelRow.style.display = hidden ? 'none' : '';
     th.querySelector('.toggle-btn').textContent = hidden ? '▶️' : '🔽';
   };
 }
+
 
 
 function updateMatrixTab2(data, os, osVer, db, dbVer, thead, tbody, heading) {
@@ -1234,20 +1307,43 @@ function updateMatrixTab2(data, os, osVer, db, dbVer, thead, tbody, heading) {
   header1.appendChild(th);
   thead.appendChild(header1);
 
+  // 2) Label row: legend in first cell, DB name spanning rest
+  const labelRow = document.createElement('tr');
+
+  // Legend in first cell
+  const legendCell = document.createElement('th');
+  legendCell.style.textAlign = 'center';
+  legendCell.style.top = '40px'; 
+  legendCell.style.position = 'sticky';
+  legendCell.style.backgroundColor = '#f0f0f0'; 
+  legendCell.style.left = '0';
+  legendCell.style.zIndex = '25';
+  legendCell.style.lineHeight = '1.5';
+  legendCell.innerHTML = ``;
+  labelRow.appendChild(legendCell);
+
+  // DB name spanning all other columns
+  const dbCell = document.createElement('th');
+  dbCell.colSpan = dbVers.length;
+  dbCell.textContent = db;
+  dbCell.style.fontWeight = 'bold';
+  dbCell.style.textAlign = 'left';
+  dbCell.style.backgroundColor = '#f0f0f0';
+  dbCell.style.position = 'sticky';
+  dbCell.style.top = '40px';
+  dbCell.style.zIndex = '20'; // Less than legend cell
+  labelRow.appendChild(dbCell);
+
+  thead.appendChild(labelRow);
+
   const header2 = document.createElement('tr');
-  header2.innerHTML = `<th>
-    <div style="text-align:center; line-height: 1.5;">
-      ✅ = Compatible<br>
-      ❌ = Incompatible<br>
-      <span style="color:#888;">&ndash;</span> = Not Applicable
-    </div>
-  </th>` + dbVers.map(v => `<th>${db} ${v}</th>`).join('');
+  header2.innerHTML = `<th>${os}</th>` + dbVers.map(v => `<th>${v}</th>`).join('');
   thead.appendChild(header2);
 
   const rows = [];
   osVers.forEach(osv => {
     const row = document.createElement('tr');
-    row.innerHTML = ` <td>${os} ${osv}</td>` + dbVers.map(dbv => {
+    row.innerHTML = ` <td>${osv}</td>` + dbVers.map(dbv => {
       console.log('Checking compatibility for:', `${os} ${osv}`, 'vs', `${db} ${dbv}`);
 console.log('Data entry:', data.compatibility[`${os} ${osv}`]);
 console.log('Full compatibility check:', data.compatibility[`${os} ${osv}`]?.[`${db} ${dbv}`]);
@@ -1267,9 +1363,9 @@ if (!compat) {
 // final
 console.log('  ↳ result:', compat);
 
-      if (!compat) return `<td><span style="color: #888; font-size: 1.2em;">&ndash;</span></td>`;
+      if (!compat) return `<td><i class="fa-solid fa-minus"></i></td>`;
 
-      const icon = compat.compatible ? '✅' : '❌';
+      const icon = compat.compatible ? '<i class="fa-solid fa-circle-check" style="color: green; font-size: 20px;"></i>' : '<i class="fa-solid fa-circle-xmark" style="color: #ED1C24; font-size: 20px;""></i>';
       const color = compat.compatible ? 'green' : 'red';
       return `<td><span style="color:${color}">${icon}</span><br><small>${compat.note || ''}</small></td>`;
     }).join('');
@@ -1314,6 +1410,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     };
   });
 });
+
 
 document.getElementById('collapseExpandAll-tab1').addEventListener('click', function() {
   // Get all tables on the page (you can customize the selector if needed)
