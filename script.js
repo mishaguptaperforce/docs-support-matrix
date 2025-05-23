@@ -17,7 +17,6 @@ async function preloadDataTab1() {
   }
 }
 
-
 async function preloadDataTab2() {
   try {
     // Append cache-busting query
@@ -58,10 +57,6 @@ async function preloadDataTab4() {
   }
 }
 
-
-
-
-
 function showPage(page) {
   document.querySelectorAll('.page-content').forEach(p => p.classList.toggle('active', p.id === page + '-page'));
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.id === 'tab-' + page));
@@ -70,7 +65,6 @@ function showPage(page) {
 function getElement(id, page) {
   return document.getElementById(page === 'interoperability' || page === 'thirdPartySolutions' || page == 'hardware' || page == 'upgrade' ? id : `${page}-${id}`);
 }
-
 
 function resetFieldsTab1() {
   document.getElementById('tab1-intro').style.display = 'block';
@@ -131,8 +125,6 @@ function resetFieldsTab1() {
   getElement('compatibility-matrix', activePage).innerHTML = '';
 
 }
-
-
 
 function resetFieldsTab2() {
   document.getElementById('tab2-intro').style.display = 'block';
@@ -202,9 +194,6 @@ function resetFieldsTab2() {
   getElement('result', activePage).innerHTML = '';
   getElement('compatibility-matrix', activePage).innerHTML = '';
 }
-
-
-
 
 // Helper to populate dropdowns with "--Select--" and options
 /*
@@ -404,12 +393,6 @@ function resetFieldsTab4() {
   console.log('Fields and results cleared for Upgrade Tab');
 }
 
-
-
-
-
-
-
 function populateDropdownsTab1(data) {
   const p1c = getElement('product1-category', 'interoperability');
   const p1v = getElement('product1-version', 'interoperability');
@@ -475,7 +458,6 @@ function populateDropdownsTab1(data) {
   };
 }
 
-
 // Tab 2: Dropdown Population
 function populateDropdownsTab2(data) {
   // Product 1 dropdowns
@@ -534,8 +516,6 @@ data.y_axis.categories.forEach(category => {
 
   solutionSelect.disabled = false;
 };
-
-
 
   // Product 1 - Solution change
   solutionSelect.onchange = () => {
@@ -643,8 +623,6 @@ if (selectedSolutions.includes('__all__')) {
   });
 }
 
-
-
 function populateDropdownsTab3(data) {
   const categoryDropdown = document.getElementById('hardware-category');
   const productDropdown = document.getElementById('hardware-product1-category');
@@ -654,13 +632,13 @@ function populateDropdownsTab3(data) {
     return;
   }
 
-  // ✅ Destroy the existing Choices instance if it already exists
+  // Destroy the existing Choices instance if it already exists
   if (choicesInstances['hardware-product1-category']) {
     choicesInstances['hardware-product1-category'].destroy();
     delete choicesInstances['hardware-product1-category'];
   }
 
-  // ✅ Initialize Choices.js for the product dropdown with multi-select enabled
+  // Initialize Choices.js for the product dropdown with multi-select enabled
   choicesInstances['hardware-product1-category'] = new Choices(productDropdown, {
     removeItemButton: true,  // Allow the user to remove selections
     searchEnabled: true,     // Enable search functionality
@@ -739,10 +717,6 @@ function populateDropdownsTab3(data) {
   console.log('Dropdowns populated for Tab 3');
 }
 
-
-
-
-
 function populateDropdownsTab4(data) {
   const productDropdown = getElement('upgrade-product1-category', 'upgrade');
   const versionDropdown = getElement('upgrade-product1-version', 'upgrade');
@@ -798,10 +772,6 @@ function populateDropdownsTab4(data) {
   console.log('Dropdowns populated for Tab 4');
 }
 
-
-
-
-
 function checkCompatibilityTab1() {
   const intro = document.getElementById('tab1-intro');
 if (intro) intro.style.display = 'none';
@@ -817,11 +787,6 @@ if (intro) intro.style.display = 'none';
   const result = get('result');
 
   const selectedDBs = p2El.choices ? p2El.choices.getValue(true) : [p2El.value];  // Handle multi-select
-
-
-
-
- 
 
   result.innerHTML = '';
   get('compatibility-matrix', activePage).innerHTML = '';
@@ -841,14 +806,10 @@ if (intro) intro.style.display = 'none';
     const thead = section.querySelector('thead');
     const tbody = section.querySelector('tbody');
 
-    updateMatrix(data, p1, v1, p2, v2, thead, tbody, ` ${p1} vs ${p2}`);
+    updateMatrix(data, p1, v1, p2, v2, thead, tbody, ` ${p1} and ${p2}`);
   });
   document.getElementById('main-content').style.display = 'block';
 }
-
-
-
-
 
 function checkCompatibilityTab2() {
   document.getElementById('tab2-intro').style.display = 'none';
@@ -920,7 +881,7 @@ if (selectedSolutions2.includes('__all__')) {
       versions2,  // Now passing the correct versions for each solution2
       thead,
       tbody,
-      ` ${solution1} vs ${solution2}`
+      ` ${solution1} and ${solution2}`
     );
   });
   document.getElementById('thirdPartySolutions-main-content').style.display = 'block';
@@ -928,8 +889,6 @@ if (selectedSolutions2.includes('__all__')) {
 
 // :white_check_mark: Place this at the top of your script.js (if not already)
 const choicesInstances = {};
-
-
 
 function checkCompatibilityTab3() {
   const intro = document.getElementById('tab3-intro');
@@ -1042,16 +1001,6 @@ if (intro) intro.style.display = 'none';
   });
   document.getElementById('hardware-main-content').style.display = 'block';
 }
-
-
-
-
-
-
-
-
-
-
 
 function checkCompatibilityTab4() {
   const intro = document.getElementById('tab4-intro');
@@ -1171,13 +1120,6 @@ if (intro) intro.style.display = 'none';
   document.getElementById('upgrade-main-content').style.display = 'block';
 }
 
-
-
-
-
-
-
-
 function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
   const osVers = osVer 
     ? [osVer] 
@@ -1226,8 +1168,8 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
   dbCell.style.textAlign = 'left';
   dbCell.style.backgroundColor = '#f0f0f0';
   dbCell.style.position = 'sticky';
-dbCell.style.top = '40px';
-dbCell.style.zIndex = '20'; // Less than legend cell
+  dbCell.style.top = '40px';
+  dbCell.style.zIndex = '20'; // Less than legend cell
   labelRow.appendChild(dbCell);
 
   thead.appendChild(labelRow);
@@ -1292,7 +1234,6 @@ header2.querySelectorAll('th').forEach((th, index) => {
 }
 
 
-
 function updateMatrixTab2(data, os, osVer, db, dbVer, thead, tbody, heading) {
   // Ensure dbVers is always an array
   const dbVers = Array.isArray(dbVer) ? dbVer : [dbVer];  // If dbVer is not an array, wrap it in an array
@@ -1344,19 +1285,19 @@ function updateMatrixTab2(data, os, osVer, db, dbVer, thead, tbody, heading) {
   osVers.forEach(osv => {
     const row = document.createElement('tr');
     row.innerHTML = ` <td>${osv}</td>` + dbVers.map(dbv => {
-      console.log('Checking compatibility for:', `${os} ${osv}`, 'vs', `${db} ${dbv}`);
+      console.log('Checking compatibility for:', `${os} ${osv}`, 'and', `${db} ${dbv}`);
 console.log('Data entry:', data.compatibility[`${os} ${osv}`]);
 console.log('Full compatibility check:', data.compatibility[`${os} ${osv}`]?.[`${db} ${dbv}`]);
 
       const key1 = `${os} ${osv}`.trim();   // e.g. "Oracle 21c"
 const key2 = `${db} ${dbv}`.trim();   // e.g. "RHEL 9"
 
-console.log('Trying lookup:', key1, 'vs', key2);
+console.log('Trying lookup:', key1, 'and', key2);
 let compat = data.compatibility[key1]?.[key2];
 
 if (!compat) {
   // fallback: try reverse direction
-  console.log(`  ↳ no data, trying reverse: ${key2} vs ${key1}`);
+  console.log(`  ↳ no data, trying reverse: ${key2} and ${key1}`);
   compat = data.compatibility[key2]?.[key1];
 }
 
@@ -1380,19 +1321,6 @@ console.log('  ↳ result:', compat);
     th.querySelector('.toggle-btn').textContent = hide ? '▶️' : '🔽';
   };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", async function () {
   await preloadDataTab1();
@@ -1466,8 +1394,6 @@ document.getElementById('collapseExpandAll-tab2').addEventListener('click', func
   }
 });
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
   const collapseBtn = document.getElementById('collapseExpandAll-tab3');
   if (collapseBtn) {
@@ -1512,10 +1438,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-
-
-
-
 function exportToExcelTab1() {
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
   const result = document.querySelector('#result');
@@ -1538,7 +1460,6 @@ function exportToExcelTab1() {
   // Export the workbook
   XLSX.writeFile(workbook, "compatibility_results_tab1.xlsx");
 }
-
 
 function exportToExcelTab2() {
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
@@ -1643,16 +1564,8 @@ function exportToExcelTab4() {
   XLSX.writeFile(workbook, "upgrade_matrix_results.xlsx");
 }
 
-
-
-
-
-
-
-
 // Bind the export to CSV button
 document.getElementById('export-csv-tab1').onclick = exportToExcelTab1;
 document.getElementById('export-csv-tab2').onclick = exportToExcelTab2;
 document.getElementById('export-csv-tab3').onclick = exportToExcelTab3;
 document.getElementById('export-csv-tab4').onclick = exportToExcelTab4;
-
