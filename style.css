@@ -273,7 +273,40 @@ select {
 }
 
 .side-nav .dropdown-menu {
-  background-color: white;
+  background-color: white; 
+}
+
+/* Style the selected items (chips/tags) */
+.choices__list--multiple .choices__item--selectable {
+  background-color: #1d428a !important;  /* Your theme color */
+  color: white !important;
+  border: none !important;
+  border-radius: 5px !important;
+  font-weight: 500;
+}
+
+/* Close (remove) button in tag */
+.choices__item--selectable::after {
+  color: white !important;
+}
+
+/* Highlight item on hover in dropdown */
+.choices__list--dropdown .choices__item--selectable.is-highlighted,
+.choices__list[aria-expanded="true"] .choices__item--selectable.is-highlighted {
+  background-color: #1d428a !important; /* Darker shade */
+  color: white !important;
+}
+
+/* Dropdown menu background */
+.choices__list--dropdown {
+  background-color: white !important;
+  border: 1px solid #ccc;
+}
+
+/* Input field inside dropdown */
+.choices__input {
+  color: #333 !important;
+  padding-left: 3px !important;
 }
 
 

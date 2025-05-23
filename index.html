@@ -24,8 +24,8 @@
       <span class="brand-text">Compatibility Matrix</span>
     </div>
     <div class="navbar-right">
-      <a href="https://www.perforce.com/">Home</a>
-      <a href="https://help.delphix.com/">Documentation</a>
+      <a href="https://www.perforce.com/"><i class="fa-solid fa-house"></i></a>
+      <a href="https://help.delphix.com/"><i class="fa-solid fa-file"></i></a>
     </div>
   </nav>
 
@@ -95,7 +95,6 @@
 
         <!-- Additional action buttons -->
         <div class="additional-actions">
-          <button id="addToFav" class="action-button"><i class="fas fa-star"></i> Save to Favorites</button>
           <button id="export-csv-tab1" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i> Export Results</button>
           <button id="collapseExpandAll-tab1" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i> Collapse All</button>
         </div>
@@ -132,52 +131,49 @@
       
       <!-- Side Navigation for Third Party Solutions -->
       <div id="thirdPartySolutions-sidenav">
-        <h3>Compare</h3>
-        <h4>Select Products</h4>
-        <hr />
         <div class="product-container">
 
           <!-- Product 1 Category -->
-          <label for="thirdPartySolutions-product1-category">Category 1:</label>
+          <label for="thirdPartySolutions-product1-category">Select a category:</label>
           <select id="thirdPartySolutions-product1-category">
             <option value="">--Select--</option>
             <!-- Dynamically filled -->
           </select>
 
           <!-- Product 1 Solution -->
-          <label for="thirdPartySolutions-product1-solution" disabled>Solution 1:</label>
+          <label for="thirdPartySolutions-product1-solution" disabled>Select a solution:</label>
           <select id="thirdPartySolutions-product1-solution">
             <option value="" disabled selected>--Select--</option>
             <!-- Dynamically filled -->
           </select>
 
           <!-- Product 1 Version -->
-          <label for="thirdPartySolutions-product1-version" disabled>Version:</label>
+          <label for="thirdPartySolutions-product1-version" disabled>Select a version:</label>
           <select id="thirdPartySolutions-product1-version">
             <option value="">--Select--</option>
             <!-- Dynamically filled -->
           </select>
         </div>
 
-        <h3>With</h3>
+        <h3>and</h3>
 
         <div class="product-container">
           <!-- Product 2 Category -->
-          <label for="thirdPartySolutions-product2-category">Category 2:</label>
+          <label for="thirdPartySolutions-product2-category">Select a category:</label>
           <select id="thirdPartySolutions-product2-category">
             <option value="">--Select--</option>
             <!-- Dynamically filled -->
           </select>
 
           <!-- Product 2 Solution (multi-select) -->
-          <label for="thirdPartySolutions-product2-solution" title="Choose one or more solutions for Product 2">Solution 2:</label>
+          <label for="thirdPartySolutions-product2-solution" title="Choose one or more solutions for Product 2">Select a solution:</label>
           <select id="thirdPartySolutions-product2-solution" multiple>
             <option value="">--Select--</option>
             <!-- Dynamically filled -->
           </select>
 
           <!-- Product 2 Version -->
-          <label for="thirdPartySolutions-product2-version">Version:</label>
+          <label for="thirdPartySolutions-product2-version">Select a version</label>
           <select id="thirdPartySolutions-product2-version">
             <option value="">--Select--</option>
             <!-- Dynamically filled -->
@@ -202,7 +198,6 @@
 
         <!-- Additional action buttons -->
         <div class="additional-actions">
-          <button id="addToFav" class="action-button"><i class="fas fa-star"></i> Save to Favorites</button>
           <button id="export-csv-tab2" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i> Export Results</button>
           <button id="collapseExpandAll-tab2" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i> Collapse All</button>
         </div>
@@ -240,19 +235,16 @@
 
       <!-- Sidenav -->
       <div id="sidenav">
-        <h4><b>Select a Product</b></h4>
-        <hr />
-
         <div class="product-container">
           <!-- Category Dropdown -->
-          <label for="hardware-category">Category:</label>
+          <label for="hardware-category">Select a category:</label>
           <select id="hardware-category">
             <option value="">--Select--</option>
             <!-- Options dynamically populated (e.g., Cloud, Hypervisor) -->
           </select>
 
           <!-- Product Dropdown (multi-select) -->
-          <label for="hardware-product1-category">Product:</label>
+          <label for="hardware-product1-category">Select a product:</label>
           <select id="hardware-product1-category" multiple>
             <option value="">--Select--</option>
             <!-- Options dynamically populated based on selected category -->
@@ -278,9 +270,6 @@
         <h1>Compatibility Results</h1>
         
         <div class="additional-actions">
-          <button id="addToFav" class="action-button">
-            <i class="fas fa-star"></i> Save to Favorites
-          </button>
           <button id="export-csv-tab3" class="action-button" title="Export to CSV">
             <i class="fa-solid fa-file-arrow-down"></i> Export Results
           </button>
@@ -304,17 +293,14 @@
 
     <!-- Sidenav -->
     <div id="sidenav">
-      <h4><b>Select a Product</b></h4>
-      <hr />
-
       <div class="product-container">
-        <label for="upgrade-product1-category"><b>Product:</b></label>
+        <label for="upgrade-product1-category">Select a product:</label>
         <select id="upgrade-product1-category">
           <option value="">--Select--</option>
           <!-- Options dynamically populated -->
         </select>
 
-        <label for="upgrade-product1-version"><b>Version:</b></label>
+        <label for="upgrade-product1-version">Select a version:</label>
         <select id="upgrade-product1-version">
           <option value="">--Select--</option>
           <!-- Options dynamically populated -->
@@ -340,9 +326,6 @@
       <h1>Upgrade Path Results</h1>
 
       <div class="additional-actions">
-        <button id="addToFav" class="action-button">
-          <i class="fas fa-star"></i> Save to Favorites
-        </button>
         <button id="export-csv-tab4" class="action-button" title="Export to CSV">
           <i class="fa-solid fa-file-arrow-down"></i> Export Results
         </button>
