@@ -102,6 +102,8 @@ body {
 
 /* Tabs */
 .tabs-container {
+  position: sticky;
+  top: 60px; /* Adjust based on height of top nav */
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -149,7 +151,6 @@ body {
 #thirdPartySolutions-sidenav {
   width: 20%;
   padding: 20px;
-  background-color: #dde5ed;
   border-right: 2px solid #ddd;
   box-sizing: border-box;
   height: 100vh;
@@ -424,7 +425,6 @@ select {
     height: auto;
     border-right: none;
     border-bottom: 1px solid #ddd;
-    background-color: #d8e3e9;
   }
 
   #main-content,
