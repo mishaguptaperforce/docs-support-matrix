@@ -34,7 +34,7 @@
     <div class="tab" id="tab-interoperability" onclick="showPage('interoperability')">Delphix Products</div>
     <div class="tab" id="tab-thirdPartySolutions" onclick="showPage('thirdPartySolutions')">Third Party Solutions</div>
     <div class="tab" id="tab-hardware" onclick="showPage('hardware')">Hardware</div>
-    <div class="tab" id="tab-upgrade" onclick="showPage('upgrade')">Upgrade Path</div>
+    <div class="tab" id="tab-upgrade" onclick="showPage('upgrade')">Upgrade</div>
   </div>
 
   <!-- Horizontal separator before tabs -->
@@ -47,16 +47,17 @@
       
       <!-- Side Navigation for Interoperability -->
       <div id="sidenav">
+        <h3>Compare</h3>
         <div class="product-container">
           <label for="product1-category">Select a product:</label>
           <select id="product1-category">
-            <option value="">--Select--</option>
+            <option value="">--Pick one--</option>
             <!-- Options dynamically filled -->
           </select>
 
           <label for="product1-version">Select a version:</label>
           <select id="product1-version">
-            <option value="" disabled selected>--Select--</option>
+            <option value="" disabled selected>--Pick one--</option>
             <!-- Options dynamically filled -->
           </select>
         </div>
@@ -66,20 +67,20 @@
         <div class="product-container">
           <label for="product2-category">Select a product:</label>
           <select id="product2-category">
-            <option value="">--Select--</option>
+            <option value="">--Pick one--</option>
             <!-- Options dynamically filled -->
           </select>
 
           <label for="product2-version">Select a version:</label>
           <select id="product2-version">
-            <option value="">--Select--</option>
+            <option value="">--Pick one--</option>
             <!-- Options dynamically filled -->
           </select>
         </div>
 
         <!-- Action buttons -->
         <div class="button-container">
-          <button class="primary-button" onclick="checkCompatibilityTab1()">Check Compatibility</button>
+          <button class="primary-button" onclick="checkCompatibilityTab1()">Check compatibility</button>
           <button class="secondary-button" onclick="resetFieldsTab1()">Reset</button>
         </div>
       </div>
@@ -91,13 +92,15 @@
 
       <!-- Main Results Content (initially hidden) -->
       <div id="main-content" style="display: none;">
-        <h1>Compatibility Results</h1>
+        <div class="header-actions-container">
+          <h1>Compatibility results</h1>
 
-        <!-- Additional action buttons -->
-        <div class="additional-actions">
-          <button id="export-csv-tab1" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i> Export Results</button>
-          <button id="collapseExpandAll-tab1" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i> Collapse All</button>
-        </div>
+          <!-- Additional action buttons -->
+          <div class="additional-actions">
+            <button id="export-csv-tab1" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;&nbsp;Export Results</button>
+            <button id="collapseExpandAll-tab1" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All</button>
+          </div>
+        </div>  
 
         <!-- Compatibility legend -->
         <div class="results-legend">
@@ -131,26 +134,27 @@
       
       <!-- Side Navigation for Third Party Solutions -->
       <div id="thirdPartySolutions-sidenav">
+        <h3>Compare</h3>
         <div class="product-container">
 
           <!-- Product 1 Category -->
           <label for="thirdPartySolutions-product1-category">Select a category:</label>
           <select id="thirdPartySolutions-product1-category">
-            <option value="">--Select--</option>
+            <option value="">--Pick one--</option>
             <!-- Dynamically filled -->
           </select>
 
           <!-- Product 1 Solution -->
           <label for="thirdPartySolutions-product1-solution" disabled>Select a solution:</label>
           <select id="thirdPartySolutions-product1-solution">
-            <option value="" disabled selected>--Select--</option>
+            <option value="" disabled selected>--Pick one--</option>
             <!-- Dynamically filled -->
           </select>
 
           <!-- Product 1 Version -->
           <label for="thirdPartySolutions-product1-version" disabled>Select a version:</label>
           <select id="thirdPartySolutions-product1-version">
-            <option value="">--Select--</option>
+            <option value="">--Pick one--</option>
             <!-- Dynamically filled -->
           </select>
         </div>
@@ -161,21 +165,21 @@
           <!-- Product 2 Category -->
           <label for="thirdPartySolutions-product2-category">Select a category:</label>
           <select id="thirdPartySolutions-product2-category">
-            <option value="">--Select--</option>
+            <option value="">--Pick one--</option>
             <!-- Dynamically filled -->
           </select>
 
           <!-- Product 2 Solution (multi-select) -->
           <label for="thirdPartySolutions-product2-solution" title="Choose one or more solutions for Product 2">Select a solution:</label>
           <select id="thirdPartySolutions-product2-solution" multiple>
-            <option value="">--Select--</option>
+            <option value="">--Pick one or more--</option>
             <!-- Dynamically filled -->
           </select>
 
           <!-- Product 2 Version -->
           <label for="thirdPartySolutions-product2-version">Select a version</label>
           <select id="thirdPartySolutions-product2-version">
-            <option value="">--Select--</option>
+            <option value="">--Pick one--</option>
             <!-- Dynamically filled -->
           </select>
         </div>
@@ -194,13 +198,15 @@
 
       <!-- Main Results Content (initially hidden) -->
       <div id="thirdPartySolutions-main-content" style="display: none;">
-        <h1>Compatibility Results</h1>
+        <div class="header-actions-container">
+          <h1>Compatibility results</h1>
 
-        <!-- Additional action buttons -->
-        <div class="additional-actions">
-          <button id="export-csv-tab2" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i> Export Results</button>
-          <button id="collapseExpandAll-tab2" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i> Collapse All</button>
-        </div>
+          <!-- Additional action buttons -->
+          <div class="additional-actions">
+            <button id="export-csv-tab2" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;&nbsp;Export Results</button>
+            <button id="collapseExpandAll-tab2" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All</button>
+          </div>
+        </div>  
 
         <!-- Compatibility legend -->
         <div class="results-legend">
@@ -239,14 +245,14 @@
           <!-- Category Dropdown -->
           <label for="hardware-category">Select a category:</label>
           <select id="hardware-category">
-            <option value="">--Select--</option>
+            <option value="">--Pick one--</option>
             <!-- Options dynamically populated (e.g., Cloud, Hypervisor) -->
           </select>
 
           <!-- Product Dropdown (multi-select) -->
           <label for="hardware-product1-category">Select a product:</label>
           <select id="hardware-product1-category" multiple>
-            <option value="">--Select--</option>
+            <option value="">--Pick one or more--</option>
             <!-- Options dynamically populated based on selected category -->
           </select>
         </div>
@@ -267,16 +273,14 @@
 
       <!-- Results Section (hidden by default) -->
       <div id="hardware-main-content" style="display: none;">
-        <h1>Compatibility Results</h1>
-        
-        <div class="additional-actions">
-          <button id="export-csv-tab3" class="action-button" title="Export to CSV">
-            <i class="fa-solid fa-file-arrow-down"></i> Export Results
-          </button>
-          <button id="collapseExpandAll-tab3" class="action-button">
-            <i class="fa-solid fa-down-left-and-up-right-to-center"></i> Collapse All
-          </button>
-        </div>
+        <div class="header-actions-container">
+          <h1>Compatibility results</h1>
+          
+          <div class="additional-actions">
+            <button id="export-csv-tab3" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;&nbsp;Export Results</button>
+            <button id="collapseExpandAll-tab3" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All</button>
+          </div>
+        </div>  
 
         <br />
 
@@ -296,13 +300,13 @@
       <div class="product-container">
         <label for="upgrade-product1-category">Select a product:</label>
         <select id="upgrade-product1-category">
-          <option value="">--Select--</option>
+          <option value="">--Pick one--</option>
           <!-- Options dynamically populated -->
         </select>
 
         <label for="upgrade-product1-version">Select a version:</label>
         <select id="upgrade-product1-version">
-          <option value="">--Select--</option>
+          <option value="">--Pick one--</option>
           <!-- Options dynamically populated -->
         </select>
       </div>
@@ -323,16 +327,14 @@
 
     <!-- Main Content (hidden by default) -->
     <div id="upgrade-main-content" style="display: none;">
-      <h1>Upgrade Path Results</h1>
+      <div class="header-actions-container">
+        <h1>Upgrade Path results</h1>
 
-      <div class="additional-actions">
-        <button id="export-csv-tab4" class="action-button" title="Export to CSV">
-          <i class="fa-solid fa-file-arrow-down"></i> Export Results
-        </button>
-        <button id="collapseExpandAll-tab4" class="action-button">
-          <i class="fa-solid fa-down-left-and-up-right-to-center"></i> Collapse All
-        </button>
-      </div>
+        <div class="additional-actions">
+          <button id="export-csv-tab4" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;&nbsp;Export Results</button>
+          <button id="collapseExpandAll-tab4" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All</button>
+        </div>
+      </div>  
 
       <br />
 

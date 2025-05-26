@@ -95,7 +95,7 @@ function resetFieldsTab1() {
         const el = getElement(id, activePage);
         if (el.choices) {
           el.choices.setChoices(
-            [{ value: '', label: '--Select--', selected: true, disabled: true }, ...allProducts.map(prod => ({ value: prod, label: prod }))],
+            [{ value: '', label: '--Pick one--', selected: true, disabled: true }, ...allProducts.map(prod => ({ value: prod, label: prod }))],
             'value',
             'label',
             true
@@ -104,7 +104,7 @@ function resetFieldsTab1() {
           el.innerHTML = '';
           const defaultOpt = document.createElement('option');
           defaultOpt.value = '';
-          defaultOpt.textContent = '--Select--';
+          defaultOpt.textContent = '--Pick one--';
           defaultOpt.disabled = true;
           defaultOpt.selected = true;
           el.appendChild(defaultOpt);
@@ -163,7 +163,7 @@ function resetFieldsTab2() {
         if (el) {
           if (el.choices) {
             el.choices.setChoices(
-              [{ value: '', label: '--Select--', selected: true, disabled: true }, ...p1Categories.map(cat => ({ value: cat, label: cat }))],
+              [{ value: '', label: '--Pick one--', selected: true, disabled: true }, ...p1Categories.map(cat => ({ value: cat, label: cat }))],
               'value',
               'label',
               true
@@ -172,7 +172,7 @@ function resetFieldsTab2() {
             el.innerHTML = '';
             const defaultOpt = document.createElement('option');
             defaultOpt.value = '';
-            defaultOpt.textContent = '--Select--';
+            defaultOpt.textContent = '--Pick one--';
             defaultOpt.disabled = true;
             defaultOpt.selected = true;
             el.appendChild(defaultOpt);
@@ -290,7 +290,7 @@ function resetFieldsTab3() {
       .then(res => res.json())
       .then(data => {
         // Clear and populate category dropdown
-        categoryDropdown.innerHTML = '<option value="">--Select--</option>';
+        categoryDropdown.innerHTML = '<option value="">--Pick one--</option>';
         Object.keys(data.categories).forEach(category => {
           const option = document.createElement('option');
           option.value = category;
@@ -407,13 +407,17 @@ function populateDropdownsTab1(data) {
   const allCategories = [...data.y_axis.values];
 
   function populateCategoryOptions(dropdown, excludeValue = '') {
-    dropdown.innerHTML = '<option value="">--Select--</option>';
-    allCategories.forEach(val => {
-      if (val !== excludeValue) {
-        dropdown.add(new Option(val, val));
-      }
-    });
-  }
+  dropdown.innerHTML = ''; // ✅ Clear existing options first
+
+  dropdown.add(new Option('--Pick one--', '', true, true));
+  dropdown.options[0].disabled = true;
+
+  allCategories.forEach(val => {
+    if (val !== excludeValue) {
+      dropdown.add(new Option(val, val));
+    }
+  });
+}
 
   // Initial population
   populateCategoryOptions(p1c);
@@ -476,12 +480,7 @@ function populateDropdownsTab2(data) {
   }
 
   // Clear all dropdowns
-  categorySelect.innerHTML = '<option value="">--Select--</option>';
-  solutionSelect.innerHTML = '<option value="">--Select--</option>';
-  versionSelect.innerHTML = '<option value="">--Select--</option>';
-  product2CategorySelect.innerHTML = '<option value="">--Select--</option>';
-  product2SolutionSelect.innerHTML = '<option value="">--Select--</option>';
-  product2VersionSelect.innerHTML = '<option value="">--Select--</option>';
+  
 
   // Populate category dropdowns
   data.x_axis.categories.forEach(category => {
@@ -494,8 +493,7 @@ data.y_axis.categories.forEach(category => {
 
   // Product 1 - Category change
   categorySelect.onchange = () => {
-    solutionSelect.innerHTML = '<option value="">--Select--</option>';
-    versionSelect.innerHTML = '<option value="">--Select--</option>';
+    
     versionSelect.disabled = true;
 
     const solutions = data.x_axis.solutions[categorySelect.value] || [];
@@ -519,7 +517,6 @@ data.y_axis.categories.forEach(category => {
 
   // Product 1 - Solution change
   solutionSelect.onchange = () => {
-    versionSelect.innerHTML = '<option value="">--Select--</option>';
     versionSelect.innerHTML = '<option value="">All</option>';
     const versions = data.x_axis.versions[solutionSelect.value] || [];
     versions.forEach(version => {
@@ -542,7 +539,7 @@ data.y_axis.categories.forEach(category => {
     product2SolutionChoices.clearStore();
     product2SolutionChoices.clearChoices();
     product2SolutionChoices.enable();
-    product2VersionSelect.innerHTML = '<option value="">--Select--</option>';
+    
     product2VersionSelect.disabled = true;
 
     const selectedCategories = Array.from(product2CategorySelect.selectedOptions).map(option => option.value);
@@ -566,7 +563,7 @@ data.y_axis.categories.forEach(category => {
 
   // Product 2 - Solution change
   product2SolutionSelect.addEventListener('change', () => {
-    product2VersionSelect.innerHTML = '<option value="">--Select--</option>';
+    product2VersionSelect.innerHTML = '<option value="">--Pick one--</option>';
     
     // Get the selected solutions
     let selectedSolutions = Array.from(product2SolutionSelect.selectedOptions).map(opt => opt.value);
@@ -616,7 +613,7 @@ if (selectedSolutions.includes('__all__')) {
           product2VersionSelect.add(new Option(version, version));  // Add all available versions as options
         });
       } else {
-        product2VersionSelect.innerHTML = '<option value="">--Select--</option>';
+        
         product2VersionSelect.disabled = true;  // Disable version dropdown if no versions found
       }
     }
@@ -648,7 +645,7 @@ function populateDropdownsTab3(data) {
   });
 
   // Clear and populate category dropdown
-  categoryDropdown.innerHTML = '<option value="">--Select--</option>';
+  
   Object.keys(data.categories).forEach(category => {
     const option = document.createElement('option');
     option.value = category;
@@ -727,7 +724,7 @@ function populateDropdownsTab4(data) {
   }
 
   // Populate the category dropdown (product names)
-  productDropdown.innerHTML = '<option value="">--Select--</option>';
+  
   Object.keys(data.products).forEach(product => {
     const option = document.createElement('option');
     option.value = product;
@@ -741,7 +738,7 @@ function populateDropdownsTab4(data) {
     const versions = data.products[selectedProduct] || [];
 
     // Clear and repopulate the version dropdown based on the selected category
-    versionDropdown.innerHTML = '<option value="">--Select--</option>';
+    
     
     // Add "All Versions" option first
     const allOption = document.createElement('option');
@@ -1155,7 +1152,7 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
   legendCell.style.position = 'sticky';
   legendCell.style.backgroundColor = '#f0f0f0'; 
   legendCell.style.left = '0';
-  legendCell.style.zIndex = '25';
+  legendCell.style.zIndex = '30';
   legendCell.style.lineHeight = '1.5';
   legendCell.innerHTML = ``;
   labelRow.appendChild(legendCell);
@@ -1169,7 +1166,7 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
   dbCell.style.backgroundColor = '#f0f0f0';
   dbCell.style.position = 'sticky';
   dbCell.style.top = '40px';
-  dbCell.style.zIndex = '20'; // Less than legend cell
+  dbCell.style.zIndex = '30'; // Less than legend cell
   labelRow.appendChild(dbCell);
 
   thead.appendChild(labelRow);
@@ -1181,11 +1178,11 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
     ${dbVers.map(v => `<th>${v}</th>`).join('')}
   `;
   // Make each th in header2 sticky with top offset
-header2.querySelectorAll('th').forEach((th, index) => {
+  header2.querySelectorAll('th').forEach((th, index) => {
   th.style.position = 'sticky';
   th.style.top = '80px';          // Adjust '70px' to the combined height of header1 + labelRow
   th.style.backgroundColor = '#f0f0f0'; // Or whatever bg you want
-  th.style.zIndex = index === 0 ? 20 : 15;         // Higher than tbody cells, less than header1 if needed
+  th.style.zIndex = '30';         // Higher than tbody cells, less than header1 if needed
 
   // For the first <th> (os), also fix horizontally (if needed)
   if(index === 0) {

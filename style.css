@@ -133,6 +133,7 @@ body {
   width: 100%;
   border: 1px solid #ddd;
   margin-top: 0;
+  margin-bottom:0;
 }
 
 /* Main Containers */
@@ -148,7 +149,7 @@ body {
 #thirdPartySolutions-sidenav {
   width: 20%;
   padding: 20px;
-  background-color: white;
+  background-color: #dde5ed;
   border-right: 2px solid #ddd;
   box-sizing: border-box;
   height: 100vh;
@@ -158,7 +159,7 @@ body {
 #sidenav h3,
 #thirdPartySolutions-sidenav h3 {
   text-align: center;
-  margin-top: 0;
+  
 }
 
 /* Main Content Areas */
@@ -178,10 +179,18 @@ body {
 .button-container-upgrade,
 .button-container-hardware {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   gap: 10px;
   margin-top: 20px;
-  width: 100%;
+  width: auto;
+  align-items: center;
+}
+
+.header-actions-container {
+  display: flex;
+  justify-content: space-between;  /* push items to edges */
+  align-items: center;             /* vertically center */
+  margin-bottom: 1rem;             /* optional spacing below */
 }
 
 /* Buttons */
@@ -192,16 +201,7 @@ body {
 .secondary-button,
 .thirdPartySolutions-secondary-button,
 .upgrade-secondary-button,
-.hardware-secondary-button,
-#addToFav,
-#export-csv-tab1,
-#export-csv-tab2,
-#export-csv-tab3,
-#export-csv-tab4,
-#collapseExpandAll-tab1,
-#collapseExpandAll-tab2,
-#collapseExpandAll-tab3,
-#collapseExpandAll-tab4 {
+.hardware-secondary-button {
   background-color: var(--primary-blue);
   color: white;
   border: none;
@@ -209,6 +209,8 @@ body {
   cursor: pointer;
   font-size: 16px;
   padding: 10px 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   transition: background-color 0.3s ease;
 }
 
@@ -217,13 +219,14 @@ body {
 .upgrade-page-button,
 .hardware-page-button {
   flex: 2;
+  
 }
 
 .secondary-button,
 .thirdPartySolutions-secondary-button,
 .upgrade-secondary-button,
 .hardware-secondary-button {
-  flex: 1;
+  flex: 2;
 }
 
 .primary-button:hover,
@@ -242,6 +245,25 @@ body {
 #collapseExpandAll-tab3:hover,
 #collapseExpandAll-tab4:hover {
   background-color: var(--primary-blue-hover);
+}
+
+#addToFav,
+#export-csv-tab1,
+#export-csv-tab2,
+#export-csv-tab3,
+#export-csv-tab4,
+#collapseExpandAll-tab1,
+#collapseExpandAll-tab2,
+#collapseExpandAll-tab3,
+#collapseExpandAll-tab4 {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 10px;
+  transition: background-color 0.3s ease;
 }
 
 /* Dropdown Styling */
@@ -321,16 +343,6 @@ select {
   justify-content: flex-end;
 }
 
-.action-button {
-  padding: 8px 15px;
-  background-color: #1d428a;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 13px;
-
-}
 
 .tab-intro {
   font-size: 15px;
@@ -412,6 +424,7 @@ select {
     height: auto;
     border-right: none;
     border-bottom: 1px solid #ddd;
+    background-color: #d8e3e9;
   }
 
   #main-content,
@@ -467,7 +480,7 @@ select {
 /* Product Container */
 .product-container {
   margin-bottom: 5px;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   padding: 10px;
   border-radius: 5px;
   margin-top: 0;
