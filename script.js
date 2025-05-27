@@ -1301,35 +1301,33 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
 
 
 function updateMatrixTab2(data, os, osVer, db, dbVer, thead, tbody, heading) {
-  // Ensure dbVers is always an array
-  const dbVers = Array.isArray(dbVer) ? dbVer : [dbVer];  // If dbVer is not an array, wrap it in an array
-  const osVers = Array.isArray(osVer) ? osVer : [osVer];  // Same for osVer
-  
-  // Your previous table rendering logic
+  const dbVers = Array.isArray(dbVer) ? dbVer : [dbVer];
+  const osVers = Array.isArray(osVer) ? osVer : [osVer];
+
+  // 1) Main header row with toggle button and heading
   const header1 = document.createElement('tr');
   const th = document.createElement('th');
   th.colSpan = dbVers.length + 1;
-  th.innerHTML = `<button class="toggle-btn" >🔽</button>&nbsp; ${heading}`;
+  th.innerHTML = `<button class="toggle-btn">🔽</button>&nbsp; ${heading}`;
   th.style.cssText = 'text-align:left;background:#1d428a;color:white;position:relative;';
   header1.appendChild(th);
   thead.appendChild(header1);
 
-  // 2) Label row: legend in first cell, DB name spanning rest
-  const labelRow = document.createElement('tr');
+  // 2) Label row: legend and DB label
+  const labelRow = document.createElement('tr'); // Keep reference
+  labelRow.classList.add('label-row'); // Optional class for styling/debugging
 
-  // Legend in first cell
   const legendCell = document.createElement('th');
   legendCell.style.textAlign = 'center';
-  legendCell.style.top = '40px'; 
+  legendCell.style.top = '40px';
   legendCell.style.position = 'sticky';
-  legendCell.style.backgroundColor = '#f0f0f0'; 
+  legendCell.style.backgroundColor = '#f0f0f0';
   legendCell.style.left = '0';
   legendCell.style.zIndex = '25';
   legendCell.style.lineHeight = '1.5';
   legendCell.innerHTML = ``;
   labelRow.appendChild(legendCell);
 
-  // DB name spanning all other columns
   const dbCell = document.createElement('th');
   dbCell.colSpan = dbVers.length;
   dbCell.textContent = db;
@@ -1338,41 +1336,32 @@ function updateMatrixTab2(data, os, osVer, db, dbVer, thead, tbody, heading) {
   dbCell.style.backgroundColor = '#f0f0f0';
   dbCell.style.position = 'sticky';
   dbCell.style.top = '40px';
-  dbCell.style.zIndex = '20'; // Less than legend cell
+  dbCell.style.zIndex = '20';
   labelRow.appendChild(dbCell);
 
   thead.appendChild(labelRow);
 
+  // 3) Column headers row
   const header2 = document.createElement('tr');
   header2.innerHTML = `<th>${os}</th>` + dbVers.map(v => `<th>${v}</th>`).join('');
   thead.appendChild(header2);
 
+  // 4) Data rows
   const rows = [];
   osVers.forEach(osv => {
     const row = document.createElement('tr');
-    row.innerHTML = ` <td>${osv}</td>` + dbVers.map(dbv => {
-      console.log('Checking compatibility for:', `${os} ${osv}`, 'and', `${db} ${dbv}`);
-console.log('Data entry:', data.compatibility[`${os} ${osv}`]);
-console.log('Full compatibility check:', data.compatibility[`${os} ${osv}`]?.[`${db} ${dbv}`]);
+    row.innerHTML = `<td>${osv}</td>` + dbVers.map(dbv => {
+      const key1 = `${os} ${osv}`.trim();
+      const key2 = `${db} ${dbv}`.trim();
 
-      const key1 = `${os} ${osv}`.trim();   // e.g. "Oracle 21c"
-const key2 = `${db} ${dbv}`.trim();   // e.g. "RHEL 9"
-
-console.log('Trying lookup:', key1, 'and', key2);
-let compat = data.compatibility[key1]?.[key2];
-
-if (!compat) {
-  // fallback: try reverse direction
-  console.log(`  ↳ no data, trying reverse: ${key2} and ${key1}`);
-  compat = data.compatibility[key2]?.[key1];
-}
-
-// final
-console.log('  ↳ result:', compat);
+      let compat = data.compatibility[key1]?.[key2];
+      if (!compat) compat = data.compatibility[key2]?.[key1];
 
       if (!compat) return `<td><i class="fa-solid fa-minus icon-na"></i></td>`;
 
-      const icon = compat.compatible ? '<i class="fa-solid fa-circle-check" style="color: green; font-size: 20px;"></i>' : '<i class="fa-solid fa-circle-xmark" style="color: #ED1C24; font-size: 20px;""></i>';
+      const icon = compat.compatible
+        ? '<i class="fa-solid fa-circle-check" style="color: green; font-size: 20px;"></i>'
+        : '<i class="fa-solid fa-circle-xmark" style="color: #ED1C24; font-size: 20px;"></i>';
       const color = compat.compatible ? 'green' : 'red';
       return `<td><span style="color:${color}">${icon}</span><br><small>${compat.note || ''}</small></td>`;
     }).join('');
@@ -1380,13 +1369,17 @@ console.log('  ↳ result:', compat);
     rows.push(row);
   });
 
+  // 5) Toggle logic (now includes labelRow and header2)
   th.querySelector('.toggle-btn').onclick = () => {
     const hide = rows[0].style.display !== 'none';
     rows.forEach(r => r.style.display = hide ? 'none' : '');
+    labelRow.style.display = hide ? 'none' : '';
     header2.style.display = hide ? 'none' : '';
     th.querySelector('.toggle-btn').textContent = hide ? '▶️' : '🔽';
   };
 }
+
+
 
 document.addEventListener("DOMContentLoaded", async function () {
   await preloadDataTab1();
@@ -1406,126 +1399,112 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 
-let isCollapsedTab1 = false;
+
+
 
 document.getElementById('collapseExpandAll-tab1').addEventListener('click', function () {
   const tables = document.querySelectorAll('table');
-  const newDisplay = isCollapsedTab1 ? '' : 'none';
 
+  const isCollapsing = this.textContent.trim().includes('Collapse All');
+
+  // Toggle each table
   tables.forEach(table => {
     const rows = table.querySelectorAll('tr');
     rows.forEach((row, index) => {
       if (index > 0) {
-        row.style.display = newDisplay;
+        row.style.display = isCollapsing ? 'none' : '';
       }
     });
   });
 
-  // Update text
-  const textSpan = document.getElementById('collapseExpandText-tab1');
-  textSpan.textContent = isCollapsedTab1 ? 'Collapse All' : 'Expand All';
-
-  // Optional: Toggle icon (if needed)
-  const icon = document.getElementById('collapseExpandIcon-tab1');
-  if (icon) {
-    icon.className = isCollapsedTab1
-      ? 'fa-solid fa-down-left-and-up-right-to-center'
-      : 'fa-solid fa-up-right-and-down-left-from-center';
-  }
-
-  isCollapsedTab1 = !isCollapsedTab1;
+  // Update button HTML with icon and label
+  this.innerHTML = isCollapsing
+    ? '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>&nbsp;&nbsp;Expand All'
+    : '<i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All';
 });
 
-
-let isCollapsedTab2 = false;
 
 document.getElementById('collapseExpandAll-tab2').addEventListener('click', function () {
   const tables = document.querySelectorAll('table');
-  const newDisplay = isCollapsedTab2 ? '' : 'none';
 
+  // Check the current state using text content
+  const isCollapsing = this.textContent.trim().includes('Collapse All');
+
+  // Toggle visibility of rows for each table
   tables.forEach(table => {
     const rows = table.querySelectorAll('tr');
     rows.forEach((row, index) => {
       if (index > 0) {
-        row.style.display = newDisplay;
+        row.style.display = isCollapsing ? 'none' : '';
       }
     });
   });
 
-  // Update text
-  const textSpan = document.getElementById('collapseExpandText-tab2');
-  textSpan.textContent = isCollapsedTab2 ? 'Collapse All' : 'Expand All';
-
-  // Optional: Toggle icon (if needed)
-  const icon = document.getElementById('collapseExpandIcon-tab2');
-  if (icon) {
-    icon.className = isCollapsedTab2
-      ? 'fa-solid fa-down-left-and-up-right-to-center'
-      : 'fa-solid fa-up-right-and-down-left-from-center';
-  }
-
-  isCollapsedTab2 = !isCollapsedTab2;
+  // Update icon and text together
+  this.innerHTML = isCollapsing
+    ? '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>&nbsp;&nbsp;Expand All'
+    : '<i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All';
 });
 
-let isCollapsedTab3 = false;
 
-document.getElementById('collapseExpandAll-tab3').addEventListener('click', function () {
-  const tables = document.querySelectorAll('table');
-  const newDisplay = isCollapsedTab3 ? '' : 'none';
 
-  tables.forEach(table => {
-    const rows = table.querySelectorAll('tr');
-    rows.forEach((row, index) => {
-      if (index > 0) {
-        row.style.display = newDisplay;
-      }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const collapseBtn = document.getElementById('collapseExpandAll-tab3');
+
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', function () {
+      const tables = document.querySelectorAll('table.hardware-matrix-table');
+      const isCollapsing = collapseBtn.innerText.trim() === 'Collapse All';
+
+      tables.forEach(table => {
+        const tbody = table.querySelector('tbody');
+        const secondHeaderRow = table.querySelector('thead')?.rows[1];
+
+        if (tbody) {
+          tbody.style.display = isCollapsing ? 'none' : 'table-row-group';
+        }
+        if (secondHeaderRow) {
+          secondHeaderRow.style.display = isCollapsing ? 'none' : '';
+        }
+      });
+
+      // Update icon + label
+      collapseBtn.innerHTML = isCollapsing
+        ? '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>&nbsp;&nbsp;Expand All'
+        : '<i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All';
     });
-  });
-
-  // Update text
-  const textSpan = document.getElementById('collapseExpandText-tab3');
-  textSpan.textContent = isCollapsedTab3 ? 'Collapse All' : 'Expand All';
-
-  // Optional: Toggle icon (if needed)
-  const icon = document.getElementById('collapseExpandIcon-tab3');
-  if (icon) {
-    icon.className = isCollapsedTab3
-      ? 'fa-solid fa-down-left-and-up-right-to-center'
-      : 'fa-solid fa-up-right-and-down-left-from-center';
   }
-
-  isCollapsedTab3 = !isCollapsedTab3;
 });
 
-let isCollapsedTab4 = false;
 
-document.getElementById('collapseExpandAll-tab4').addEventListener('click', function () {
-  const tables = document.querySelectorAll('table');
-  const newDisplay = isCollapsedTab4 ? '' : 'none';
+document.addEventListener('DOMContentLoaded', function () {
+  const collapseBtn = document.getElementById('collapseExpandAll-tab4');
 
-  tables.forEach(table => {
-    const rows = table.querySelectorAll('tr');
-    rows.forEach((row, index) => {
-      if (index > 0) {
-        row.style.display = newDisplay;
-      }
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', function () {
+      const tables = document.querySelectorAll('table.upgrade-matrix-table');
+      const isCollapsing = collapseBtn.innerText.trim() === 'Collapse All';
+
+      tables.forEach(table => {
+        const tbody = table.querySelector('tbody');
+        const secondHeaderRow = table.querySelector('thead')?.rows[1];
+
+        if (tbody) {
+          tbody.style.display = isCollapsing ? 'none' : 'table-row-group';
+        }
+        if (secondHeaderRow) {
+          secondHeaderRow.style.display = isCollapsing ? 'none' : '';
+        }
+      });
+
+      collapseBtn.innerHTML = isCollapsing
+        ? '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>&nbsp;&nbsp;Expand All'
+        : '<i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All';
     });
-  });
-
-  // Update text
-  const textSpan = document.getElementById('collapseExpandText-tab4');
-  textSpan.textContent = isCollapsedTab4 ? 'Collapse All' : 'Expand All';
-
-  // Optional: Toggle icon (if needed)
-  const icon = document.getElementById('collapseExpandIcon-tab4');
-  if (icon) {
-    icon.className = isCollapsedTab4
-      ? 'fa-solid fa-down-left-and-up-right-to-center'
-      : 'fa-solid fa-up-right-and-down-left-from-center';
   }
-
-  isCollapsedTab4 = !isCollapsedTab4;
 });
+
 
 function exportToExcelTab1() {
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
