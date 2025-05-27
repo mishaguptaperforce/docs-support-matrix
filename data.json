@@ -6,7 +6,7 @@
       "Continuous Data": ["2025.2.0",  "2025.1.0",  "29.0.0.0",  "28.0.0.0",  "27.0.0.0",  "26.0.0.0",  "25.0.0.0",  "24.0.0.0",  "23.0.0.0",  "22.0.0.0",  "21.0.0.0",  
         "20.0.0.0",  "19.0.0.0",  "18.0.0.0",  "17.0.0.0",  "16.0.0.0",  "15.0.0.0",  "14.0.0.0",  "13.0.0.0",  "12.0.0.0",  "11.0.0.0" ],
       "Hyperscale Compliance": ["2025.4", "2025.3", "2025.2", "2025.1", "27.0.0", "26.0.0", "25.0.0", "24.0.0", "23.0.0", "22.0.0", "21.0.0", "20.0.0", "19.0.0", "18.0.0", "17.0.0", 
-        "16.0.0", "15.0.0", "14.0.0", "13.0.0", "12.0.0", "11.0.0", "10.0.0", "9.0.0", "8.0.0", "7.0.0", "6.0.0", "5.0.0", "4.1.0", "4.0.0", "3.0.0", "1.0.0"],
+        "16.0.0", "15.0.0", "14.0.0", "13.0.0", "12.0.0", "11.0.0", "10.0.0", "9.0.0", "8.0.0", "7.0.0", "6.0.0", "5.0.0", "4.1.0", "4.0.0", "3.0.0"],
       "IBM Db2 Connector": ["4.9.0", "4.8.0", "4.7.4", "4.7.2", "4.7.1", "4.7.0", "4.6.1", "4.6.0", "4.5.1", "4.5.0", "4.4.2", "4.4.1", "4.4.0", "4.3.2", "4.3.1", "4.3.0", "4.3.0"],
       "Oracle EBS Connector": ["2025.1.0", "5.0.1", "5.0.0", "4.6.0", "4.5.0", "4.4.0", "4.3.0", "4.2.2", "4.2.1", "4.2.0", "4.1.0", "4.0.2"],
       "PostgreSQL Connector": ["4.3.1", "4.3.0", "4.2.3", "4.2.2", "4.2.1", "4.2.0", "4.1.1", "4.1.0", "4.0.0", "3.2.0", "3.1.0", "3.0.0", "2.1.1", "2.1.0", "2.0.0"],
@@ -20,7 +20,7 @@
       "Continuous Data": ["2025.2.0",  "2025.1.0",  "29.0.0.0",  "28.0.0.0",  "27.0.0.0",  "26.0.0.0",  "25.0.0.0",  "24.0.0.0",  "23.0.0.0",  "22.0.0.0",  "21.0.0.0",  
         "20.0.0.0",  "19.0.0.0",  "18.0.0.0",  "17.0.0.0",  "16.0.0.0",  "15.0.0.0",  "14.0.0.0",  "13.0.0.0",  "12.0.0.0",  "11.0.0.0" ],
       "Hyperscale Compliance": ["2025.4", "2025.3", "2025.2", "2025.1", "27.0.0", "26.0.0", "25.0.0", "24.0.0", "23.0.0", "22.0.0", "21.0.0", "20.0.0", "19.0.0", "18.0.0", "17.0.0", 
-        "16.0.0", "15.0.0", "14.0.0", "13.0.0", "12.0.0", "11.0.0", "10.0.0", "9.0.0", "8.0.0", "7.0.0", "6.0.0", "5.0.0", "4.1.0", "4.0.0", "3.0.0", "1.0.0"],
+        "16.0.0", "15.0.0", "14.0.0", "13.0.0", "12.0.0", "11.0.0", "10.0.0", "9.0.0", "8.0.0", "7.0.0", "6.0.0", "5.0.0", "4.1.0", "4.0.0", "3.0.0"],
       "IBM Db2 Connector": ["4.9.0", "4.8.0", "4.7.4", "4.7.2", "4.7.1", "4.7.0", "4.6.1", "4.6.0", "4.5.1", "4.5.0", "4.4.2", "4.4.1", "4.4.0", "4.3.2", "4.3.1", "4.3.0", "4.3.0"],
       "Oracle EBS Connector": ["2025.1.0", "5.0.1", "5.0.0", "4.6.0", "4.5.0", "4.4.0", "4.3.0", "4.2.2", "4.2.1", "4.2.0", "4.1.0", "4.0.2"],
       "PostgreSQL Connector": ["4.3.1", "4.3.0", "4.2.3", "4.2.2", "4.2.1", "4.2.0", "4.1.1", "4.1.0", "4.0.0", "3.2.0", "3.1.0", "3.0.0", "2.1.1", "2.1.0", "2.0.0"],
@@ -35,7 +35,7 @@
     "17.0.0": { "compatible": true }, "16.0.0": { "compatible": true }, "15.0.0": { "compatible": true }, "14.0.0": { "compatible": true }, "13.0.0": { "compatible": true }, 
     "12.0.0": { "compatible": true }, "11.0.0": { "compatible": true }, "10.0.0": { "compatible": true }, "9.0.0": { "compatible": true }, "8.0.0": { "compatible": true }, 
     "7.0.0": { "compatible": true }, "6.0.0": { "compatible": true }, "5.0.0": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true }, 
-    "3.0.0": { "compatible": true }, "1.0.0": { "compatible": true }
+    "3.0.0": { "compatible": true }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -62,7 +62,7 @@
     "17.0.0": { "compatible": true }, "16.0.0": { "compatible": true }, "15.0.0": { "compatible": true }, "14.0.0": { "compatible": true }, "13.0.0": { "compatible": true }, 
     "12.0.0": { "compatible": true }, "11.0.0": { "compatible": true }, "10.0.0": { "compatible": true }, "9.0.0": { "compatible": true }, "8.0.0": { "compatible": true }, 
     "7.0.0": { "compatible": true }, "6.0.0": { "compatible": true }, "5.0.0": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true }, 
-    "3.0.0": { "compatible": true }, "1.0.0": { "compatible": true }
+    "3.0.0": { "compatible": true }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -89,7 +89,7 @@
     "17.0.0": { "compatible": true }, "16.0.0": { "compatible": true }, "15.0.0": { "compatible": true }, "14.0.0": { "compatible": true }, "13.0.0": { "compatible": true }, 
     "12.0.0": { "compatible": true }, "11.0.0": { "compatible": true }, "10.0.0": { "compatible": true }, "9.0.0": { "compatible": true }, "8.0.0": { "compatible": true }, 
     "7.0.0": { "compatible": true }, "6.0.0": { "compatible": true }, "5.0.0": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true }, 
-    "3.0.0": { "compatible": true }, "1.0.0": { "compatible": true }
+    "3.0.0": { "compatible": true }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -116,7 +116,7 @@
     "17.0.0": { "compatible": true }, "16.0.0": { "compatible": true }, "15.0.0": { "compatible": true }, "14.0.0": { "compatible": true }, "13.0.0": { "compatible": true }, 
     "12.0.0": { "compatible": true }, "11.0.0": { "compatible": true }, "10.0.0": { "compatible": true }, "9.0.0": { "compatible": true }, "8.0.0": { "compatible": true }, 
     "7.0.0": { "compatible": true }, "6.0.0": { "compatible": true }, "5.0.0": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true }, 
-    "3.0.0": { "compatible": true }, "1.0.0": { "compatible": true }
+    "3.0.0": { "compatible": true }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -143,7 +143,7 @@
     "17.0.0": { "compatible": true }, "16.0.0": { "compatible": true }, "15.0.0": { "compatible": true }, "14.0.0": { "compatible": true }, "13.0.0": { "compatible": true }, 
     "12.0.0": { "compatible": true }, "11.0.0": { "compatible": true }, "10.0.0": { "compatible": true }, "9.0.0": { "compatible": true }, "8.0.0": { "compatible": true }, 
     "7.0.0": { "compatible": true }, "6.0.0": { "compatible": true }, "5.0.0": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true }, 
-    "3.0.0": { "compatible": true }, "1.0.0": { "compatible": true }
+    "3.0.0": { "compatible": true }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -170,7 +170,7 @@
     "17.0.0": { "compatible": true }, "16.0.0": { "compatible": true }, "15.0.0": { "compatible": true }, "14.0.0": { "compatible": true }, "13.0.0": { "compatible": true }, 
     "12.0.0": { "compatible": true }, "11.0.0": { "compatible": true }, "10.0.0": { "compatible": true }, "9.0.0": { "compatible": true }, "8.0.0": { "compatible": true }, 
     "7.0.0": { "compatible": true }, "6.0.0": { "compatible": true }, "5.0.0": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true }, 
-    "3.0.0": { "compatible": true }, "1.0.0": { "compatible": true }
+    "3.0.0": { "compatible": true }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -198,7 +198,7 @@
     "17.0.0": { "compatible": true }, "16.0.0": { "compatible": true }, "15.0.0": { "compatible": true }, "14.0.0": { "compatible": true }, "13.0.0": { "compatible": true }, 
     "12.0.0": { "compatible": true }, "11.0.0": { "compatible": true }, "10.0.0": { "compatible": true }, "9.0.0": { "compatible": true }, "8.0.0": { "compatible": true }, 
     "7.0.0": { "compatible": true }, "6.0.0": { "compatible": true }, "5.0.0": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true }, 
-    "3.0.0": { "compatible": true }, "1.0.0": { "compatible": true }
+    "3.0.0": { "compatible": true }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -225,7 +225,7 @@
     "17.0.0": { "compatible": true }, "16.0.0": { "compatible": true }, "15.0.0": { "compatible": true }, "14.0.0": { "compatible": true }, "13.0.0": { "compatible": true }, 
     "12.0.0": { "compatible": true }, "11.0.0": { "compatible": true }, "10.0.0": { "compatible": true }, "9.0.0": { "compatible": true }, "8.0.0": { "compatible": true }, 
     "7.0.0": { "compatible": true }, "6.0.0": { "compatible": true }, "5.0.0": { "compatible": true }, "4.1.0": { "compatible": true }, "4.0.0": { "compatible": true }, 
-    "3.0.0": { "compatible": true }, "1.0.0": { "compatible": true }
+    "3.0.0": { "compatible": true }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -252,7 +252,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -279,7 +279,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -306,7 +306,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -333,7 +333,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -360,7 +360,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -387,7 +387,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -414,7 +414,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -441,7 +441,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -468,7 +468,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -495,7 +495,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": true}, "4.8.0": {"compatible": true}, "4.7.4": {"compatible": true}, "4.7.2": {"compatible": true}, "4.7.1": {"compatible": true}, 
       "4.7.0": {"compatible": true}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -522,7 +522,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": false}, "4.8.0": {"compatible": false}, "4.7.4": {"compatible": false}, "4.7.2": {"compatible": false}, "4.7.1": {"compatible": false}, 
       "4.7.0": {"compatible": false}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -549,7 +549,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": false}, "4.8.0": {"compatible": false}, "4.7.4": {"compatible": false}, "4.7.2": {"compatible": false}, "4.7.1": {"compatible": false}, 
       "4.7.0": {"compatible": false}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
@@ -576,7 +576,7 @@
     "17.0.0": { "compatible": false }, "16.0.0": { "compatible": false }, "15.0.0": { "compatible": false }, "14.0.0": { "compatible": false }, "13.0.0": { "compatible": false }, 
     "12.0.0": { "compatible": false }, "11.0.0": { "compatible": false }, "10.0.0": { "compatible": false }, "9.0.0": { "compatible": false }, "8.0.0": { "compatible": false }, 
     "7.0.0": { "compatible": false }, "6.0.0": { "compatible": false }, "5.0.0": { "compatible": false }, "4.1.0": { "compatible": false }, "4.0.0": { "compatible": false }, 
-    "3.0.0": { "compatible": false }, "1.0.0": { "compatible": false }
+    "3.0.0": { "compatible": false }
     },
     "IBM Db2 Connector": {"4.9.0": {"compatible": false}, "4.8.0": {"compatible": false}, "4.7.4": {"compatible": false}, "4.7.2": {"compatible": false}, "4.7.1": {"compatible": false}, 
       "4.7.0": {"compatible": false}, "4.6.1": {"compatible": true}, "4.6.0": {"compatible": true}, "4.5.1": {"compatible": true}, "4.5.0": {"compatible": true}, "4.4.2": {"compatible": true},
