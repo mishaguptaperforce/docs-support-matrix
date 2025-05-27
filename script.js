@@ -76,12 +76,25 @@ function resetFieldsTab1() {
     if (el) {
       if (el.choices) {
         el.choices.clearStore();
+        el.choices.setChoices(
+          [{ value: '', label: '--Pick one--', selected: true, disabled: true }],
+          'value',
+          'label',
+          true
+        );
       } else {
         el.innerHTML = '';
+        const defaultOpt = document.createElement('option');
+        defaultOpt.value = '';
+        defaultOpt.textContent = '--Pick one--';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        el.appendChild(defaultOpt);
       }
     }
-    document.getElementById('main-content').style.display = 'none';
   });
+    document.getElementById('main-content').style.display = 'none';
+
 
   // Fetch and repopulate categories from JSON
   fetch('data.json')
@@ -128,65 +141,115 @@ function resetFieldsTab1() {
 
 function resetFieldsTab2() {
   document.getElementById('tab2-intro').style.display = 'block';
-  // Hide the main results container before clearing dropdowns
   document.getElementById('thirdPartySolutions-main-content').style.display = 'none';
 
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
 
-  // Clear all dropdowns
-  [
+  const dropdownIds = [
     'product1-category', 'product1-solution', 'product1-version',
     'product2-category', 'product2-solution', 'product2-version'
-  ].forEach(id => {
+  ];
+
+  // Reset all dropdowns with "--Pick one--" except product2-solution with "Pick one or more"
+  dropdownIds.forEach(id => {
     const el = getElement(`thirdPartySolutions-${id}`, activePage);
     if (el) {
       if (el.choices) {
         el.choices.clearStore();
+        el.choices.setChoices(
+          [{ 
+            value: '', 
+            label: (id === 'product2-solution') ? '--Pick one or more--' : '--Pick one--', 
+            selected: true, 
+            disabled: true 
+          }],
+          'value',
+          'label',
+          true
+        );
       } else {
         el.innerHTML = '';
+        const defaultOpt = document.createElement('option');
+        defaultOpt.value = '';
+        defaultOpt.textContent = (id === 'product2-solution') ? '--Pick one or more--' : '--Pick one--';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        el.appendChild(defaultOpt);
       }
     }
-    
-  });
 
-  // Fetch and repopulate categories from 3rd-party-tab.json
+ });
+  
+
+  // Fetch and repopulate category dropdowns from JSON
   fetch('3rd-party-tab.json')
     .then(res => res.json())
     .then(data => {
-      // Repopulate categories for product 1 and product 2
       const p1Categories = data.x_axis.categories || [];
       const p2Categories = data.y_axis.categories || [];
 
-      // Repopulate dropdowns for product 1 category and product 2 category
-      ['product1-category', 'product2-category'].forEach(id => {
-        const el = getElement(`thirdPartySolutions-${id}`, activePage);
-        if (el) {
-          if (el.choices) {
-            el.choices.setChoices(
-              [{ value: '', label: '--Pick one--', selected: true, disabled: true }, ...p1Categories.map(cat => ({ value: cat, label: cat }))],
-              'value',
-              'label',
-              true
-            );
-          } else {
-            el.innerHTML = '';
-            const defaultOpt = document.createElement('option');
-            defaultOpt.value = '';
-            defaultOpt.textContent = '--Pick one--';
-            defaultOpt.disabled = true;
-            defaultOpt.selected = true;
-            el.appendChild(defaultOpt);
-            p1Categories.forEach(cat => {
-              const option = document.createElement('option');
-              option.value = cat;
-              option.textContent = cat;
-              el.appendChild(option);
-            });
-          }
+      // Populate product1-category
+      const el1 = getElement('thirdPartySolutions-product1-category', activePage);
+      if (el1) {
+        if (el1.choices) {
+          el1.choices.setChoices(
+            [
+              { value: '', label: '--Pick one--', selected: true, disabled: true },
+              ...p1Categories.map(cat => ({ value: cat, label: cat }))
+            ],
+            'value',
+            'label',
+            true
+          );
+        } else {
+          el1.innerHTML = '';
+          const defaultOpt = document.createElement('option');
+          defaultOpt.value = '';
+          defaultOpt.textContent = '--Pick one--';
+          defaultOpt.disabled = true;
+          defaultOpt.selected = true;
+          el1.appendChild(defaultOpt);
+          p1Categories.forEach(cat => {
+            const option = document.createElement('option');
+            option.value = cat;
+            option.textContent = cat;
+            el1.appendChild(option);
+          });
         }
-      });
+      }
+
+      // Populate product2-category
+      const el2 = getElement('thirdPartySolutions-product2-category', activePage);
+      if (el2) {
+        if (el2.choices) {
+          el2.choices.setChoices(
+            [
+              { value: '', label: '--Pick one--', selected: true, disabled: true },
+              ...p2Categories.map(cat => ({ value: cat, label: cat }))
+            ],
+            'value',
+            'label',
+            true
+          );
+        } else {
+          el2.innerHTML = '';
+          const defaultOpt = document.createElement('option');
+          defaultOpt.value = '';
+          defaultOpt.textContent = '--Pick one--';
+          defaultOpt.disabled = true;
+          defaultOpt.selected = true;
+          el2.appendChild(defaultOpt);
+          p2Categories.forEach(cat => {
+            const option = document.createElement('option');
+            option.value = cat;
+            option.textContent = cat;
+            el2.appendChild(option);
+          });
+        }
+      }
     });
 
+  // Enable product2-version dropdown (if needed)
   const p2v = getElement('thirdPartySolutions-product2-version', activePage);
   if (p2v) p2v.disabled = false;
 
@@ -194,6 +257,8 @@ function resetFieldsTab2() {
   getElement('result', activePage).innerHTML = '';
   getElement('compatibility-matrix', activePage).innerHTML = '';
 }
+
+
 
 // Helper to populate dropdowns with "--Select--" and options
 /*
@@ -227,37 +292,29 @@ function populateDropdown(el, options) {
 function resetFieldsTab3() {
   document.getElementById('tab3-intro').style.display = 'block';
   document.getElementById('hardware-main-content').style.display = 'none';
+
   const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
 
-  // Clear all dropdowns
-  ['hardware-category', 'hardware-product1-category'].forEach(id => {
+  const dropdownIds = ['hardware-category', 'hardware-product1-category'];
+
+  // Reset all dropdowns to "--Pick one--"
+  dropdownIds.forEach(id => {
     const el = getElement(id, activePage);
     if (el) {
       if (el.choices) {
-        // Clear selected choices and reset dropdown
-        el.choices.clearStore();  // Clears the choices from memory
-        el.choices.clearChoices();  // Clears visual selection from dropdown
-        el.choices.setChoiceByValue('');  // Set placeholder (e.g., "--Select--")
-        el.choices.setValue([]); // Deselect all values in multi-select dropdown
-
-        // Reset the dropdown appearance fully (clear any residual items or visual cues)
-        const dropdownContainer = el.closest('.choices'); // Target the whole dropdown container
-        const inputField = dropdownContainer.querySelector('.choices__input'); // Input field element
-        const selectedItems = dropdownContainer.querySelector('.choices__list--multiple'); // List of selected items
-
-        // Remove any visual selected items
-        if (selectedItems) {
-          selectedItems.innerHTML = ''; // Clear the selected items list
-        }
-        if (inputField) {
-          inputField.value = ''; // Clear the input field's value
-        }
+        // Clear all choices and reset to placeholder
+        el.choices.clearStore();
+        el.choices.setChoices(
+          [{ value: '', label: '--Pick one--', selected: true, disabled: true }],
+          'value',
+          'label',
+          true
+        );
       } else {
-        // If not using Choices.js, just clear the innerHTML and reset to placeholder
         el.innerHTML = '';
         const defaultOpt = document.createElement('option');
         defaultOpt.value = '';
-        defaultOpt.textContent = '';
+        defaultOpt.textContent = '--Pick one--';
         defaultOpt.disabled = true;
         defaultOpt.selected = true;
         el.appendChild(defaultOpt);
@@ -265,32 +322,38 @@ function resetFieldsTab3() {
     }
   });
 
-  // Reinitialize the Choices.js instance after clearing it
-  const categoryDropdown = document.getElementById('hardware-category');
+  // Destroy and re-initialize Choices.js for multi-select product dropdown to avoid duplicates
   const productDropdown = document.getElementById('hardware-product1-category');
-
-  if (categoryDropdown && productDropdown) {
-    // Clear and reinitialize Choices.js
+  if (productDropdown) {
     if (choicesInstances['hardware-product1-category']) {
       choicesInstances['hardware-product1-category'].destroy();
       delete choicesInstances['hardware-product1-category'];
     }
-
-    // Initialize Choices.js for the product dropdown
     choicesInstances['hardware-product1-category'] = new Choices(productDropdown, {
-      removeItemButton: true,  // Allow the user to remove selections
-      searchEnabled: true,     // Enable search functionality
-      itemSelectText: '',      // Remove text when selecting an item
-      shouldSort: false,       // Keep the order as is
-      closeDropdownOnSelect: true // Close dropdown after selection
+      placeholderValue: '--Pick one or more--',
+      removeItemButton: true,
+      searchEnabled: true,
+      itemSelectText: '',
+      shouldSort: false,
+      closeDropdownOnSelect: true,
     });
+  }
 
-    // Repopulate the category dropdown and product dropdown
+  const categoryDropdown = document.getElementById('hardware-category');
+  if (categoryDropdown) {
+    // Fetch hardware categories and populate category dropdown
     fetch('hardware.json')
       .then(res => res.json())
       .then(data => {
-        // Clear and populate category dropdown
-        categoryDropdown.innerHTML = '<option value="">--Pick one--</option>';
+        // Populate hardware-category dropdown
+        categoryDropdown.innerHTML = '';
+        const defaultOpt = document.createElement('option');
+        defaultOpt.value = '';
+        defaultOpt.textContent = '--Pick one--';
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        categoryDropdown.appendChild(defaultOpt);
+
         Object.keys(data.categories).forEach(category => {
           const option = document.createElement('option');
           option.value = category;
@@ -298,75 +361,73 @@ function resetFieldsTab3() {
           categoryDropdown.appendChild(option);
         });
 
-        // Populate product dropdown based on selected category
+        // When category changes, update product multi-select dropdown
         categoryDropdown.addEventListener('change', () => {
           const selectedCategory = categoryDropdown.value;
+          const choicesInstance = choicesInstances['hardware-product1-category'];
+          if (!choicesInstance) return;
 
-          // If "All" is selected, populate the product dropdown with all products across all categories
-          if (selectedCategory === 'ALL') {
-            const allProducts = Object.values(data.categories).flat();
-            const productOptions = allProducts.map(product => ({
-              value: product,
-              label: product,
-              selected: false,
-              disabled: false
-            }));
+          choicesInstance.clearChoices();
 
-            // Clear existing choices and update with "All" options
-            choicesInstances['hardware-product1-category'].clearChoices();
-            choicesInstances['hardware-product1-category'].setChoices([{ value: '__all__', label: 'All' }, ...productOptions], 'value', 'label', true);
-          } else {
-            // Handle case when a valid category is selected
-            const products = data.categories[selectedCategory] || [];
-
-            // Clear existing options and update Choices.js
-            choicesInstances['hardware-product1-category'].clearChoices();
-
-            // Add "All" option for the current category
-            const allOption = {
-              value: '__all__',
-              label: 'All',
-              selected: false,
-              disabled: false
-            };
-            choicesInstances['hardware-product1-category'].setChoices([allOption], 'value', 'label', false);
-
-            // Add product options for the selected category
-            const productOptions = products.map(product => ({
-              value: product,
-              label: product,
-              selected: false,
-              disabled: false
-            }));
-            choicesInstances['hardware-product1-category'].setChoices(productOptions, 'value', 'label', false);
+          if (selectedCategory === '') {
+            // If no category selected, reset product dropdown
+            choicesInstance.setChoices(
+              [{ value: '', label: '--Pick one or more--', selected: true, disabled: true }],
+              'value',
+              'label',
+              true
+            );
+            return;
           }
+
+          const products = data.categories[selectedCategory] || [];
+
+          // Add an "All" option to select all products
+          const allOption = { value: '__all__', label: 'All', selected: false, disabled: false };
+
+          const productOptions = products.map(prod => ({
+            value: prod,
+            label: prod,
+            selected: false,
+            disabled: false
+          }));
+
+          choicesInstance.setChoices([allOption, ...productOptions], 'value', 'label', true);
         });
-
-        // Handle "All" option selection (select all products for selected category)
-        productDropdown.addEventListener('change', () => {
-          const selectedValues = choicesInstances['hardware-product1-category'].getValue(true); // Get selected values
-
-          // If "All" is selected, select all products for the selected category
-          const category = categoryDropdown.value;
-          if (selectedValues.includes('__all__')) {
-            const products = data.categories[category] || [];
-            choicesInstances['hardware-product1-category'].setChoiceByValue(products);
-          }
-          choicesInstances['hardware-product1-category'].hideDropdown();
-        });
-
-        console.log('Dropdowns repopulated for Tab 3');
       })
-      .catch(error => {
-        console.error('Error fetching hardware data:', error);
+      .catch(err => {
+        console.error('Error fetching hardware.json:', err);
       });
   }
 
-  // Clear result and table sections
+  // Handle "All" option selection in product dropdown
+  if (productDropdown) {
+    productDropdown.addEventListener('change', () => {
+      const choicesInstance = choicesInstances['hardware-product1-category'];
+      if (!choicesInstance) return;
+
+      const selectedValues = choicesInstance.getValue(true);
+      const categoryDropdown = document.getElementById('hardware-category');
+      if (!categoryDropdown) return;
+
+      if (selectedValues.includes('__all__')) {
+        // Select all products under the current category
+        fetch('hardware.json')
+          .then(res => res.json())
+          .then(data => {
+            const products = data.categories[categoryDropdown.value] || [];
+            choicesInstance.setChoiceByValue(products);
+          })
+          .catch(err => console.error('Error fetching hardware.json:', err));
+      }
+    });
+  }
+
+  // Clear results and hardware table
   getElement('hardware-result', activePage).innerHTML = '';
   getElement('hardware-table-wrapper', activePage).innerHTML = '';
-  
 }
+
 
 function resetFieldsTab4() {
   document.getElementById('tab4-intro').style.display = 'block';
@@ -553,6 +614,8 @@ data.y_axis.categories.forEach(category => {
     });
 
     
+
+    
     const solutionChoices = [
   { value: '__all__', label: 'All' },  // Add "All" as a special option
   ...Array.from(solutionSet).map(solution => ({ value: solution, label: solution }))
@@ -562,8 +625,9 @@ data.y_axis.categories.forEach(category => {
   });
 
   // Product 2 - Solution change
+
   product2SolutionSelect.addEventListener('change', () => {
-    product2VersionSelect.innerHTML = '<option value="">--Pick one--</option>';
+    product2VersionSelect.innerHTML = '<option value="">--Pick one or more--</option>';
     
     // Get the selected solutions
     let selectedSolutions = Array.from(product2SolutionSelect.selectedOptions).map(opt => opt.value);
@@ -1137,7 +1201,8 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
   `;
   th.style.cssText = 'text-align:left;background:#1d428a;color:white;';
   th.style.position = 'sticky';
-  th.style.top = '0';             // stick to very top
+  th.style.top = '0';  
+  th.style.left = '0';            // stick to very top
   th.style.zIndex = '30';         // higher z-index
   header1.appendChild(th);
   thead.appendChild(header1);
@@ -1196,6 +1261,10 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
   const rows = [];
   osVers.forEach(osv => {
     const row = document.createElement('tr');
+
+
+
+
     const cells = dbVers.map(dbv => {
       const key1 = `${os} ${osv}`.trim();
       const key2 = `${db} ${dbv}`.trim();
@@ -1301,7 +1370,7 @@ if (!compat) {
 // final
 console.log('  ↳ result:', compat);
 
-      if (!compat) return `<td><i class="fa-solid fa-minus"></i></td>`;
+      if (!compat) return `<td><i class="fa-solid fa-minus icon-na"></i></td>`;
 
       const icon = compat.compatible ? '<i class="fa-solid fa-circle-check" style="color: green; font-size: 20px;"></i>' : '<i class="fa-solid fa-circle-xmark" style="color: #ED1C24; font-size: 20px;""></i>';
       const color = compat.compatible ? 'green' : 'red';
@@ -1337,102 +1406,125 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 
-document.getElementById('collapseExpandAll-tab1').addEventListener('click', function() {
-  // Get all tables on the page (you can customize the selector if needed)
+let isCollapsedTab1 = false;
+
+document.getElementById('collapseExpandAll-tab1').addEventListener('click', function () {
   const tables = document.querySelectorAll('table');
+  const newDisplay = isCollapsedTab1 ? '' : 'none';
 
-  // Check the current state of the button (text is "Collapse All" or "Expand All")
-  const isCollapsing = this.textContent === 'Collapse All';
-
-  // Toggle each table based on the current state
   tables.forEach(table => {
     const rows = table.querySelectorAll('tr');
-    
-    // If collapsing, hide all rows except the header row (assumed to be the first row)
     rows.forEach((row, index) => {
-      if (index > 0) { // Exclude the header row
-        row.style.display = isCollapsing ? 'none' : ''; // Hide rows if collapsing
+      if (index > 0) {
+        row.style.display = newDisplay;
       }
     });
   });
 
-  // Change the button text depending on the current action
-  if (isCollapsing) {
-    this.textContent = 'Expand All'; // Change to "Expand All"
-  } else {
-    this.textContent = 'Collapse All'; // Change to "Collapse All"
+  // Update text
+  const textSpan = document.getElementById('collapseExpandText-tab1');
+  textSpan.textContent = isCollapsedTab1 ? 'Collapse All' : 'Expand All';
+
+  // Optional: Toggle icon (if needed)
+  const icon = document.getElementById('collapseExpandIcon-tab1');
+  if (icon) {
+    icon.className = isCollapsedTab1
+      ? 'fa-solid fa-down-left-and-up-right-to-center'
+      : 'fa-solid fa-up-right-and-down-left-from-center';
   }
+
+  isCollapsedTab1 = !isCollapsedTab1;
 });
 
-document.getElementById('collapseExpandAll-tab2').addEventListener('click', function() {
-  // Get all tables on the page (you can customize the selector if needed)
+
+let isCollapsedTab2 = false;
+
+document.getElementById('collapseExpandAll-tab2').addEventListener('click', function () {
   const tables = document.querySelectorAll('table');
+  const newDisplay = isCollapsedTab2 ? '' : 'none';
 
-  // Check the current state of the button (text is "Collapse All" or "Expand All")
-  const isCollapsing = this.textContent === 'Collapse All';
-
-  // Toggle each table based on the current state
   tables.forEach(table => {
     const rows = table.querySelectorAll('tr');
-    
-    // If collapsing, hide all rows except the header row (assumed to be the first row)
     rows.forEach((row, index) => {
-      if (index > 0) { // Exclude the header row
-        row.style.display = isCollapsing ? 'none' : ''; // Hide rows if collapsing
+      if (index > 0) {
+        row.style.display = newDisplay;
       }
     });
   });
 
-  // Change the button text depending on the current action
-  if (isCollapsing) {
-    this.textContent = 'Expand All'; // Change to "Expand All"
-  } else {
-    this.textContent = 'Collapse All'; // Change to "Collapse All"
+  // Update text
+  const textSpan = document.getElementById('collapseExpandText-tab2');
+  textSpan.textContent = isCollapsedTab2 ? 'Collapse All' : 'Expand All';
+
+  // Optional: Toggle icon (if needed)
+  const icon = document.getElementById('collapseExpandIcon-tab2');
+  if (icon) {
+    icon.className = isCollapsedTab2
+      ? 'fa-solid fa-down-left-and-up-right-to-center'
+      : 'fa-solid fa-up-right-and-down-left-from-center';
   }
+
+  isCollapsedTab2 = !isCollapsedTab2;
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  const collapseBtn = document.getElementById('collapseExpandAll-tab3');
-  if (collapseBtn) {
-    collapseBtn.addEventListener('click', function () {
-      const tables = document.querySelectorAll('table.hardware-matrix-table');
-      const isCollapsing = this.textContent === 'Collapse All';
+let isCollapsedTab3 = false;
 
-      tables.forEach(table => {
-        const tbody = table.querySelector('tbody');
-        const secondHeaderRow = table.querySelector('thead')?.rows[1];
+document.getElementById('collapseExpandAll-tab3').addEventListener('click', function () {
+  const tables = document.querySelectorAll('table');
+  const newDisplay = isCollapsedTab3 ? '' : 'none';
 
-        if (tbody && secondHeaderRow) {
-          tbody.style.display = isCollapsing ? 'none' : 'table-row-group';
-          secondHeaderRow.style.display = isCollapsing ? 'none' : '';
-        }
-      });
-
-      this.textContent = isCollapsing ? 'Expand All' : 'Collapse All';
+  tables.forEach(table => {
+    const rows = table.querySelectorAll('tr');
+    rows.forEach((row, index) => {
+      if (index > 0) {
+        row.style.display = newDisplay;
+      }
     });
+  });
+
+  // Update text
+  const textSpan = document.getElementById('collapseExpandText-tab3');
+  textSpan.textContent = isCollapsedTab3 ? 'Collapse All' : 'Expand All';
+
+  // Optional: Toggle icon (if needed)
+  const icon = document.getElementById('collapseExpandIcon-tab3');
+  if (icon) {
+    icon.className = isCollapsedTab3
+      ? 'fa-solid fa-down-left-and-up-right-to-center'
+      : 'fa-solid fa-up-right-and-down-left-from-center';
   }
+
+  isCollapsedTab3 = !isCollapsedTab3;
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  const collapseBtn = document.getElementById('collapseExpandAll-tab4');
-  if (collapseBtn) {
-    collapseBtn.addEventListener('click', function () {
-      const tables = document.querySelectorAll('table.upgrade-matrix-table');
-      const isCollapsing = this.textContent === 'Collapse All';
+let isCollapsedTab4 = false;
 
-      tables.forEach(table => {
-        const tbody = table.querySelector('tbody');
-        const secondHeaderRow = table.querySelector('thead')?.rows[1];
+document.getElementById('collapseExpandAll-tab4').addEventListener('click', function () {
+  const tables = document.querySelectorAll('table');
+  const newDisplay = isCollapsedTab4 ? '' : 'none';
 
-        if (tbody && secondHeaderRow) {
-          tbody.style.display = isCollapsing ? 'none' : 'table-row-group';
-          secondHeaderRow.style.display = isCollapsing ? 'none' : '';
-        }
-      });
-
-      this.textContent = isCollapsing ? 'Expand All' : 'Collapse All';
+  tables.forEach(table => {
+    const rows = table.querySelectorAll('tr');
+    rows.forEach((row, index) => {
+      if (index > 0) {
+        row.style.display = newDisplay;
+      }
     });
+  });
+
+  // Update text
+  const textSpan = document.getElementById('collapseExpandText-tab4');
+  textSpan.textContent = isCollapsedTab4 ? 'Collapse All' : 'Expand All';
+
+  // Optional: Toggle icon (if needed)
+  const icon = document.getElementById('collapseExpandIcon-tab4');
+  if (icon) {
+    icon.className = isCollapsedTab4
+      ? 'fa-solid fa-down-left-and-up-right-to-center'
+      : 'fa-solid fa-up-right-and-down-left-from-center';
   }
+
+  isCollapsedTab4 = !isCollapsedTab4;
 });
 
 function exportToExcelTab1() {

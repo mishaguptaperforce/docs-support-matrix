@@ -20,6 +20,11 @@ body {
 
 /* Top Navbar */
 .top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100; /* higher than tabs */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,10 +33,6 @@ body {
   color: white;
   height: 50px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  font-family: var(--font-main);
 }
 
 .navbar-left {
@@ -102,13 +103,19 @@ body {
 
 /* Tabs */
 .tabs-container {
-  position: sticky;
-  top: 60px; /* Adjust based on height of top nav */
+  position: fixed;
+  top: 50px; /* right below .top-navbar */
+  left: 0;
+  right: 0;
+  z-index: 1099; /* just below .top-navbar */
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0 10px;
+  padding-top: 20px;
+  padding-left: 10px;
   width: 100%;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .tab {
@@ -144,7 +151,10 @@ body {
   display: flex;
   width: 100%;
   height: 100vh; /* optional: full viewport height */
+  margin-top: 100px;
+  padding-top: 10px;                /* Prevent image from repeating */
 }
+
 
 /* Side Navigation */
 #sidenav,
@@ -155,6 +165,7 @@ body {
   box-sizing: border-box;
   height: 100vh;
   overflow-y: auto;
+  background-color: white;
 }
 
 #sidenav h3,
@@ -172,6 +183,7 @@ body {
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
+  padding-top: 10px;
 }
 
 /* Button Containers */
@@ -299,6 +311,10 @@ select {
   background-color: white; 
 }
 
+.navbar-right i {
+    font-size: 28px; /* adjust as needed */
+  }
+
 /* Style the selected items (chips/tags) */
 .choices__list--multiple .choices__item--selectable {
   background-color: #1d428a !important;  /* Your theme color */
@@ -355,6 +371,8 @@ select {
   padding-left: 10px;     /* slight indent for visual breathing */
 }
 
+
+
 /* Compatibility Matrix Tables */
 .matrix-table,
 #thirdPartySolutions-compatibility-matrix {
@@ -375,6 +393,7 @@ select {
   word-wrap: break-word;
   box-sizing: border-box;
 }
+
 
 /* Sticky First Column */
 .matrix-table td:first-child,
@@ -431,6 +450,7 @@ select {
   #thirdPartySolutions-main-content {
     width: 100%;
     padding: 10px;
+    
   }
 
   .matrix-table th,
@@ -497,6 +517,7 @@ h4 {
   margin-left: 250px; /* Shifts the content to the right to make space for the sidebar */
   padding: 20px;
   box-sizing: border-box;
+
 }
 
 /* Hardware Table Wrapper */

@@ -32,7 +32,7 @@
   <!-- Tabs Container -->
   <div class="tabs-container">
     <div class="tab" id="tab-interoperability" onclick="showPage('interoperability')">Delphix products</div>
-    <div class="tab" id="tab-thirdPartySolutions" onclick="showPage('thirdPartySolutions')">Third-Party solutions</div>
+    <div class="tab" id="tab-thirdPartySolutions" onclick="showPage('thirdPartySolutions')">Third-party solutions</div>
     <div class="tab" id="tab-hardware" onclick="showPage('hardware')">Hardware</div>
     <div class="tab" id="tab-upgrade" onclick="showPage('upgrade')">Upgrade</div>
   </div>
@@ -80,7 +80,7 @@
 
         <!-- Action buttons -->
         <div class="button-container">
-          <button class="primary-button" onclick="checkCompatibilityTab1()">Check compatibility</button>
+          <button class="primary-button" onclick="checkCompatibilityTab1()">Check Compatibility</button>
           <button class="secondary-button" onclick="resetFieldsTab1()">Reset</button>
         </div>
       </div>
@@ -98,7 +98,8 @@
           <!-- Additional action buttons -->
           <div class="additional-actions">
             <button id="export-csv-tab1" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;&nbsp;Export Results</button>
-            <button id="collapseExpandAll-tab1" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All</button>
+            <button id="collapseExpandAll-tab1" class="action-button">
+              <i id="collapseExpandIcon-tab1" class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;<span id="collapseExpandText-tab1">Collapse All</span></button>
           </div>
         </div>  
 
@@ -186,7 +187,7 @@
 
         <!-- Action buttons -->
         <div class="thirdPartySolutions-button-container">
-          <button class="thirdPartySolutions-primary-button" onclick="checkCompatibilityTab2()">Check compatibility</button>
+          <button class="thirdPartySolutions-primary-button" onclick="checkCompatibilityTab2()">Check Compatibility</button>
           <button class="thirdPartySolutions-secondary-button" onclick="resetFieldsTab2()">Reset</button>
         </div>
       </div>
@@ -204,7 +205,8 @@
           <!-- Additional action buttons -->
           <div class="additional-actions">
             <button id="export-csv-tab2" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;&nbsp;Export Results</button>
-            <button id="collapseExpandAll-tab2" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All</button>
+            <button id="collapseExpandAll-tab2" class="action-button">
+              <i id="collapseExpandIcon-tab2" class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;<span id="collapseExpandText-tab2">Collapse All</span></button>
           </div>
         </div>  
 
@@ -258,7 +260,7 @@
         </div>
 
         <div class="button-container-hardware">
-          <button class="hardware-page-button" onclick="checkCompatibilityTab3()">Check compatibility</button>
+          <button class="hardware-page-button" onclick="checkCompatibilityTab3()">Check Compatibility</button>
           <button class="hardware-secondary-button" onclick="resetFieldsTab3()">Reset</button>
         </div>
       </div>
@@ -278,7 +280,8 @@
           
           <div class="additional-actions">
             <button id="export-csv-tab3" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;&nbsp;Export Results</button>
-            <button id="collapseExpandAll-tab3" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All</button>
+            <button id="collapseExpandAll-tab3" class="action-button">
+              <i id="collapseExpandIcon-tab3" class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;<span id="collapseExpandText-tab3">Collapse All</span></button>
           </div>
         </div>  
 
@@ -312,7 +315,7 @@
       </div>
 
       <div class="button-container-upgrade">
-        <button class="upgrade-page-button" onclick="checkCompatibilityTab4()">Check upgrade path</button>
+        <button class="upgrade-page-button" onclick="checkCompatibilityTab4()">Check Upgrade Path</button>
         <button class="upgrade-secondary-button" onclick="resetFieldsTab4()">Reset</button>
       </div>
     </div>
@@ -332,7 +335,8 @@
 
         <div class="additional-actions">
           <button id="export-csv-tab4" class="action-button" title="Export to CSV"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;&nbsp;Export Results</button>
-          <button id="collapseExpandAll-tab4" class="action-button"><i class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;Collapse All</button>
+          <button id="collapseExpandAll-tab4" class="action-button">
+              <i id="collapseExpandIcon-tab4" class="fa-solid fa-down-left-and-up-right-to-center"></i>&nbsp;&nbsp;<span id="collapseExpandText-tab4">Collapse All</span></button>
         </div>
       </div>  
 
