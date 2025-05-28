@@ -631,7 +631,10 @@ h4 {
   overflow-x: auto; /* Enable horizontal scrolling if necessary */
   overflow-y: auto; /* Enable vertical scrolling if necessary */
   padding-right: 10px; /* Optional: add padding for better aesthetics */
-   /* Add some space above the table */
+}
+
+.compatibility-section {
+  margin-bottom: 25px; /* adjust as needed for desired spacing */
 }
 
 /* Ensure the table takes full width */
