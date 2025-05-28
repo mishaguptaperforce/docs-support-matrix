@@ -369,9 +369,43 @@ select {
   line-height: 1.5;
   letter-spacing: 0.02em;
   padding-left: 10px;     /* slight indent for visual breathing */
+  font-size: 16px;
+  
 }
 
 
+#tab1-intro {
+  background-image: url('images/delphix-products.png');
+  background-repeat: no-repeat;
+  background-position: center 35%;
+  background-size: 600px 400px; /* width height */
+  width: 80%;
+
+}
+#tab2-intro {
+  background-image: url('images/third_party_solutions.png');
+  background-repeat: no-repeat;
+  background-position: center 35%;
+  background-size: 600px 400px; /* width height */
+  width: 80%;
+
+}
+#tab3-intro {
+  background-image: url('images/hardware.png');
+  background-repeat: no-repeat;
+  background-position: center 35%;
+  background-size: 600px 400px; /* width height */
+  width: 80%;
+
+}
+#tab4-intro {
+  background-image: url('images/upgrade_path.png');
+  background-repeat: no-repeat;
+  background-position: center 35%;
+  background-size: 700px 400px; /* width height */
+  width: 80%;
+
+}
 
 /* Compatibility Matrix Tables */
 .matrix-table,
@@ -412,6 +446,8 @@ select {
   z-index: 2;
 }
 
+
+
 #thirdPartySolutions-compatibility-matrix thead th {
   background-color: var(--primary-blue);
   color: white;
@@ -427,8 +463,6 @@ select {
   overflow-x: auto; /* Allow horizontal scroll for many columns */
   overflow-y: auto;
   margin-bottom: 25px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
 }
 
 /* Responsive */

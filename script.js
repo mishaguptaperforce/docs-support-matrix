@@ -847,6 +847,8 @@ if (intro) intro.style.display = 'none';
   const v2 = get('product2-version').value;   // Product 2 Version
   const result = get('result');
 
+
+
   const selectedDBs = p2El.choices ? p2El.choices.getValue(true) : [p2El.value];  // Handle multi-select
 
   result.innerHTML = '';
@@ -961,6 +963,11 @@ if (intro) intro.style.display = 'none';
   const get = id => getElement(id, activePage);
   const category = get('hardware-category').value;
   const product1CategoryEl = get('hardware-product1-category');
+
+  if (!category || !product1CategoryEl) {
+    alert("Please select both a category and a product.");
+    return;
+  }
   
   // Get selected products from the multi-choice dropdown using Choices.js
   let selectedProducts = product1CategoryEl.choices ? product1CategoryEl.choices.getValue(true) : Array.from(product1CategoryEl.selectedOptions).map(option => option.value);
@@ -1035,7 +1042,7 @@ if (intro) intro.style.display = 'none';
 
     // Create second header row for table columns
     const headerRow = thead.insertRow();
-    const headers = ['Instance/Shape Size', 'Support Level', 'Delphix version'];
+    const headers = ['Instance/Shape Size', 'Support Level', 'Delphix Continuous Data version'];
     headers.forEach(headerText => {
       const th = document.createElement('th');
       th.textContent = headerText;

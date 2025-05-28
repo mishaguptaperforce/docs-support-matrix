@@ -20,7 +20,7 @@
     },
     "2025.2.0.*": {
       "dateReleased": "2025-03-18",
-      "vdbDowntimeRequired": "N/A",
+      "vdbDowntimeRequired": "Optional",
       "canUpgradeTo": "2025.2.0.* - 2025.3.0.*"
     },
     "2025.1.0.*": {
