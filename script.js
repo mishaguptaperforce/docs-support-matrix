@@ -1514,7 +1514,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function exportToExcelTab1() {
-  const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
   const result = document.querySelector('#result');
 
   if (!result) {
@@ -1522,42 +1521,90 @@ function exportToExcelTab1() {
     return;
   }
 
-  const workbook = XLSX.utils.book_new(); // Create a new workbook
-
   const tables = result.querySelectorAll('.matrix-table');
 
+  if (tables.length === 0) {
+    alert("No compatibility tables found to export.");
+    return;
+  }
+
+  const workbook = XLSX.utils.book_new();
+
   tables.forEach((table, index) => {
-    const worksheet = XLSX.utils.table_to_sheet(table); // Convert each table
-    const sheetName = `Table_${index + 1}`; // Name sheets like Comparison_1, Comparison_2
-    XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
+    // Clone the table to modify it safely
+    const clone = table.cloneNode(true);
+
+    // Replace icons with emojis + keep notes if any
+    clone.querySelectorAll('td').forEach(td => {
+      const icon = td.querySelector('i.fa-circle-check, i.fa-circle-xmark');
+      if (icon) {
+        // Emoji mapping
+        const emoji = icon.classList.contains('fa-circle-check') ? '✅' : '❌';
+
+        // Extract note text (small tag)
+        const note = td.querySelector('small')?.innerText || '';
+
+        // Replace entire cell text content with emoji + note on next line
+        td.textContent = emoji + (note ? '\n' + note : '');
+      }
+    });
+
+    // Convert to worksheet
+    const worksheet = XLSX.utils.table_to_sheet(clone);
+
+    // Append worksheet to workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, `Comparison_${index + 1}`);
   });
 
-  // Export the workbook
-  XLSX.writeFile(workbook, "compatibility_results_tab1.xlsx");
+  // Export workbook as xlsx file
+  XLSX.writeFile(workbook, 'compatibility_results_tab1.xlsx');
 }
 
+
+
 function exportToExcelTab2() {
-  const activePage = document.querySelector('.page-content.active').id.replace('-page', '');
-  const result = document.querySelector(`#${activePage}-result`);
+  const result = document.querySelector('#thirdPartySolutions-result');
 
   if (!result) {
     console.error('No result section found.');
     return;
   }
 
-  const workbook = XLSX.utils.book_new(); // Create new workbook
-
   const tables = result.querySelectorAll('.matrix-table');
 
+  if (tables.length === 0) {
+    alert("No compatibility tables found to export.");
+    return;
+  }
+
+  const workbook = XLSX.utils.book_new();
+
   tables.forEach((table, index) => {
-    const worksheet = XLSX.utils.table_to_sheet(table); // Convert table to sheet
-    const sheetName = `Table_${index + 1}`; // Name each sheet Table_1, Table_2 etc
-    XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
+    const clone = table.cloneNode(true);
+
+    clone.querySelectorAll('td').forEach(td => {
+      const iconCheck = td.querySelector('i.fa-circle-check');
+      const iconCross = td.querySelector('i.fa-circle-xmark');
+      const iconMinus = td.querySelector('i.fa-minus');
+
+      if (iconCheck) {
+        const note = td.querySelector('small')?.innerText || '';
+        td.textContent = '✅' + (note ? '\n' + note : '');
+      } else if (iconCross) {
+        const note = td.querySelector('small')?.innerText || '';
+        td.textContent = '❌' + (note ? '\n' + note : '');
+      } else if (iconMinus) {
+        td.textContent = '➖';
+      }
+    });
+
+    const worksheet = XLSX.utils.table_to_sheet(clone);
+    XLSX.utils.book_append_sheet(workbook, worksheet, `Comparison_${index + 1}`);
   });
 
-  // Export the workbook
-  XLSX.writeFile(workbook, "compatibility_results_3rd_party.xlsx");
+  XLSX.writeFile(workbook, 'compatibility_results_tab2.xlsx');
 }
+
 
 function exportToExcelTab3() {
   const wrapper = document.querySelector('#hardware-table-wrapper');
