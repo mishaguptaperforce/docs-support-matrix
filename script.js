@@ -1197,6 +1197,7 @@ function updateMatrix(data, os, osVer, db, dbVer, thead, tbody, heading) {
     : data.x_axis.versions[db] || [];
 
   thead.innerHTML = '';
+  
 
   // 1) Header1: toggle heading + OS name
   const header1 = document.createElement('tr');
